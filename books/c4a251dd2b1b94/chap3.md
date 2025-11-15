@@ -36,8 +36,8 @@ print("Hello, Python3!!")
 ```
 
 記述されているコードが今回の主役、"print(...)"という命令です。
-最も簡単な命令の一つで「文字を表示するコード」です。
-"..."の部分に、表示したい文字を記述します。
+最も簡単な命令の一つで「文字列を表示するコード」です。
+"..."の部分に、表示したい文字列を記述します。
 
 ## プログラムを実行してみる
 
@@ -48,17 +48,17 @@ print("Hello, Python3!!")
 Python3を実行するコマンドを実行します。
 
 ```command:コマンド(Macの場合)
-# フォルダに移動する
+# フォルダに移動するコマンド
 $ cd ~/Desktop/hello_python3
-# Python3を実行する
+# Python3を実行するコマンド
 $ python3 main.py
 Hello, Python3!! <- 実行結果
 ```
 
 ```command:コマンド(Winの場合)
-# フォルダに移動する
+# フォルダに移動するコマンド
 C:\> cd C:\Users\<あなたのユーザー名>\Desktop\hello_python3
-# Python3を実行する
+# Python3を実行するコマンド
 C:\> python main.py
 Hello, Python3!! <- 実行結果
 ```
