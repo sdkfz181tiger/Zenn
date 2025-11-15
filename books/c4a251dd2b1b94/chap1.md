@@ -4,6 +4,8 @@ title: "第1章: はじめに"
 
 # Python3って何?
 
+はじめに、Python3について簡単に紹介します。
+
 ## どんな言語?
 
 [Python3](https://www.python.org/downloads/)は、シンプルで読みやすいことを大切に作られたプログラミング言語です。
@@ -11,7 +13,7 @@ title: "第1章: はじめに"
 
 ちなみに "Python"という名前は"ヘビ"ではなく、
 イギリスのコメディ番組"[Monty Python's Flying Circus](https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%91%E3%82%A4%E3%82%BD%E3%83%B3)"から取られています。
-ちょっとユニークで覚えやすいですね。
+(ちょっとユニークで覚えやすいですね)
 
 ![](/images/118d527876a482/01_01.png)
 
