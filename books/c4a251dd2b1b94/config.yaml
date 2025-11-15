@@ -9,8 +9,8 @@ Python3の環境づくりから、基本的な文法、動作確認までをで�
 \n
 そんなあなたにぴったりの内容です。
 "
-topics: ["python3", "初心者向け"]
-published: false
+topics: ["python", "python3", "初心者向け"]
+published: true
 price: 0
 # 本に含めるチャプターを順番に並べましょう
 chapters:
