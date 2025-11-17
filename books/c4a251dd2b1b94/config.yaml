@@ -14,13 +14,14 @@ published: true
 price: 0
 # 本に含めるチャプターを順番に並べましょう
 chapters:
-  - chap1
-  - chap2
-  - chap3
-  - chap4
-  - chap5
-  - chap6
-  - chap7
-  - chap8-1
-  - chap8-2
-  - chap9
+  - chap01
+  - chap02
+  - chap03
+  - chap04
+  - chap05
+  - chap06
+  - chap07
+  - chap08-1
+  - chap08-2
+  - chap09
+  - chap10
