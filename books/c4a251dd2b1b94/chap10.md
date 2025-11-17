@@ -44,6 +44,7 @@ say_hello() # Hello, Python3!!
 
 ```python:引数がある関数
 def 関数名(引数):
+    """ 関数の説明 """
     処理
 ```
 
@@ -66,7 +67,7 @@ say_hello("Swift") # Hello, Swift!!
 
 "引数"は、好きな数だけ定義することができます。
 
-```python:引数がある関数
+```python:引数が複数ある関数
 def 関数名(引数1, 引数2, 引数3, ...):
     """ 関数の説明 """
     処理
@@ -90,19 +91,44 @@ say_hello("Namaste", "JavaScript") # Namaste, JavaScript!!
 ### 返り値を使う
 
 "return"を使う事で、関数に何かしらの複雑な処理をさせ、その結果を返させることができます。
-"return"を書かない関数は、"返り値なし(Noneが返る)"となります。
+"return"を書かない関数は、"返り値なし(Noneが返る)"扱いになります。
 
-```python:引数がある関数
+```python:返り値がある関数
 def 関数名(引数1, 引数2, 引数3, ...):
     """ 関数の説明 """
     処理
     return 返り値
 ```
 
+次は、与えられた数値を2倍にして返す関数の例です。
+
 ```python:main.py
-# TODO
+# 関数を定義する
+def calc_double(num):
+    """ 2倍にして返す関数 """
+    return num * 2
+
+# 実行する
+print(calc_double(10)) # 20
+print(calc_double(20)) # 40
+print(calc_double(30)) # 60
 ```
 
+こちらは、与えられた2つの数値の合計を返す関数の例です。
+
+```python:main.py
+# 関数を定義する
+def calc_total(num1, num2):
+    """ 二つの数値の合計を返す関数 """
+    return num1 + num2
+
+# 実行する
+print(calc_total(10, 20)) # 30
+print(calc_total(30, 40)) # 70
+print(calc_total(50, 60)) # 110
+```
+
+"引数"と"返り値"は、セットで使われる事が多いので押さえておきましょう。
 
 # 次回は...
 
