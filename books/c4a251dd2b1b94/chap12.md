@@ -32,21 +32,28 @@ Traceback (most recent call last):
 以上の情報を元にして、1行目に注目し"記述ミス"を探します。
 
 ```python:main.py
-print("Hello, Python!!')
+print("Hello, Python!!)
 
 Traceback (most recent call last):
     File "/Users/xxx/main.py", line 1, in <module>
-    print("Hello, Python!!')
+    print("Hello, Python!!)
           ^
 SyntaxError: unterminated string literal (detected at line 1)
 ```
+
+ありがちなSyntax Errorのパターンは次の通りです。
+
+| エラー例 | エラーの内容 |
+| ---- | ---- |
+| ```print("Hello, Python!!)``` | クォート閉じ忘れ |
+| ```print("Hello, Python!!"``` | ")"閉じ忘れ |
+| ```if a in range(10)``` | ":"忘れ |
 
 ### Name Error(名前エラー)
 
 Pythonに定義されていない名前を使おうとすると出るエラーです。
 
-次の例では、
-7行目の"prent"が怪しいと直ぐに気づく事ができます。
+次の例では、1行目の"prent"が怪しいと直ぐに気づく事ができます。
 最後の行では、「"prent"じゃなくて、"print"では...?」と教えてくれています。
 
 ```python:main.py
@@ -74,6 +81,13 @@ Traceback (most recent call last):
     print("Hello, " + 100)
           ~~~~~~~~~~^~~~~
 TypeError: can only concatenate str (not "int") to str
+```
+
+この場合は、100を文字列としてキャストする必要があります。
+
+```python:main.py
+print("Hello, " + str(100)) # 文字列にキャストしてから連結する
+# Hello, 100
 ```
 
 ### Zero Division Error(0除算エラー)
