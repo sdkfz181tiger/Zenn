@@ -2,7 +2,7 @@
 title: "第10章: 関数を使ってみよう"
 ---
 
-# Python3で関数を使ってみよう
+# Pythonで関数を使ってみよう
 
 今回は、関数について学びます。
 関数を使う事で、特定の処理を使い回すことができるようになります。
@@ -27,15 +27,15 @@ def 関数名():
 # 関数を定義する
 def say_hello():
     """ 挨拶をする関数 """
-    print("Hello, Python3!!")
+    print("Hello, Python!!")
 
 # 関数を実行する
-say_hello() # Hello, Python3!!
+say_hello() # Hello, Python!!
 
 # 定義された関数は、好きなだけ実行できます
-say_hello() # Hello, Python3!!
-say_hello() # Hello, Python3!!
-say_hello() # Hello, Python3!!
+say_hello() # Hello, Python!!
+say_hello() # Hello, Python!!
+say_hello() # Hello, Python!!
 ```
 
 ### 引数を使う
@@ -55,7 +55,7 @@ def say_hello(lang):
     print("Hello, " + lang + "!!")
 
 # 関数を実行する
-say_hello("Python3") # Hello, Python3!!
+say_hello("Python") # Hello, Python!!
 
 # 色々な言語で挨拶をしてみる
 say_hello("Rust") # Hello, Rust!!
@@ -80,7 +80,7 @@ def say_hello(greet, lang):
     print(greet + ", " + lang + "!!")
 
 # 関数を実行する
-say_hello("Hello", "Python3") # Hello, Python3!!
+say_hello("Hello", "Python") # Hello, Python!!
 
 # 色々な言語で挨拶をしてみる
 say_hello("Chao", "C/C++") # Chao, C/C++!!

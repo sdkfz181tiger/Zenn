@@ -2,11 +2,11 @@
 title: "第2章: 実行してみよう(Google Coloab編)"
 ---
 
-# Python3を"Google Colab"で実行する
+# Pythonを"Google Colab"で実行する
 
-ここでは、気軽にPython3を試せるオンラインサービス、"Google Colab"を紹介します。
+ここでは、気軽にPythonを試せるオンラインサービス、"Google Colab"を紹介します。
 このサービスを利用することで、開発環境の準備が不要になります。
-(Python3を気軽に触れてみたい方はコチラがオススメです)
+(Pythonを気軽に触れてみたい方はコチラがオススメです)
 
 ## 1, Google Coloabにアクセスする
 
@@ -25,16 +25,16 @@ title: "第2章: 実行してみよう(Google Coloab編)"
 赤枠の部分に次のコードを入力し、直ぐ左にあるRunボタン(三角のアイコン)で実行します。
 
 ```python:Google Colab
-print("Hello, Python3!!")
+print("Hello, Python!!")
 ```
 
 ![](/images/118d527876a482/02_colab_02.png)
 
-直ぐ下の行に"Hello, Python3!!"と表示されれば成功です。
+直ぐ下の行に"Hello, Python!!"と表示されれば成功です。
 とても簡単ですね!!
 
-Python3を気軽に試したい程度であれば、"Google Colab"で十分です。
-"Google Coloab"上で、Python3の構文を学びたい方は、次の3章をスキップし、
+Pythonを気軽に試したい程度であれば、"Google Colab"で十分です。
+"Google Coloab"上で、Pythonの構文を学びたい方は、次の3章をスキップし、
 "第4章: 計算してみよう"へ進んでください。
 
 本格的な開発にチャレンジしたい人は、このまま次の章、

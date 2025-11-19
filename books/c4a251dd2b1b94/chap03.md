@@ -2,22 +2,22 @@
 title: "第3章: 実行してみよう(インストール編)"
 ---
 
-# Python3の開発環境を構築する
+# Pythonの開発環境を構築する
 
-ここでは、Python3の開発環境の構築手順を紹介します。
+ここでは、Pythonの開発環境の構築手順を紹介します。
 2章の"Google Colab"で学習を進める方は、この章はスキップし、4章に進んでくださいね。
 
-## 1, Python3のダウンロード&インストール
-[公式サイト](https://www.python.org/downloads/)から"Python3"のインストーラーをダウンロード&インストールします。
+## 1, Pythonのダウンロード&インストール
+[公式サイト](https://www.python.org/downloads/)から"Python"のインストーラーをダウンロード&インストールします。
 インストール時に要求される、"Add to PATH"には必ずチェックを入れてインストールしてください。
 
 ![](/images/118d527876a482/03_install_01.png)
 
-## 2, Python3を実行してみよう
+## 2, Pythonを実行してみよう
 
 インストールが完了したら、動作確認をしてみます。
 ターミナル(Macの場合)やコマンドプロンプト(Winの場合)を立ち上げ、
-Python3のバージョン情報を表示させてみましょう。
+Pythonのバージョン情報を表示させてみましょう。
 
 ### ターミナルを立ち上げる(Macの場合)
 
@@ -59,7 +59,7 @@ Python 3.13.2
 このエラーが出た時は、インストール時に"PATH"が設定されていない可能性があります。
 その場合は、もう一度インストーラを開いて「Add to PATH」のチェックを入れて再インストールしてください。
 
-## 3, Python3で挨拶してみよう
+## 3, Pythonで挨拶してみよう
 
 次は、プログラムを記述するファイルを用意した上で、
 コマンドから実行させてみましょう。
@@ -89,7 +89,7 @@ Winの場合: Desktop -> 右クリック -> "新規フォルダ"
 (コピー&ペーストでも良いですよ)
 
 ```python: main.py
-print("Hello, Python3!!")
+print("Hello, Python!!")
 ```
 
 記述されているコードが今回の主役、"print(...)"という命令です。
@@ -102,25 +102,25 @@ print("Hello, Python3!!")
 ターミナル/コマンドプロンプトを開き、次のコマンド(2つあります)を実行します。
 
 "hello_python3"フォルダに移動するコマンド"cd"と、
-Python3を実行するコマンド"python3"を実行します。
+Pythonを実行するコマンド"python3"を実行します。
 
 ```command:コマンド(Macの場合)
 # フォルダに移動するコマンド(cd)
 $ cd ~/Desktop/hello_python3
-# Python3を実行するコマンド(Mac は python3)
+# Pythonを実行するコマンド(Mac は python3)
 $ python3 main.py
-Hello, Python3!! <- 実行結果
+Hello, Python!! <- 実行結果
 ```
 
 ```command:コマンド(Winの場合)
 # フォルダに移動するコマンド(cd)
 C:\> cd C:\Users\<あなたのユーザー名>\Desktop\hello_python3
-# Python3を実行するコマンド(Win は python)
+# Pythonを実行するコマンド(Win は python)
 C:\> python main.py
-Hello, Python3!! <- 実行結果
+Hello, Python!! <- 実行結果
 ```
 
-"Hello, Python3!!"の文字が表示されていれば大成功です!!
+"Hello, Python!!"の文字が表示されていれば大成功です!!
 最初の難関をクリアしました。(おめでとうございます!!)
 
 ### エラーが出たら...
