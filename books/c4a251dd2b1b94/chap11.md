@@ -82,7 +82,7 @@ print(r()) # 0.941147291147711
 | ---------- | -------- | ---------- |
 | numpy | 高速な数値計算・多次元配列 | ★★★★★ |
 | pandas | データ分析・表形式データ処理 | ★★★★★ |
-| matplotlib | グラフ描画 | ★★★★☆ |
+| matplotlib | グラフ描画 | ★★★★★ |
 | django,flask,fastapi | Webアプリ・APIの作成 | ★★★★★ |
 | requests | Web APIの呼び出し / HTTP通信 | ★★★★★ |
 | sqlalchemy | DB操作 | ★★★★★ |
