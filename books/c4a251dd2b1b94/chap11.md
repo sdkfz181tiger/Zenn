@@ -1,97 +1,116 @@
 ---
-title: "第11章: モジュールを使ってみよう"
+title: "第11章: エラーのパターンを知ろう"
 ---
 
-# Pythonでモジュールを使ってみよう
+# Pythonのエラーのパターンを知ろう
 
-今回は、モジュールについて学びます。
+今回は、エラーのパターンについて学びます。
+ログを正しく理解することで、素早くバグを見つけることができます。
 
-## モジュールとは
+## エラーとは
 
-"モジュール"とは、Pythonのコードが入った別ファイル(プログラム)のことです。
-様々なモジュールを取り込み組み合わせることで、効率よくアプリを作れるようになります。
+"エラー"と聞くとネガティブな印象が強すぎて身構えてしまいますが、
+エラーログには沢山の"ヒント"が詰まっています。
 
-Pythonでは、自分で作ったファイルも"モジュール"になりますが、
-Python本体にあらかじめ用意されている"標準モジュール"も多数あります。
-第三者が開発したモジュールは、"サードパーティ製モジュール"と呼びます。
+以下の例は、エラーのパターン例です。
+次の箇所に注目すると、エラーのファイル名、行番号、種類を簡単に知る事ができるので覚えておきましょう。
 
-### モジュールを取り込む
-
-"import"文を使って、モジュールを取り込みます。
-
-```python:モジュールのロード
-import モジュール名
+```command:エラーのパターン
+Traceback (most recent call last):
+    File エラーが出たファイル名, line エラーが出た行番号, in <module>
+    エラーが起きた(と)思われる箇所
+エラーの種類: エラーの詳細 (detected at line エラーが出た行番号)
 ```
 
-ここでは、Pythonに多数備わっている、標準モジュールの一つ、
-"random"を使ってみます。(名前の通り、乱数を生成します)
+### Syntax Error(構文エラー)
+
+単純な記述ミスによるエラーです。
+
+次の例では、
+エラーが出たファイル名は、"main.py"、
+エラーが出た行番号は、"1行目"、
+エラーの種類は、"Syntax Error"だとわかります。
+
+以上の情報を元にして、1行目に注目し"記述ミス"を探します。
 
 ```python:main.py
-import random
+print("Hello, Python!!)
 
-# 0.0 ~ 1.0未満のランダム小数
-print(random.random()) # 0.8189799827412905
-
-# 1 ~ 10のランダム整数
-print(random.randint(1, 10)) # 2
+Traceback (most recent call last):
+    File "/Users/xxx/main.py", line 1, in <module>
+    print("Hello, Python!!)
+          ^
+SyntaxError: unterminated string literal (detected at line 1)
 ```
 
-### モジュールの一部分を取り込む
+ありがちなSyntax Errorのパターンは次の通りです。
 
-"from"を使う事で、モジュールの一部分だけを取り込むことができます。
-次の例では、"random"モジュールの"random関数"だけを取り込んでいます。
+| エラー例 | エラーの内容 |
+| ---- | ---- |
+| ```print("Hello, Python!!)``` | クォート閉じ忘れ |
+| ```print("Hello, Python!!"``` | ")"閉じ忘れ |
+| ```if a in range(10)``` | ":"忘れ |
+
+### Name Error(名前エラー)
+
+Pythonに定義されていない名前を使おうとすると出るエラーです。
+
+次の例では、1行目の"prent"が怪しいと直ぐに気づく事ができます。
+最後の行では、「"prent"じゃなくて、"print"では...?」と教えてくれています。
 
 ```python:main.py
-from random import random
+prent("Hello, Python!!") # prentという定義は無い...(自分で定義していれば別!!)
 
-# random関数だけ取り込んだ
-print(random()) # 0.38405708986017906
+Traceback (most recent call last):
+    File "/Users/xxx/main.py", line 1, in <module>
+    prent("Hello, Python!!")
+    ^^^^^
+NameError: name 'prent' is not defined. Did you mean: 'print'?
 ```
 
-### モジュールに別名を付ける
+### Type Error(型エラー)
 
-"as"を使う事で、取り込むモジュールに"別名"を付けることができます。
-これは、他モジュールとの名前衝突を回避する目的で利用します。
+データの"型"に関連するエラーです。
+
+次の例では、"Hello, "という文字列と、100という数値を繋げようとしてエラーが起きています。
+最後の行では、「文字列は数値と連結できません...」と教えてくれています。
 
 ```python:main.py
-from random import random as r
+print("Hello, " + 100) # "Hello, " と、 100を連結させ...!?
 
-# これ以上短い名前は無理...!!
-print(r()) # 0.941147291147711
+Traceback (most recent call last):
+    File "/Users/xxx/main.py", line 1, in <module>
+    print("Hello, " + 100)
+          ~~~~~~~~~~^~~~~
+TypeError: can only concatenate str (not "int") to str
 ```
 
-## よく使われる標準モジュール
+この場合は、100を文字列としてキャストする必要があります。
 
-ここでは、よく使われる標準モジュールを紹介します。
+```python:main.py
+print("Hello, " + str(100)) # 文字列にキャストしてから連結する
+# Hello, 100
+```
 
-| モジュール | 機能 | 使用例 | 意味 |
-| ---------- | ---------- | ---------- | ---------- |
-| os         | OS操作 | `os.listdir(".")` | カレントディレクトリの一覧を取得 |
-| pathlib    | ファイルパス | `Path("test.txt").exists()` | ファイルの存在確認 |
-| time       | 時間の制御 | `time.sleep(1)` | 1秒待機する |
-| datetime   | 日付と時刻 | `datetime.datetime.now()` | 現在日時 |
-| random     | 乱数を生成 | `random.random()` | 0.0 ~ 1.0未満の小数 |
-| math       | 数学関数 | `math.sqrt(9)` | 平方根(3.0) |
+### Zero Division Error(0除算エラー)
 
-## 定番のサードパッケージモジュール
+0で割り算をしてしまった時に出るエラーです。
+(無限になってしまいますね...)
 
-次に、定番のサードパッケージモジュールも紹介します。
-サードパッケージモジュールを使う場合は、別途インストール(pip)が必要になります。
+次の例では、実際に100を0で割り算し、エラーを起こしています。
 
-| モジュール | 利用場面 | 定番度(オール5!!) |
-| ---------- | -------- | ---------- |
-| numpy | 高速な数値計算・多次元配列 | ★★★★★ |
-| pandas | データ分析・表形式データ処理 | ★★★★★ |
-| matplotlib | グラフ描画 | ★★★★★ |
-| django,flask,fastapi | Webアプリ・APIの作成 | ★★★★★ |
-| requests | Web APIの呼び出し / HTTP通信 | ★★★★★ |
-| sqlalchemy | DB操作 | ★★★★★ |
-| beautifulsoup | Webスクレイピング | ★★★★★ |
-| Pillow | 画像の編集・加工 | ★★★★★ |
-| scikit-learn,xgboost,catboost | ML分野 | ★★★★★ |
+```python:main.py
+print(100 / 0) # 100を0で割り算...!?
+
+Traceback (most recent call last):
+    File "/Users/xxx/main.py", line 1, in <module>
+    print(100 / 0)
+          ~~~~^~~
+ZeroDivisionError: division by zero
+```
 
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「エラーのパターンを知ろう」です。
+次回のタイトルは「例外処理を使ってみよう」です。
 お楽しみに!!

@@ -1,117 +1,137 @@
 ---
-title: "第9章: 繰り返し処理を使ってみよう"
+title: "第9章: 関数を使ってみよう"
 ---
 
-# Pythonで繰り返し処理を使ってみよう
+# Pythonで関数を使ってみよう
 
-今回は、繰り返し処理について学びます。
+今回は、関数について学びます。
+関数を使う事で、特定の処理を使い回すことができるようになります。
 
-## for文を使ってみる
+## 関数を使ってみる
 
-"for"文を使う事で、好きな回数だけ処理を実行させることができます。
+"def"文を使う事で、関数を定義することができます。
+関数は、定義した後、それを"実行"する必要があります。
 
-```python:for文
-for 変数 in 繰り返したいデータ:
+```python:関数
+def 関数名():
+    """ 関数の説明 """
+    処理
+
+# 関数を実行する
+関数名()
+```
+
+次の例では、"say_hello"関数を定義し、それを実行するまでの記述例です。
+
+```python:main.py
+# 関数を定義する
+def say_hello():
+    """ 挨拶をする関数 """
+    print("Hello, Python!!")
+
+# 関数を実行する
+say_hello() # Hello, Python!!
+
+# 定義された関数は、好きなだけ実行できます
+say_hello() # Hello, Python!!
+say_hello() # Hello, Python!!
+say_hello() # Hello, Python!!
+```
+
+### 引数を使う
+
+"引数"を使う事で、より柔軟な関数を作ることができます。
+
+```python:引数がある関数
+def 関数名(引数):
+    """ 関数の説明 """
     処理
 ```
 
-特に、"リスト"(第8章を参照)とセットでよく使われ、
-リストの値それぞれに対し順番に処理をするパターンが多いです。
-
 ```python:main.py
-member = ["まる子", "たま", "丸尾"]
-for person in member:
-    print(person)
-# まる子
-# たま
-# 丸尾
+# 関数を定義する(引数を1つ用意)
+def say_hello(lang):
+    """ 挨拶を好きな言語にする関数 """
+    print("Hello, " + lang + "!!")
+
+# 関数を実行する
+say_hello("Python") # Hello, Python!!
+
+# 色々な言語で挨拶をしてみる
+say_hello("Rust") # Hello, Rust!!
+say_hello("Kotlin") # Hello, Kotlin!!
+say_hello("Swift") # Hello, Swift!!
 ```
 
-"range()"関数と組み合わせると、
-特定の数列を生成し、順番に処理することができます。
+### 引数を複数使う
 
-```python:range関数
-range(終了) # "0" ~ "終了-1"までの数列
-range(開始, 終了) # "開始" ~ "終了-1"までの数列
-range(開始, 終了, ステップ数) # "開始" ~ "終了-1"まで、"ステップ数"置きの数列
-```
+"引数"は、好きな数だけ定義することができます。
 
-```python:main.py
-# 0 ~ 9までの数値を表示する
-for n in range(10):
-    print(n)
-# 0
-# 1
-# 2
-# ...(省略)
-# 7
-# 8
-# 9
-```
-
-## continue文を使ってみる
-
-"continue"を使う事で、繰り返し処理をスキップすることができます。
-"continue"が呼ばれた瞬間、その回の「ループ末尾までの処理」をスキップし、次の繰り返しに移ります。
-
-```python:main.py
-# 0 ~ 9までの数値で繰り返す
-for n in range(10):
-    if n % 2 == 0:
-        continue # 2で割り切れる時はスキップ
-    print(n)
-# 1
-# 3
-# 5
-# 7
-# 9
-```
-
-## break文を使ってみる
-
-"break"を使う事で、繰り返し処理を途中で中断することができます。
-"break"が呼ばれた瞬間、ループ全体を終了します。
-
-```python:main.py
-# 0 ~ 9までの数値で繰り返す
-for n in range(10):
-    if n == 5:
-        break # 5の時に繰り返しを中断する
-    print(n)
-# 0
-# 1
-# 2
-# 3
-# 4 <- これ以降繰り返しは行われない
-```
-
-# while文を使ってみる
-
-"while"文も、繰り返し処理で良く使われます。
-こちらも押さえておきましょう。
-
-```python:while文
-while 繰り返し条件:
+```python:引数が複数ある関数
+def 関数名(引数1, 引数2, 引数3, ...):
+    """ 関数の説明 """
     処理
 ```
 
-具体的な使用例は次の通りです。
-
 ```python:main.py
-# 0 ~ 9までの和を計算する
-total = 0
-n = 0
-while n < 10:
-    total += n
-    n += 1
-print(total) # 45
+# 関数を定義する(引数を2つ用意)
+def say_hello(greet, lang):
+    """ 好きな挨拶を、好きな言語にする関数 """
+    print(greet + ", " + lang + "!!")
+
+# 関数を実行する
+say_hello("Hello", "Python") # Hello, Python!!
+
+# 色々な言語で挨拶をしてみる
+say_hello("Chao", "C/C++") # Chao, C/C++!!
+say_hello("Bonjour", "Java") # Bonjour, Java!!
+say_hello("Namaste", "JavaScript") # Namaste, JavaScript!!
 ```
 
-"for"文と同様に、"continue"や"break"と組み合わせて使うことができます。
-ただし、"繰り返し条件"を間違えると、"無限ループ"に陥ってしまうので注意しましょう。
+### 返り値を使う
+
+"return"を使う事で、関数に何かしらの複雑な処理をさせ、その結果を返させることができます。
+"return"を書かない関数は、"返り値なし(Noneが返る)"扱いになります。
+
+```python:返り値がある関数
+def 関数名(引数1, 引数2, 引数3, ...):
+    """ 関数の説明 """
+    処理
+    return 返り値
+```
+
+次は、与えられた数値を2倍にして返す関数の例です。
+
+```python:main.py
+# 関数を定義する
+def calc_double(num):
+    """ 2倍にして返す関数 """
+    return num * 2
+
+# 実行する
+print(calc_double(10)) # 20
+print(calc_double(20)) # 40
+print(calc_double(30)) # 60
+```
+
+こちらは、与えられた2つの数値の合計を返す関数の例です。
+
+```python:main.py
+# 関数を定義する
+def calc_total(num1, num2):
+    """ 二つの数値の合計を返す関数 """
+    return num1 + num2
+
+# 実行する
+print(calc_total(10, 20)) # 30
+print(calc_total(30, 40)) # 70
+print(calc_total(50, 60)) # 110
+```
+
+引数と返り値は、セットで使われる事が多いので、ここで押さえておきましょう。
 
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「関数を使ってみよう」です。
+次回のタイトルは「モジュールを使ってみよう」です。
 お楽しみに!!

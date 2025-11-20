@@ -1,101 +1,76 @@
 ---
-title: "第5章: 文字列を使ってみよう"
+title: "第5章: 変数を使ってみよう"
 ---
 
-# Pythonで文字列を使ってみよう
+# Pythonで変数を使ってみよう
 
-今回のテーマは"文字列"です。
-文字列を使った様々な記述方法について学びます。
+今回のテーマは"変数"です。
+変数を使う事で、特定の値を再利用する事ができます。
 
-## 文字列とは
+## 変数とは
 
-文字列とは、その名の通り"文字"の"列"の事です。
-Pythonでは、基本的に文字列を、""(ダブルクォーテーション)か、''(シングルクォーテーション)で表現します。
-以下の例では、出力結果がどちらも同じになります。
+"変数"とは、値に名前をつけて再利用できるようにする仕組みです。
+Pythonでは、値に「ラベル」を貼るイメージで使います。
+
+変数名は自由に決められますが、命名規則があります。
+
+- 先頭に数字は使えない
+- 英字・数字・アンダースコアで構成する
+- 大文字と小文字は区別される(msg と Msg は別物)
+- Pythonの予約語(プログラム的な意味がある単語)は使えない
+
+変数に値を代入する時は、"="を使います。
 
 ```python:main.py
-print("Hello, Python!!")# Hello, Python!!
-print('Hello, Python!!')# Hello, Python!!
+変数名 = 値
 ```
 
-## 文字列の連結
-
-"\+"を使う事で、文字列と文字列を連結することができます。
+以上を踏まえたサンプルコードは下記の通りです。
 
 ```python:main.py
-print("Hello, " + "Python!!")# Hello, Python!!
+msg1 = "Hello"   # これはOK
+msg2 = "Python" # これはOK
+2msg = "Python" # これはNG (先頭に数字を使っている)
+if = "Python"   # これはNG (予約語を使っている)
+print(msg1)      # Hello
+print(msg2)      # Python
 ```
 
-""と、""を並べるだけでも文字列を連結する事ができます。
-こちらは、長い文字列同士を連結したい場合に特に便利です。
+## 変数を使う
+
+変数の値が数値であれば、計算に利用することができます。
 
 ```python:main.py
-print(
-    "Hello, "
-    "Python!!")# Hello, Python!!
+num1 = 100
+num2 = 10
+num3 = 1
+print(num1 + num2) # 110
+print(num2 + num3) # 11
+print(num1 - num2) # 90
+print(num1 * num2) # 1000
+print(num1 / num2) # 10.0 (割り算の時は小数になります)
 ```
 
-## 文字列の繰り返し
-
-"\*"を使う事で、文字列を繰り返して連結させることができます。
+変数の値が文字列の場合は、"+"を使って連結することができます。
 
 ```python:main.py
-print("Hello, " * 3 + "Python!!")
-# Hello, Hello, Hello, Python!!
+str1 = "Hop"
+str2 = "Step"
+str3 = "Jump"
+print(str1 + str2 + str3) # HopStepJump
 ```
 
-## 改行と特殊文字
-
-文字列の中で特殊な意味を持つ記号は、
-"\\"(バックスラッシュ)を使って記述します。
-これを、「エスケープシーケンス」と呼びます。
+変数の値が数値の場合は、str()関数で文字列に変換してから連結します。
 
 ```python:main.py
-print("Hello, \nPython!!")# \nは改行
-# Hello, 
-# Python!!
-print("Hello, \tPython!!")# \tはタブ
-# Hello,     Python!!
-print("Hello, \\Python!!")# \を表示したいときは2回記述する
-# Hello, \Python!!
-```
-
-## 文字列の長さを調べる
-
-文字列の長さ(何文字なのか)を調べたい時は、len関数を使います。
-
-```python:main.py
-print(len("Hello, Python!!"))# 16
-```
-
-## 文字列の一部分を取り出す
-
-文字列の一部分だけを抜き出したい時は、スライスを使います。
-Pythonでは、0文字目から数えます。
-
-```python:main.py
-message = "Hello, Python!!"# 文字列を変数に格納します(後の章で解説します)
-print(message[0:6])# Hello (0文字目から5文字目まで)
-print(message[6:])# , Python!! (6文字目から最後まで)
-print(message[:10])# Hello, Py (最初から9文字目まで)
-print(message[-1:])# ! (最後の1文字)
-print(message[-3:])# 3!! (最後の3文字)
-```
-
-## 文字列フォーマット
-
-最後に、文字列フォーマットという便利な書き方を紹介します。
-
-```python:main.py
-lang1 = "Python"
-lang2 = "JavaScript"
-lang3 = "C++"
-print(f"Hello, {lang1} and {lang2} and {lang3}!!")
-# Hello, Python and JavaScript and C++!!
+famicom = "ファミコンの誕生日:"
+birth = 1983
+print(famicom + str(birth))
+# ファミコンの誕生日:1983
 ```
 
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「変数を使ってみよう」です。
+次回のタイトルは「分岐処理を使ってみよう」です。
 お楽しみに!!
