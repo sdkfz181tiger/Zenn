@@ -120,7 +120,7 @@ ZeroDivisionError: division by zero
 ```python:main.py
 try:
     エラーが起きるであろう処理
-except ZeroDivisionError:
+except キャッチしたいエラーの型:
     エラーが起きてしまったときの処理(ログなど)
 ```
 
