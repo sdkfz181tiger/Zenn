@@ -22,7 +22,7 @@ Finderから、次の手順で"IDLE"を立ち上げます。
 
 Applications -> Python 3.xx -> IDLE.app
 
-TODO: スクリーンショット
+![](/images/c4a251dd2b1b94/02_idle_mac_01.png)
 
 ### Winの場合
 
