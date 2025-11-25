@@ -10,7 +10,7 @@ title: "第2章: 実行してみよう(Google Coloab編)"
 
 ## 1, Google Coloabにアクセスする
 
-"Google Coloab"にアクセスします。
+"[Google Coloab](https://colab.research.google.com/)"にアクセスします。
 (Googleのアカウントが必要になります)
 
 左上メニューから次の順番でクリックし、"新しいノートブック"を立ち上げます。
