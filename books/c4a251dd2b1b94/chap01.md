@@ -15,7 +15,7 @@ title: "第1章: はじめに"
 イギリスのコメディ番組"[Monty Python's Flying Circus](https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%91%E3%82%A4%E3%82%BD%E3%83%B3)"から取られています。
 (ちょっとユニークで覚えやすいですね)
 
-![](/images/118d527876a482/01_01.png)
+![](/images/c4a251dd2b1b94/01_01.png)
 
 ## どんなところで使われてる?
 
@@ -49,7 +49,7 @@ Pythonで使える2Dゲーム開発向けライブラリを少し紹介します
 "[Pyxel](https://github.com/kitao/pyxel)"は、レトロな8bit風ゲーム制作に特化した、かわいいゲームエンジンです。
 "ファミコンっぽい雰囲気"が好きな人におすすめです。(筆者激推し)
 
-![](/images/118d527876a482/01_02.png)
+![](/images/c4a251dd2b1b94/01_02.png)
 
 #### pygame
 
@@ -57,14 +57,14 @@ Pythonで使える2Dゲーム開発向けライブラリを少し紹介します
 チュートリアルやサンプルが豊富で、
 シンプルな2Dゲームを作りたい人に向いています。
 
-![](/images/118d527876a482/01_03.png)
+![](/images/c4a251dd2b1b94/01_03.png)
 
 #### Python Arcade Library
 
 "[Python Arcade Library](https://api.arcade.academy/en/stable/)"は、本格的な描画機能を持ちながら扱いやすい、人気が伸びているライブラリ。
 教育向けにも広く使われています。
 
-![](/images/118d527876a482/01_04.png)
+![](/images/c4a251dd2b1b94/01_04.png)
 
 # 次回は...
 
