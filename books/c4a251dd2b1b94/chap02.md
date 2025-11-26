@@ -31,10 +31,9 @@ print("Hello, Python!!")
 ![](/images/c4a251dd2b1b94/02_colab_02.png)
 
 直ぐ下の行に"Hello, Python!!"と表示されれば成功です。
-とても簡単ですね!!
-
 Pythonを気軽に試したい程度であれば、"Google Colab"で十分です。
-"Google Coloab"上で、Pythonの構文を学びたい方は、
+
+"Google Coloab"上で、Pythonを学びたい方は、
 このまま、"第3章: 計算してみよう"へ進んでください。
 
 本格的な開発環境の構築にチャレンジしたい人は、
