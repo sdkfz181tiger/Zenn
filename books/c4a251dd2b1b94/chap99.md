@@ -30,7 +30,7 @@ Applications -> Python 3.xx -> IDLE.app
 
 スタートメニュー -> 検索窓で"Python" -> IDLE(Python 3.xx)
 
-![](/images/c4a251dd2b1b94/02_idle_mac_01.png)
+![](/images/c4a251dd2b1b94/02_idle_win_01.png)
 
 ## 3, 文字を表示してみよう
 
