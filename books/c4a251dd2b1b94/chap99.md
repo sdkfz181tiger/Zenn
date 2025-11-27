@@ -28,9 +28,9 @@ Applications -> Python 3.xx -> IDLE.app
 
 スタートメニューから、次の手順で"IDLE"を立ち上げます。
 
-スタートメニュー -> すべてのアプリ -> Python 3.xx -> IDLE(Python 3.xx 64-bit)
+スタートメニュー -> 検索窓で"Python" -> IDLE(Python 3.xx)
 
-TODO: スクリーンショット
+![](/images/c4a251dd2b1b94/02_idle_mac_01.png)
 
 ## 3, 文字を表示してみよう
 
