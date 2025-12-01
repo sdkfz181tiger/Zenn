@@ -80,34 +80,31 @@ class クラス名:
 
 ## クラスを使ってみる
 
-次の例は、クラスの定義からインスタンス化、そして実行までの例です。
+次の例では、クラスの定義からインスタンス化、そしてメソッドの実行までの流れです。
 
 ```python:main.py
 class User:
     """ クラスの定義 """
-    def __init__(self, firstname, nickname):
+    def __init__(self, nick_name, real_name):
         """ 初期化処理 """
-        self.firstname = firstname# インスタンス変数
-        self.nickname = nickname# インスタンス変数
+        self.nick_name = nick_name# インスタンス変数(ニックネーム)
+        self.real_name = real_name# インスタンス変数(本名)
 
     def greeting(self):
         """ インスタンスメソッド """
-        print(self.firstname, self.nickname)
-        print(f"私の苗字は、{self.firstname}で、ニックネームは、{self.nickname}だよ!!")
+        print(f"{self.nick_name}の本名は、{self.real_name}だよ!!")
 
-# クラスの使い方
+user1 = User("まる子", "さくらももこ")# インスタンス化
+user1.greeting()# メソッドの実行
+# まる子の本名は、さくらももこだよ!!
 
-user1 = User("桜", "まる子") # インスタンス化
-user1.greeting() # インスタンスメソッドの実行
-# 私の苗字は、桜で、ニックネームは、まる子だよ!!
-
-user2 = User("穂波", "たまちゃん")
+user2 = User("たまちゃん", "穂波たまえ")
 user2.greeting()
-# 私の苗字は、穂波で、ニックネームは、たまちゃんだよ!!
+# たまちゃんの本名は、穂波たまえだよ!!
 
-user3 = User("丸尾", "丸尾くん")
+user3 = User("丸尾くん", "丸尾末尾")
 user3.greeting()
-# 私の苗字は、丸尾で、ニックネームは、丸尾くんだよ!!
+# 丸尾くんの本名は、丸尾末尾だよ!!
 ```
 
 # 終わりに...
