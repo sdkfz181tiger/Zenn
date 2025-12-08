@@ -110,6 +110,10 @@ root.mainloop()
 先ほど用意した、"初期化関数"で背景画像の読み込みと配置を行います。
 利用する画像は、imagesフォルダに配置した"bg_jigoku.png"です。
 
+"init()"関数の最初にある"global"は、関数外の変数(グローバル変数)を利用するという意味です。
+この部分が無い場合、"ローカル変数"として扱われ、画像が開放されてしまうので注意が必要です。
+(画像が表示されません)
+
 "tkinter.PhotoImage()"関数では、画像ファイルの読み込みを行っています。
 引数の"file"には、画像ファイルまでのパスを指定します。
 
@@ -124,12 +128,12 @@ import tkinter
 # キャンバスの幅と高さ
 W, H = 480, 320
 
-# 背景画像とイメージ
+# 背景画像とイメージ(グローバル変数)
 bg_photo, bg_image = None, None
 
 def init():
     """ 初期化関数 """
-    global bg_photo, bg_image
+    global bg_photo, bg_image # グローバル変数を指定
 
     # 背景
     bg_photo = tkinter.PhotoImage(file="images/bg_jigoku.png")
