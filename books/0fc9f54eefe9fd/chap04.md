@@ -1,12 +1,12 @@
 ---
-title: "第4章: クラスを作ってみよう"
+title: "第4章: 鬼スプライトを作ってみよう"
 ---
 
-# クラスを作ってみよう
+# 鬼スプライトを作ってみよう
 
-今回は、"クラス"についてです。
+今回は、"スプライト"についてです。
 ゲームに登場するキャラクター等のオブジェクトの事を、特別に"スプライト"と呼びます。
-ここでは、新たにスプライトモジュールを追加し、そこにDemonクラスを定義します。
+ここでは、新たにスプライトモジュールを追加し、そこにDemonSpriteクラスを定義します。
 
 ## 1, スプライトモジュールを用意する
 
@@ -20,9 +20,9 @@ title: "第4章: クラスを作ってみよう"
 　 　└ bg_jigoku.png
 ```
 
-## 2, Demonクラスを定義する
+## 2, DemonSpriteクラスを定義する
 
-"sprite.py"に、"Demon"クラスを定義します。
+"sprite.py"に、"DemonSprite"クラスを定義します。
 
 ```python:sprite.py
 import math
@@ -30,7 +30,7 @@ import random
 import tkinter
 
 # 鬼クラス
-class Demon:
+class DemonSprite:
 
     def __init__(self, cvs, x, y, r):
         self.x = x # x座標
