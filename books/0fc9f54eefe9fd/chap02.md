@@ -22,7 +22,7 @@ title: "第2章: ゲーム画面を作ってみよう"
 作業用フォルダ/
 　├ main.py <- プログラムを記述するファイル
 　└ images/
-　 　└ bg_jigoku.png   <- 背景画像
+　 　└ bg_jigoku.png <- 背景画像
 ```
 
 以降、"main.py"ファイルにコードを記述していきます。
@@ -76,8 +76,12 @@ root.mainloop() # tkinterを起動する
 ゲーム開始時に実行する"初期化関数"と、画面を更新し続ける"更新関数"を用意します。
 初期化部分と、更新部分を明確に分離することでコード全体がスッキリします。
 
-用意した"init()"関数と、"update()"関数にある"pass"は、それぞれ、"何もしない"という意味です。
+用意した"init()"関数にある"pass"は、"何もしない"という意味です。
 (今は中身がありませんが、今後はここにコードを追加していきます)
+
+"update()"関数には、"root.after(30, update)"と記述します。
+これは、"30ミリ秒後に、update()関数を実行"するという命令です。
+ここで、キャラクターの位置の更新等を行います。
 
 ```python: main.py
 import tkinter
@@ -90,7 +94,8 @@ def init():
 
 def update():
     """ 更新関数 """
-    pass
+    # 画面更新
+    root.after(30, update)
 
 # Tkinter
 root = tkinter.Tk()
@@ -105,7 +110,7 @@ update() # 更新関数を実行
 root.mainloop()
 ```
 
-## 5, 背景画像を表示する
+## 5, 背景画像を配置する
 
 先ほど用意した、"初期化関数"で背景画像の読み込みと配置を行います。
 利用する画像は、imagesフォルダに配置した"bg_jigoku.png"です。
@@ -117,12 +122,28 @@ root.mainloop()
 "tkinter.PhotoImage()"関数では、画像ファイルの読み込みを行っています。
 引数の"file"には、画像ファイルまでのパスを指定します。
 
-"cvs.create_image()"関数では、読み込んだ画像をキャンバスに配置する命令です。
+"cvs.create_image()"関数は、読み込んだ画像をキャンバスに配置する命令です。
 第一引数はx座標(左右中央にするためにW/2)、第二引数はy座標(上下中央にするためにH/2)、"image"には読み込んだ画像オブジェクトを指定します。
 
-この時点で実行すると、ゲーム画面に地獄画像が表示されます。(地獄にようこそ!!)
+```python:main.py(抜粋)
+# 背景画像とイメージ(グローバル変数)
+bg_photo, bg_image = None, None
 
-```python: main.py(完成コード)
+def init():
+    """ 初期化関数 """
+    global bg_photo, bg_image # グローバル変数を指定
+
+    # 背景
+    bg_photo = tkinter.PhotoImage(file="images/bg_jigoku.png")
+    bg_image = cvs.create_image(W/2, H/2, image=bg_photo)
+```
+
+## 6, 完成コード
+
+今回の完成コードは次の通りです。
+次のコードを実行すると、ゲーム画面に地獄画像が表示されます。(地獄にようこそ!!)
+
+```python: main.py
 import tkinter
 
 # キャンバスの幅と高さ
@@ -141,7 +162,8 @@ def init():
 
 def update():
     """ 更新関数 """
-    pass
+    # 画面更新
+    root.after(30, update)
 
 # Tkinter
 root = tkinter.Tk()
@@ -161,5 +183,5 @@ root.mainloop()
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「画面をクリックしてみよう」です。
+次回のタイトルは「マウスイベントを使ってみよう」です。
 お楽しみに!!
