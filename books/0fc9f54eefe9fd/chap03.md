@@ -68,7 +68,7 @@ def update():
 
 ### 3, 完成コード
 
-今回の完成コードです。
+今回の完成コードは次の通りです。
 
 ```python:main.py(完成コード)
 import tkinter
