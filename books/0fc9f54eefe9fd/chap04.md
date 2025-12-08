@@ -42,7 +42,7 @@ title: "第4章: スプライトを作ってみよう"
 "cvs.create_oval()"メソッドの引数にはそれぞれ、
 円の左上座標(x, y)、円の右下座標(x, y)、"fill"にはカラー、"width"には線の太さ(ここでは0)を指定します。
 
-そして、"update()"メソッドでは、"self.oval"オブジェクトの座標を設定しています。
+そして、"update()"メソッドでは、"self.oval"オブジェクトの座標を更新します。
 
 ```python:sprite.py
 import math
@@ -71,7 +71,7 @@ class DemonSprite:
 ## 3, スプライトクラスを使う
 
 spriteモジュールをインポートすることで、"DemonSprite"クラスを使えるようになります。
-その他、"mathモジュール"、"randomモジュール"もインポートします。
+その他、"mathモジュール"、"randomモジュール"もインポートしておきます。
 
 ```python:main.py(抜粋)
 import math   # 数学的計算をするモジュール
@@ -80,7 +80,7 @@ import sprite # Spriteモジュール
 import tkinter
 ```
 
-そして、新たにグローバル変数として次の変数を定義します。
+そして、新たにグローバル変数として次の変数を追加します。
 
 ```python:main.py(抜粋)
 # 鬼軍団の数
@@ -93,7 +93,7 @@ demons = []
 counter = TOTAL_DEMONS
 ```
 
-"init()"関数(初期化関数)では、"DemonSprite"をインスタンス化し"demons"(鬼軍団)リストに追加します。
+"init()"関数(初期化関数)では、生成した鬼スプライトを、"demons"(鬼軍団)リストに追加します。
 鬼スプライトの座標は、"random.random()"メソッドを利用し、ランダム位置とします。
 
 "random.random()"メソッドは、"0.0〜1.0"の小数をランダムで返します。
@@ -115,8 +115,8 @@ def init():
         demons.append(demon) # リストに追加
 ```
 
-"update()"関数(更新関数)では、残りの鬼の数をカウントする、"counter"をゲーム画面左上に描画します。
-そして、"demons"(鬼軍団)リストの鬼スプライトで"demon.update()"メソッドを実行します。
+"update()"関数(更新関数)では、"counter"(残りの鬼の数)をゲーム画面左上に描画します。
+そして、"demons"(鬼軍団)リストから鬼スプライトそれぞれで"demon.update()"メソッドを実行します。
 
 ```python:main.py(抜粋)
 def update():
@@ -141,7 +141,7 @@ def update():
         root.after(30, update)
 ```
 
-この時点で実行すると、ゲーム画面上に10個のスプライト(白い円)が描画されます。
+この時点で実行すると、ゲーム画面に10個のスプライト(白い円)が描画されます。
 
 ![](/images/0fc9f54eefe9fd/04_01.png)
 
