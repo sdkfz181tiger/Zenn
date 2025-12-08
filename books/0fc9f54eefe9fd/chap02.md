@@ -4,5 +4,159 @@ title: "第2章: ゲーム画面を作ってみよう"
 
 # ゲーム画面を作ってみよう
 
+今回は、"tkinter"でゲーム画面を作ります。
 
+## 1, 作業用フォルダを用意する
+
+作業用フォルダを用意し、"main.py"ファイルを作ります。
+ファイルの作り方に関しては、[プログラムをファイルに保存する](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap99#4%2C-%E3%83%97%E3%83%AD%E3%82%B0%E3%83%A9%E3%83%A0%E3%82%92%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%81%AB%E4%BF%9D%E5%AD%98%E3%81%99%E3%82%8B)を参考にしてください。
+
+次に、"images"フォルダを作り、画像素材はこのフォルダにまとめておきます。
+画像ファイルは次のものをコピーしてお使いください。(どこかで見た様な地獄の雰囲気!!)
+
+![](/images/0fc9f54eefe9fd/bg_jigoku.png)
+
+フォルダ構成は次の通りです。
+
+```text: フォルダ構成
+作業用フォルダ/
+　├ main.py <- プログラムを記述するファイル
+　└ images/
+　 　└ bg_jigoku.png   <- 背景画像
+```
+
+以降、"main.py"ファイルにコードを記述していきます。
+
+## 2, Tkinterオブジェクトを作る
+
+先ずは、"tkinter"ライブラリをインポートし、"tkinter.Tk()"関数でオブジェクトを作ります。
+
+次の例では、生成されたオブジェクト"root"に対し、タイトルの指定、画面リサイズの無効化を行っています。
+
+```python: main.py
+import tkinter
+
+root = tkinter.Tk() # tkinterオブジェクトを作る
+root.title("Hello, Tkinter!!") # ゲーム画面のタイトル
+root.resizable(False, False) # 画面リサイズを無効化する
+```
+
+## 3, キャンバスを作る
+
+あらかじめ、キャンバスの幅として"W"、高さとして"H"変数を用意しておきます。
+(こうしておくと後々便利です!!)
+
+次に、"tkinter.Canvas()"関数を使ってキャンバスを作ります。
+引数には、キャンバスの幅(width)、高さ(height)、背景色(bg)を指定します。
+
+この時点で実行すると、幅480px x 高さ320pxのゲーム画面が表示されます。
+
+```python: main.py
+import tkinter
+
+# キャンバスの幅と高さ
+W, H = 480, 320
+
+root = tkinter.Tk()
+root.title("Hello, Tkinter!!")
+root.resizable(False, False)
+
+# キャンバス
+cvs = tkinter.Canvas(width=W, height=H, bg="black") # キャンバスを作る
+cvs.pack() # キャンバスを配置する
+root.mainloop() # tkinterを起動する
+```
+
+今後は、このキャンバスに対して背景画像やキャラクターの画像を描画していきます。
+
+![](/images/0fc9f54eefe9fd/02_01.png)
+
+## 4, 初期化関数と、更新関数を用意する
+
+ゲーム開始時に実行する"初期化関数"と、画面を更新し続ける"更新関数"を用意します。
+初期化部分と、更新部分を明確に分離することでコード全体がスッキリします。
+
+用意した"init()"関数と、"update()"関数にある"pass"は、それぞれ、"何もしない"という意味です。
+(今は中身がありませんが、今後はここにコードを追加していきます)
+
+```python: main.py
+import tkinter
+
+W, H = 480, 320
+
+def init():
+    """ 初期化関数 """
+    pass
+
+def update():
+    """ 更新関数 """
+    pass
+
+# Tkinter
+root = tkinter.Tk()
+root.title("Hello, Tkinter!!")
+root.resizable(False, False)
+
+# キャンバス
+cvs = tkinter.Canvas(width=W, height=H, bg="black")
+cvs.pack()
+init() # 初期化関数を実行
+update() # 更新関数を実行
+root.mainloop()
+```
+
+## 5, 背景画像を表示する
+
+先ほど用意した、"初期化関数"で背景画像の読み込みと配置を行います。
+利用する画像は、imagesフォルダに配置した"bg_jigoku.png"です。
+
+"tkinter.PhotoImage()"関数では、画像ファイルの読み込みを行っています。
+引数の"file"には、画像ファイルまでのパスを指定します。
+
+"cvs.create_image()"関数では、読み込んだ画像をキャンバスに配置する命令です。
+第一引数はx座標、第二引数はy座標、"image"には読み込んだ画像オブジェクトを指定します。
+
+この時点で実行すると、ゲーム画面に地獄画像が表示されます。(地獄にようこそ!!)
+
+```python: main.py
+import tkinter
+
+# キャンバスの幅と高さ
+W, H = 480, 320
+
+# 背景画像とイメージ
+bg_photo, bg_image = None, None
+
+def init():
+    """ 初期化関数 """
+    global bg_photo, bg_image
+
+    # 背景
+    bg_photo = tkinter.PhotoImage(file="images/bg_jigoku.png")
+    bg_image = cvs.create_image(W/2, H/2, image=bg_photo)
+
+def update():
+    """ 更新関数 """
+    pass
+
+# Tkinter
+root = tkinter.Tk()
+root.title("Hello, Tkinter!!")
+root.resizable(False, False)
+
+# キャンバス
+cvs = tkinter.Canvas(width=W, height=H, bg="black")
+cvs.pack()
+init()
+update()
+root.mainloop()
+```
+
+![](/images/0fc9f54eefe9fd/02_02.png)
+
+# 次回は...
+
+ここまで読んでいただき有り難うございました。
+次回のタイトルは「画面をクリックしてみよう」です。
+お楽しみに!!
 
