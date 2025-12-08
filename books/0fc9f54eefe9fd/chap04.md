@@ -70,7 +70,7 @@ class DemonSprite:
                    self.x + self.r, self.y + self.r)
 ```
 
-## 3, スプライトクラスを使う
+## 3, DemonSpriteクラスを使う
 
 spriteモジュールをインポートすることで、"DemonSprite"クラスを使えるようになります。
 その他、"mathモジュール"、"randomモジュール"もインポートしておきます。
