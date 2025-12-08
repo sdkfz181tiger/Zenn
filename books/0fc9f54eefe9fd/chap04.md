@@ -38,11 +38,11 @@ title: "第4章: スプライトを作ってみよう"
 | self.r | スプライトの半径 |
 | self.oval | 円を描くオブジェクト |
 
-"self.oval"には、円を描くオブジェクトを格納します。(鬼の画像はしばらく後で登場します)
+"self.oval"には、円を描くオブジェクトを格納します。
 "cvs.create_oval()"メソッドの引数にはそれぞれ、
 円の左上座標(x, y)、円の右下座標(x, y)、"fill"にはカラー、"width"には線の太さ(ここでは0)を指定します。
 
-そして、"update()"メソッドでは、"self.oval"オブジェクトの座標を更新します。
+そして、"update()"メソッドで、"self.oval"オブジェクトの座標を更新します。
 
 ```python:sprite.py
 import math
@@ -88,9 +88,6 @@ TOTAL_DEMONS = 10
 
 # 鬼軍団
 demons = []
-
-# 鬼カウンタ
-counter = TOTAL_DEMONS
 ```
 
 "init()"関数(初期化関数)では、生成した鬼スプライトを、"demons"(鬼軍団)リストに追加します。
@@ -115,8 +112,7 @@ def init():
         demons.append(demon) # リストに追加
 ```
 
-"update()"関数(更新関数)では、"counter"(残りの鬼の数)をゲーム画面左上に描画します。
-そして、"demons"(鬼軍団)リストから鬼スプライトそれぞれで"demon.update()"メソッドを実行します。
+"update()"関数(更新関数)では、"demons"(鬼軍団)リストの鬼スプライトそれぞれで"demon.update()"メソッドを実行します。
 
 ```python:main.py(抜粋)
 def update():
@@ -127,18 +123,12 @@ def update():
     cvs.create_text(mx, my, text=msg,
                     fill="white", font=FONT, tag="hud")
 
-    # 鬼カウンタを描画
-    msg = "COUNTER: {}".format(counter)
-    cvs.create_text(20, 20, text=msg,
-                    fill="white", font=FONT, tag="hud", anchor="nw")
-
     # 鬼軍団
     for demon in demons:
         demon.update(cvs) # 鬼スプライトを更新
 
     # 画面更新
-    if 0 < counter:
-        root.after(30, update)
+    root.after(30, update)
 ```
 
 この時点で実行すると、ゲーム画面に10個のスプライト(白い円)が描画されます。
@@ -193,9 +183,6 @@ TOTAL_DEMONS = 10
 # 鬼軍団
 demons = []
 
-# 鬼カウンタ
-counter = TOTAL_DEMONS
-
 def init():
     """ 初期化関数 """
     global bg_photo, bg_image
@@ -218,18 +205,12 @@ def update():
     cvs.create_text(mx, my, text=msg,
                     fill="white", font=FONT, tag="hud")
 
-    # 鬼カウンタを描画
-    msg = "COUNTER: {}".format(counter)
-    cvs.create_text(20, 20, text=msg,
-                    fill="white", font=FONT, tag="hud", anchor="nw")
-
     # 鬼軍団
     for demon in demons:
         demon.update(cvs) # 鬼スプライトを更新
 
     # 画面更新
-    if 0 < counter:
-        root.after(30, update)
+    root.after(30, update)
 
 def on_mouse_clicked(e):
     global counter
