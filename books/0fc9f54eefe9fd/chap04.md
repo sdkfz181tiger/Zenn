@@ -1,12 +1,14 @@
 ---
-title: "第4章: スプライトクラスを作ってみよう"
+title: "第4章: スプライトを作ってみよう"
 ---
 
-# スプライトクラスを作ってみよう
+# スプライトを作ってみよう
 
 今回は、"スプライト"についてです。
 ゲームに登場するキャラクター等のオブジェクトを、特別に"スプライト"と呼びます。
-ここでは、新たにスプライトモジュールを追加し、そこにDemonSpriteクラスを定義します。
+ここでは、新たにスプライトモジュールを追加し、DemonSpriteクラスを定義します。
+
+必要であれば、[12章:クラスを使ってみよう](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap12)を確認しておくとスムーズです。
 
 ## 1, スプライトモジュールを用意する
 
@@ -23,9 +25,11 @@ title: "第4章: スプライトクラスを作ってみよう"
 ## 2, DemonSpriteクラスを定義する
 
 "sprite.py"に、"DemonSprite"クラスを定義します。(鬼スプライト!!)
-ここでは、ただ"円"を描画するだけのシンプルなクラスです。
 
-スプライトクラスのコンストラクタでは、次のメンバ変数を定義しておきます。
+"DemonSprite"クラスは、"鬼の位置や見た目を管理する箱"のようなものです。
+座標(x, y)や半径(r)を記憶し、画面更新のたびに"update()"で描き直します。
+
+"DemonSprite"クラスのコンストラクタでは、次のメンバ変数を定義しておきます。
 
 | メンバ変数 | 意味 |
 | ---- | ---- |
@@ -67,26 +71,191 @@ class DemonSprite:
 ## 3, スプライトクラスを使う
 
 spriteモジュールをインポートすることで、"DemonSprite"クラスを使えるようになります。
+その他、"mathモジュール"、"randomモジュール"もインポートします。
 
 ```python:main.py(抜粋)
-import sprite
+import math   # 数学的計算をするモジュール
+import random # ランダムを生成するモジュール
+import sprite # Spriteモジュール
+import tkinter
 ```
 
-"DemonSprite"は、次のようにインスタンス化して利用します。
-第一引数から、キャンバス、x座標、y座標、円の半径です。
+そして、新たにグローバル変数として次の変数を定義します。
 
 ```python:main.py(抜粋)
-demon = sprite.DemonSprite(cvs, 0, 0, 10)
+# 鬼軍団の数
+TOTAL_DEMONS = 10
+
+# 鬼軍団
+demons = []
+
+# 鬼カウンタ
+counter = TOTAL_DEMONS
 ```
 
-## 4, 
+"init()"関数(初期化関数)では、"DemonSprite"をインスタンス化し"demons"(鬼軍団)リストに追加します。
+鬼スプライトの座標は、"random.random()"メソッドを利用し、ランダム位置とします。
 
+"random.random()"メソッドは、"0.0〜1.0"の小数をランダムで返します。
+この乱数に画面幅"W"を掛けることで、"0〜W"の範囲で乱数を得ることができます。
 
+```python:main.py(抜粋)
+def init():
+    """ 初期化関数 """
+    global bg_photo, bg_image
 
+    bg_photo = tkinter.PhotoImage(file="images/bg_jigoku.png")
+    bg_image = cvs.create_image(W/2, H/2, image=bg_photo)
 
+    # 鬼軍団
+    for i in range(TOTAL_DEMONS):
+        x = random.random() * W # 0 ~ W未満の小数
+        y = random.random() * H # 0 ~ H未満の小数
+        demon = sprite.DemonSprite(cvs, x, y, 20) # 鬼スプライトを生成
+        demons.append(demon) # リストに追加
+```
+
+"update()"関数(更新関数)では、残りの鬼の数をカウントする、"counter"をゲーム画面左上に描画します。
+そして、"demons"(鬼軍団)リストの鬼スプライトで"demon.update()"メソッドを実行します。
+
+```python:main.py(抜粋)
+def update():
+    """ 更新関数 """
+    cvs.delete("hud")
+
+    msg = "x:{}, y:{}".format(mx, my)
+    cvs.create_text(mx, my, text=msg,
+                    fill="white", font=FONT, tag="hud")
+
+    # 鬼カウンタを描画
+    msg = "COUNTER: {}".format(counter)
+    cvs.create_text(20, 20, text=msg,
+                    fill="white", font=FONT, tag="hud", anchor="nw")
+
+    # 鬼軍団
+    for demon in demons:
+        demon.update(cvs) # 鬼スプライトを更新
+
+    # 画面更新
+    if 0 < counter:
+        root.after(30, update)
+```
+
+この時点で実行すると、ゲーム画面上に10個のスプライト(白い円)が描画されます。
+
+![](/images/0fc9f54eefe9fd/04_01.png)
+
+## 4, 完成コード
+
+今回の完成コードは次の通りです。
+
+```python:sprite.py(完成コード)
+import math
+import random
+import tkinter
+
+# 鬼クラス
+class DemonSprite:
+
+    def __init__(self, cvs, x, y, r):
+        self.x = x # x座標
+        self.y = y # y座標
+        self.r = r # 円の半径
+        # 円
+        self.oval = cvs.create_oval(x-r, y-r, x+r, y+r,
+                                    fill="white", width=0)
+
+    def update(self, cvs):
+        
+        # 円の座標を更新
+        cvs.coords(self.oval,
+                   self.x - self.r, self.y - self.r,
+                   self.x + self.r, self.y + self.r)
+```
+
+```python:main.py(完成コード)
+import math   # 数学的計算をするモジュール
+import random # ランダムを生成するモジュール
+import sprite # Spriteモジュール
+import tkinter
+
+W, H = 480, 320
+
+FONT = ("Arial", 16)
+
+mx, my = 0, 0
+
+bg_photo, bg_image = None, None
+
+# 鬼軍団の数
+TOTAL_DEMONS = 10
+
+# 鬼軍団
+demons = []
+
+# 鬼カウンタ
+counter = TOTAL_DEMONS
+
+def init():
+    """ 初期化関数 """
+    global bg_photo, bg_image
+
+    bg_photo = tkinter.PhotoImage(file="images/bg_jigoku.png")
+    bg_image = cvs.create_image(W/2, H/2, image=bg_photo)
+
+    # 鬼軍団
+    for i in range(TOTAL_DEMONS):
+        x = random.random() * W # 0 ~ W未満の小数
+        y = random.random() * H # 0 ~ H未満の小数
+        demon = sprite.DemonSprite(cvs, x, y, 20) # 鬼スプライトを生成
+        demons.append(demon) # リストに追加
+    
+def update():
+    """ 更新関数 """
+    cvs.delete("hud")
+
+    msg = "x:{}, y:{}".format(mx, my)
+    cvs.create_text(mx, my, text=msg,
+                    fill="white", font=FONT, tag="hud")
+
+    # 鬼カウンタを描画
+    msg = "COUNTER: {}".format(counter)
+    cvs.create_text(20, 20, text=msg,
+                    fill="white", font=FONT, tag="hud", anchor="nw")
+
+    # 鬼軍団
+    for demon in demons:
+        demon.update(cvs) # 鬼スプライトを更新
+
+    # 画面更新
+    if 0 < counter:
+        root.after(30, update)
+
+def on_mouse_clicked(e):
+    global counter
+    #print("Clicked:", e.x, e.y)
+
+def on_mouse_moved(e):
+    global mx, my
+    mx, my = e.x, e.y
+
+# Tkinter
+root = tkinter.Tk()
+root.title("Hello, Tkinter!!")
+root.resizable(False, False)
+root.bind("<Button>", on_mouse_clicked) # マウス(Click)
+root.bind("<Motion>", on_mouse_moved) # マウス(Motion)
+
+# キャンバス
+cvs = tkinter.Canvas(width=W, height=H, bg="black")
+cvs.pack()
+init()
+update()
+root.mainloop()
+```
 
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「xxxしてみよう」です。
+次回のタイトルは「スプライトを動かしてみよう」です。
 お楽しみに!!
