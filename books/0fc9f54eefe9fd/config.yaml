@@ -1,0 +1,12 @@
+title: "Pythonで2Dゲームをかじる本(tkinter編)"
+summary: "
+Pythonライブラリ「tkinter」を使って2Dゲームを作ります。\n
+出来るだけ簡単に、Pythonの基礎的なコーディングだけで作って行きます。
+"
+topics: ["python", "python3", "初心者向け"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - chap01
+  - chap02
