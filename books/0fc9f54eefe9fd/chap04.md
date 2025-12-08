@@ -33,9 +33,9 @@ import tkinter
 class Demon:
 
     def __init__(self, cvs, x, y, r):
-        self.x = x
-        self.y = y
-        self.r = r
+        self.x = x # x座標
+        self.y = y # y座標
+        self.r = r # 円の半径
         # 円
         self.oval = cvs.create_oval(x-r, y-r, x+r, y+r,
                                     fill="gray", width=0)
@@ -47,8 +47,6 @@ class Demon:
                    self.x - self.r, self.y - self.r,
                    self.x + self.r, self.y + self.r)
 ```
-
-
 
 # 次回は...
 
