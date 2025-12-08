@@ -216,7 +216,7 @@ def update():
 
 def on_mouse_clicked(e):
     global counter
-    #print("Clicked:", e.x, e.y)
+    print("Clicked:", e.x, e.y)
 
 def on_mouse_moved(e):
     global mx, my
