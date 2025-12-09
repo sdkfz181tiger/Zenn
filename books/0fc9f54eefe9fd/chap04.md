@@ -33,12 +33,15 @@ DemonSpriteクラスは、"鬼の位置や見た目を管理する設計図"で�
 DemonSpriteクラスのコンストラクタでは、次のメンバ変数を定義しておきます。
 現時点では、座標、半径、円を描くオブジェクトだけのシンプルな状態です。
 
-| メンバ変数 | 意味 |
-| ---- | ---- |
-| self.x | x座標 |
-| self.y | y座標 |
-| self.r | スプライトの半径 |
-| self.oval | 円を描くオブジェクト |
+```python:sprite.py(抜粋)
+def __init__(self, cvs, x, y, r):
+    self.x = x # x座標
+    self.y = y # y座標
+    self.r = r # スプライトの半径
+    # 円
+    self.oval = cvs.create_oval(x-r, y-r, x+r, y+r,
+                                fill="white", width=0)
+```
 
 "self.oval"には、円を描くオブジェクトを格納します。
 "cvs.create_oval()"メソッドの引数にはそれぞれ、
@@ -99,38 +102,20 @@ demons = []
 画面幅"W"にこの乱数を掛け算すると、"0.0以上〜W未満"の範囲で値を取得できるので、これをx座標としています。同様に、画面の高さ"H"を掛け算し、y座標としています。
 
 ```python:main.py(抜粋)
-def init():
-    """ 初期化関数 """
-    global bg_photo, bg_image
-
-    bg_photo = tkinter.PhotoImage(file="images/bg_jigoku.png")
-    bg_image = cvs.create_image(W/2, H/2, image=bg_photo)
-
-    # 鬼軍団
-    for i in range(TOTAL_DEMONS):
-        x = random.random() * W # 0.0以上 ~ W未満の小数
-        y = random.random() * H # 0.0以上 ~ H未満の小数
-        demon = sprite.DemonSprite(cvs, x, y, 20) # 鬼スプライトを生成
-        demons.append(demon) # リストに追加
+# 鬼軍団
+for i in range(TOTAL_DEMONS):
+    x = random.random() * W # 0.0以上 ~ W未満の小数
+    y = random.random() * H # 0.0以上 ~ H未満の小数
+    demon = sprite.DemonSprite(cvs, x, y, 20) # 鬼スプライトを生成
+    demons.append(demon) # リストに追加
 ```
 
 "update()"関数(更新関数)では、"demons"(鬼軍団)リストの鬼スプライトそれぞれで"demon.update()"メソッドを実行します。
 
 ```python:main.py(抜粋)
-def update():
-    """ 更新関数 """
-    cvs.delete("hud")
-
-    msg = "x:{}, y:{}".format(mx, my)
-    cvs.create_text(mx, my, text=msg,
-                    fill="white", font=FONT, tag="hud")
-
-    # 鬼軍団
-    for demon in demons:
-        demon.update(cvs) # 鬼スプライトを更新
-
-    # 画面更新
-    root.after(30, update)
+# 鬼軍団
+for demon in demons:
+    demon.update(cvs) # 鬼スプライトを更新
 ```
 
 この時点で実行すると、ゲーム画面に10個のスプライト(白い円)が描画されます。
