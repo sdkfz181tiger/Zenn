@@ -11,7 +11,7 @@ title: "第3章: マウスイベントを使ってみよう"
 
 マウスイベントは、Tkオブジェクトに対して次の様に指定します。
 第一引数に対し、"<Button>"でクリックを検知、"<Motion>"でマウスの移動を検知します。
-第二引数には、イベント発生タイミングで実行したいメソッドを指定します。
+第二引数には、イベント発生タイミングで実行したい関数を指定します。
 
 ```python:main.py(抜粋)
 root.bind("<Button>", on_mouse_clicked) # マウス(Click)
@@ -20,7 +20,7 @@ root.bind("<Motion>", on_mouse_moved) # マウス(Motion)
 
 ### 1, Buttonイベント
 
-Buttonイベントを受け取る、"on_mouse_clicked()"メソッドでは、
+Buttonイベントを受け取る、"on_mouse_clicked()"関数では、
 "e.x"でx座標を、"e.y"でy座標を取得しています。
 
 ```python:main.py(抜粋)
@@ -34,7 +34,7 @@ def on_mouse_clicked(e):
 
 ### 2, Motionイベント
 
-Motionイベントを受け取る、"on_mouse_moved()"メソッドでは、
+Motionイベントを受け取る、"on_mouse_moved()"関数では、
 その座標をグローバル変数"mx", "my"にコピーしています。
 (globalを忘れずに...)
 
@@ -44,9 +44,15 @@ def on_mouse_moved(e):
     mx, my = e.x, e.y # グローバル変数にコピー
 ```
 
-"update()"メソッドでは、"mx"と、"my"に格納された座標をキャンバスに描画しています。
-"cvs.create_text()"メソッドの引数は、x座標、y座標、
+"update()"関数では、"mx"と、"my"に格納された座標をキャンバスに描画しています。
+"cvs.create_text()"関数の引数は、x座標、y座標、
 "text"には表示する文字列、"font"にはフォント名とサイズを指定します。
+"tag"には、テキスト描画オブジェクトに付ける目標として、"hud"という文字列を指定します。
+
+ここで、この"tag"について説明します。
+"update()"関数の最初にある、"cvs.delete("hud")"に着目してください。
+これは、"tag"が"hud"である描画オブジェクトを画面から消去する命令です。
+毎フレームごと、"hud"タグの付いたオブジェクトを削除して再描画しています。
 
 ```python:main.py(抜粋)
 def update():
