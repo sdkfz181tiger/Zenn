@@ -108,8 +108,8 @@ def init():
 
     # 鬼軍団
     for i in range(TOTAL_DEMONS):
-        x = random.random() * W # 0 ~ W未満の小数
-        y = random.random() * H # 0 ~ H未満の小数
+        x = random.random() * W # 0.0以上 ~ W未満の小数
+        y = random.random() * H # 0.0以上 ~ H未満の小数
         demon = sprite.DemonSprite(cvs, x, y, 20) # 鬼スプライトを生成
         demons.append(demon) # リストに追加
 ```
@@ -194,8 +194,8 @@ def init():
 
     # 鬼軍団
     for i in range(TOTAL_DEMONS):
-        x = random.random() * W # 0 ~ W未満の小数
-        y = random.random() * H # 0 ~ H未満の小数
+        x = random.random() * W # 0.0以上 ~ W未満の小数
+        y = random.random() * H # 0.0以上 ~ H未満の小数
         demon = sprite.DemonSprite(cvs, x, y, 20) # 鬼スプライトを生成
         demons.append(demon) # リストに追加
     
