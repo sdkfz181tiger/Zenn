@@ -57,7 +57,7 @@ def on_mouse_moved(e):
 ```python:main.py(抜粋)
 def update():
     """ 更新関数 """
-    cvs.delete("hud")
+    cvs.delete("hud") # "hud"タグの描画オブジェクトを消去
 
     # マウス座標を描画
     msg = "x:{}, y:{}".format(mx, my)
@@ -101,7 +101,7 @@ def init():
     
 def update():
     """ 更新関数 """
-    cvs.delete("hud")
+    cvs.delete("hud") # "hud"タグの描画オブジェクトを消去
 
     # マウス座標を描画
     msg = "x:{}, y:{}".format(mx, my)
