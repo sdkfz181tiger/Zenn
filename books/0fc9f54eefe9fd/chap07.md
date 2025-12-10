@@ -79,22 +79,156 @@ def on_mouse_clicked(e):
 
 ここまでの処理を実装すると、スプライトをクリックで止めることができるようになります。
 
-![](/images/0fc9f54eefe9fd/06_01.gif)
+![](/images/0fc9f54eefe9fd/07_01.gif)
 
 ## x, 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
 
 ```python:sprite.py(完成コード)
+import math
+import random
+import tkinter
 
+# 鬼クラス
+class DemonSprite:
+
+    def __init__(self, cvs, x, y, r):
+        self.x = x
+        self.y = y
+        self.r = r
+        self.vx = 0
+        self.vy = 0
+        self.dead = False # 死亡フラグ
+        # 円
+        self.oval = cvs.create_oval(x-r, y-r, x+r, y+r,
+                                    fill="white", width=0)
+
+    def update(self, cvs):
+
+        self.x = self.x + self.vx
+        self.y = self.y + self.vy
+        
+        cvs.coords(self.oval,
+                   self.x - self.r, self.y - self.r,
+                   self.x + self.r, self.y + self.r)
+
+    def set_x(self, x):
+        self.x = x
+
+    def set_y(self, y):
+        self.y = y
+
+    def move(self, spd, deg):
+        radian = deg * math.pi / 180
+        self.vx = spd * math.cos(radian)
+        self.vy = spd * math.sin(radian)
+
+    def stop(self):
+        self.move(0, 0)
+
+    def die(self, cvs):
+        self.dead = True # 死亡フラグをTrueに
+        self.stop() # 停止する
+        # 円の色を更新
+        cvs.itemconfig(self.oval, fill="red")
+
+    def is_dead(self):
+        return self.dead # 死亡フラグを返す
+
+    def is_hit(self, x, y):
+        dist_x = (self.x - x) ** 2 # スプライトの水平方向の距離
+        dist_y = (self.y - y) ** 2 # スプライトの垂直方向の距離
+        dist = (dist_x + dist_y) ** 0.5 # スプライトとの距離
+        return dist < self.r # スプライトとの距離が半径以内ならヒット(True)
 ```
 
 ```python:main.py(完成コード)
+import math
+import random
+import sprite
+import tkinter
 
+W, H = 480, 320
+
+FONT = ("Arial", 16)
+
+mx, my = 0, 0
+
+bg_photo, bg_image = None, None
+
+TOTAL_DEMONS = 10
+
+demons = []
+
+def init():
+    """ 初期化関数 """
+    global bg_photo, bg_image
+
+    bg_photo = tkinter.PhotoImage(file="images/bg_jigoku.png")
+    bg_image = cvs.create_image(W/2, H/2, image=bg_photo)
+
+    # 鬼軍団
+    for i in range(TOTAL_DEMONS):
+        x = random.random() * W
+        y = random.random() * H
+        demon = sprite.DemonSprite(cvs, x, y, 20)
+        spd = random.randint(1, 4)
+        deg = random.randint(0, 360)
+        demon.move(spd, deg)
+        demons.append(demon)
+    
+def update():
+    """ 更新関数 """
+    cvs.delete("hud")
+
+    msg = "x:{}, y:{}".format(mx, my)
+    cvs.create_text(mx, my, text=msg,
+                    fill="white", font=FONT, tag="hud")
+
+    for demon in demons:
+        overlap_area(demon)
+        demon.update(cvs)
+
+    root.after(30, update)
+
+def overlap_area(obj):
+    if obj.x < 0: obj.set_x(W)
+    if W < obj.x: obj.set_x(0)
+    if obj.y < 0: obj.set_y(H)
+    if H < obj.y: obj.set_y(0)
+
+def on_mouse_clicked(e):
+    print("Clicked:", e.x, e.y)
+
+    # 鬼軍団
+    for demon in demons:
+        if demon.is_dead(): continue # 既に死んでいたら次のスプライトへ
+        if demon.is_hit(e.x, e.y): # クリック座標がヒットしていたら
+            demon.die(cvs) # 死亡フラグをOnにする
+            break # 繰り返し処理を終了
+
+def on_mouse_moved(e):
+    global mx, my
+    mx, my = e.x, e.y
+
+# Tkinter
+root = tkinter.Tk()
+root.title("Hello, Tkinter!!")
+root.resizable(False, False)
+root.bind("<Button>", on_mouse_clicked) # マウス(Click)
+root.bind("<Motion>", on_mouse_moved) # マウス(Motion)
+
+# キャンバス
+cvs = tkinter.Canvas(width=W, height=H, bg="black")
+cvs.pack()
+init()
+update()
+root.mainloop()
 ```
 
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「xxx」です。
+次回のタイトルは「スプライトを鬼スプライトにしよう」です。
 お楽しみに!!
