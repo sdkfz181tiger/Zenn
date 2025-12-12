@@ -138,11 +138,11 @@ def init():
     bg_image = cvs.create_image(W/2, H/2, image=bg_photo)
 ```
 
-## 6, 完成コード
+# 完成コード
 
-今回の完成コードは次の通りです。
-次のコードを実行すると、ゲーム画面に地獄画像が表示されます。(地獄にようこそ!!)
+ここまでの機能を実装した完成コードは、次の通りです。(地獄にようこそ!!)
 
+:::details 完成コード
 ```python: main.py
 import tkinter
 
@@ -177,6 +177,7 @@ init()
 update()
 root.mainloop()
 ```
+:::
 
 ![](/images/0fc9f54eefe9fd/02_02.png)
 

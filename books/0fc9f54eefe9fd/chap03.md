@@ -72,10 +72,11 @@ def update():
 
 ![](/images/0fc9f54eefe9fd/03_02.gif)
 
-### 3, 完成コード
+# 完成コード
 
-今回の完成コードは次の通りです。
+ここまでの機能を実装した完成コードは、次の通りです。
 
+:::details 完成コード
 ```python:main.py(完成コード)
 import tkinter
 
@@ -132,6 +133,7 @@ init()
 update()
 root.mainloop()
 ```
+:::
 
 # 次回は...
 

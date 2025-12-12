@@ -50,10 +50,11 @@ for demon in demons:
 
 ![](/images/0fc9f54eefe9fd/06_01.gif)
 
-## 3, 完成コード
+# 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
 
+:::details 完成コード
 ```python:sprite.py(完成コード)
 import math
 import random
@@ -175,6 +176,7 @@ init()
 update()
 root.mainloop()
 ```
+:::
 
 # 次回は...
 
