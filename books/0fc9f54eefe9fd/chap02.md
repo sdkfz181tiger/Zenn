@@ -71,17 +71,13 @@ root.mainloop() # tkinterを起動する
 
 ![](/images/0fc9f54eefe9fd/02_01.png)
 
-## 4, 初期化関数と、更新関数を用意する
+## 4, 初期化関数を用意する
 
 ゲーム開始時に実行する"初期化関数"と、画面を更新し続ける"更新関数"を用意します。
 初期化部分と、更新部分を明確に分離することでコード全体がスッキリします。
 
 用意した"init()"関数にある"pass"は、"何もしない"という意味です。
 (今は中身がありませんが、今後はここにコードを追加していきます)
-
-"update()"関数には、"root.after(30, update)"と記述します。
-これは、"30ミリ秒後に、update()関数を実行"するという命令です。
-ここで、キャラクターの位置の更新等を行います。
 
 ```python: main.py
 import tkinter
@@ -91,11 +87,6 @@ W, H = 480, 320
 def init():
     """ 初期化関数 """
     pass
-
-def update():
-    """ 更新関数 """
-    # 画面更新
-    root.after(30, update)
 
 # Tkinter
 root = tkinter.Tk()
@@ -110,13 +101,57 @@ update() # 更新関数を実行
 root.mainloop()
 ```
 
-## 5, 背景画像を配置する
+## 5, 更新関数を用意する
+
+次に、フレームレートとして、"F_RATE"を決めます。
+フレームレートとは、"1秒間に画面更新する回数"のことです。
+フレームレートは60程度が望ましいですが、今回は練習なので30としています。
+
+"F_INTERVAL"は、1フレームにおける更新間隔です。(単位はミリ秒)
+画面を更新する都度、キャラクターの座標を変更しつづける事で、キャラクターが動いている様に見えるのですね。
+
+"update()"関数には、"root.after(F_INTERVAL, update)"と記述します。
+これは、"F_INTERVALミリ秒後に、update()関数を再実行"するという命令です。
+これ以降は、キャラクターの位置の更新等を行います。
+
+```python: main.py
+import tkinter
+
+W, H = 480, 320
+
+# フレームレート
+F_RATE = 30 # 1秒間に実行するフレーム回数
+F_INTERVAL = int(1000 / F_RATE) # 1フレームの間隔
+
+def init():
+    """ 初期化関数 """
+    pass
+
+def update():
+    """ 更新関数 """
+    # 画面更新
+    root.after(F_INTERVAL, update)
+
+# Tkinter
+root = tkinter.Tk()
+root.title("Hello, Tkinter!!")
+root.resizable(False, False)
+
+# キャンバス
+cvs = tkinter.Canvas(width=W, height=H, bg="black")
+cvs.pack()
+init() # 初期化関数を実行
+update() # 更新関数を実行
+root.mainloop()
+```
+
+## 6, 背景画像を配置する
 
 先ほど用意した、"初期化関数"で背景画像の読み込みと配置を行います。
 利用する画像は、imagesフォルダに配置した"bg_jigoku.png"です。
 
 "init()"関数の最初にある"global"は、関数外の変数(グローバル変数)を利用するという意味です。
-この部分が無い場合、"ローカル変数"として扱われ、画像が開放されてしまうので注意が必要です。
+"global"の記述が無い場合、"ローカル変数"として扱われ、画像が開放されてしまうので注意が必要です。
 (画像が表示されません)
 
 "tkinter.PhotoImage()"関数では、画像ファイルの読み込みを行っています。
@@ -149,6 +184,10 @@ import tkinter
 # キャンバスの幅と高さ
 W, H = 480, 320
 
+# フレームレート
+F_RATE = 30 # 1秒間に実行するフレーム回数
+F_INTERVAL = int(1000 / F_RATE) # 1フレームの間隔
+
 # 背景画像とイメージ(グローバル変数)
 bg_photo, bg_image = None, None
 
@@ -163,7 +202,7 @@ def init():
 def update():
     """ 更新関数 """
     # 画面更新
-    root.after(30, update)
+    root.after(F_INTERVAL, update)
 
 # Tkinter
 root = tkinter.Tk()

@@ -107,6 +107,9 @@ import tkinter
 
 W, H = 480, 320
 
+F_RATE = 30
+F_INTERVAL = int(1000 / F_RATE)
+
 FONT = ("Arial", 16)
 
 mx, my = 0, 0
@@ -147,7 +150,7 @@ def update():
         overlap_area(demon) # 画面外判定
         demon.update(cvs)
 
-    root.after(30, update)
+    root.after(F_INTERVAL, update)
 
 def overlap_area(obj):
     if obj.x < 0: obj.set_x(W) # x座標が画面の左端より小さい時は右端へ

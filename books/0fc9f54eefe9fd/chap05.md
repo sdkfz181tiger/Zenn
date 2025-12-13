@@ -132,6 +132,9 @@ import tkinter
 
 W, H = 480, 320
 
+F_RATE = 30
+F_INTERVAL = int(1000 / F_RATE)
+
 FONT = ("Arial", 16)
 
 mx, my = 0, 0
@@ -170,7 +173,7 @@ def update():
     for demon in demons:
         demon.update(cvs)
 
-    root.after(30, update)
+    root.after(F_INTERVAL, update)
 
 def on_mouse_clicked(e):
     #print("Clicked:", e.x, e.y)

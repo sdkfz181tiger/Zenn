@@ -159,6 +159,9 @@ import tkinter
 
 W, H = 480, 320
 
+F_RATE = 30
+F_INTERVAL = int(1000 / F_RATE)
+
 FONT = ("Arial", 16)
 
 mx, my = 0, 0
@@ -198,7 +201,7 @@ def update():
         demon.update(cvs) # 鬼スプライトを更新
 
     # 画面更新
-    root.after(30, update)
+    root.after(F_INTERVAL, update)
 
 def on_mouse_clicked(e):
     global counter

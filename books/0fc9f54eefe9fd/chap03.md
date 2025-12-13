@@ -83,6 +83,10 @@ import tkinter
 # キャンバスの幅と高さ
 W, H = 480, 320
 
+# フレームレート
+F_RATE = 30 # 1秒間に実行するフレーム回数
+F_INTERVAL = int(1000 / F_RATE) # 1フレームの間隔
+
 # フォント
 FONT = ("Arial", 16)
 
@@ -110,7 +114,7 @@ def update():
                     fill="white", font=FONT, tag="hud")
 
     # 画面更新
-    root.after(30, update)
+    root.after(F_INTERVAL, update)
 
 def on_mouse_clicked(e):
     print("Clicked:", e.x, e.y)
