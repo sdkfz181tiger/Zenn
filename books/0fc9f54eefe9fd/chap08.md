@@ -12,9 +12,9 @@ title: "第8章: スプライトに鬼画像を付けよう"
 
 | タイプ | 生き | ファイル名 | 死に | ファイル名 |
 | ---- | ---- | ---- | ---- | ---- |
-| 青鬼ちゃん | ![](/images/0fc9f54eefe9fd/dmn_alive_b.png) | dmn_alive_b.png | ![](/images/0fc9f54eefe9fd/dmn_dead_b.png) | dmn_dead_b.png |
-| 緑鬼ちゃん | ![](/images/0fc9f54eefe9fd/dmn_alive_g.png) | dmn_alive_g.png | ![](/images/0fc9f54eefe9fd/dmn_dead_g.png) | dmn_dead_g.png |
-| 赤鬼ちゃん | ![](/images/0fc9f54eefe9fd/dmn_alive_r.png) | dmn_alive_r.png | ![](/images/0fc9f54eefe9fd/dmn_dead_r.png) | dmn_dead_r.png |
+| 青鬼さん | ![](/images/0fc9f54eefe9fd/dmn_alive_b.png) | dmn_alive_b.png | ![](/images/0fc9f54eefe9fd/dmn_dead_b.png) | dmn_dead_b.png |
+| 緑鬼さん | ![](/images/0fc9f54eefe9fd/dmn_alive_g.png) | dmn_alive_g.png | ![](/images/0fc9f54eefe9fd/dmn_dead_g.png) | dmn_dead_g.png |
+| 赤鬼さん | ![](/images/0fc9f54eefe9fd/dmn_alive_r.png) | dmn_alive_r.png | ![](/images/0fc9f54eefe9fd/dmn_dead_r.png) | dmn_dead_r.png |
 
 
 画像ファイルは、"images"フォルダにまとめて配置します。
@@ -261,5 +261,5 @@ root.mainloop()
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「ゲームを仕上げよう」です。
+次回のタイトルは「カウンタを表示しよう」です。
 お楽しみに!!

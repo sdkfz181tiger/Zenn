@@ -1,68 +1,74 @@
 ---
-title: "第9章: カウンタを表示しよう"
+title: "第10章: 残り時間を表示しよう"
 ---
 
-# カウンタを表示しよう
+# 残り時間を表示しよう
 
-今回は、鬼の残り数を示すカウンターを表示します。
+今回は、残り時間を表示し、ゲーム終了判定を実装します。
+(最終回です!!)
 
 ## 1, 変数を用意する
 
-鬼軍団の残りの数をカウントする、"counter"変数を用意します。
+残り時間を格納する、"timer"変数を用意します。
+ここでは、10秒程度を想定した値を計算します。(難しめ!?)
 
 ```python:main.py(抜粋)
-# 鬼カウンタ
-counter = TOTAL_DEMONS
+# タイマー
+timer = F_RATE * 10 # 残り時間(10秒)
 ```
 
-## 2, カウンターをマイナス1する
+## 2, タイマーを-1する
 
-"on_mouse_clicked()"関数で、鬼を捕まえる都度、カウンターをマイナス1します。
-グローバル変数の、"counter"の値を変更するので、"global"を忘れずに記述します。
-
-```python:main.py(抜粋)
-def on_mouse_clicked(e):
-    global counter
-    #print("Clicked:", e.x, e.y)
-
-    # 鬼軍団
-    for demon in demons:
-        if demon.is_inside(e.x, e.y):
-            if demon.is_dead(): continue
-            demon.die(cvs)
-            counter = counter - 1 # 鬼カウンタをマイナス1
-            break
-```
-
-## 3, カウンターを表示する
-
-"update()"関数では、先ほどの"counter"を画面に描画する処理を実装します。
+"update()"関数では、タイマーをゲーム画面右上に表示し、タイマー変数を-1します。
 
 ```python:main.py(抜粋)
 def update():
     """ 更新関数 """
+    global timer
     
     cvs.delete("hud")
 
-    # マウス座標を描画
     msg = "x:{}, y:{}".format(mx, my)
     cvs.create_text(mx, my, text=msg,
                     fill="white", font=FONT, tag="hud")
 
-    # 鬼カウンタを描画
     msg = "残り鬼数: {}".format(counter)
     cvs.create_text(20, 20, text=msg,
                     fill="white", font=FONT, tag="hud", anchor="nw")
 
+    # タイマーを描画
+    msg = "残り時間: {:.2f}秒".format(timer / F_RATE)
+    cvs.create_text(W-20, 20, text=msg,
+                    fill="white", font=FONT, tag="hud", anchor="ne")
+
     # 鬼軍団
     for demon in demons:
-        overlap_area(demon) # 画面外判定
+        overlap_area(demon)
         demon.update(cvs)
+
+    # タイマー
+    timer = timer - 1
 
     root.after(F_INTERVAL, update)
 ```
 
-![](/images/0fc9f54eefe9fd/09_01.gif)
+## 3, ゲーム終了判定
+
+最後に、鬼の残り数が0であれば、"GAME CLEAR"を、
+タイマーが0であれば、"GAME OVER"を表示する処理を実装して完成です。
+
+```python:main.py(抜粋)
+# 画面更新
+if 0 < counter and 0 <= timer:
+    root.after(F_INTERVAL, update)
+else:
+    # ゲーム判定
+    msg = "GAME CLEAR" if counter <= 0 else "GAME OVER"
+    cvs.create_text(W/2, H-40, text=msg,
+                    fill="white", font=FONT, tag="hud")
+```
+
+![](/images/0fc9f54eefe9fd/10_01.gif)
 
 # 完成コード
 
@@ -150,28 +156,39 @@ import random
 import sprite
 import tkinter
 
+# キャンバスの幅と高さ
 W, H = 480, 320
 
-F_RATE = 30
-F_INTERVAL = int(1000 / F_RATE)
+# フレームレート
+F_RATE = 30 # 1秒間に実行するフレーム回数
+F_INTERVAL = int(1000 / F_RATE) # 1フレームの間隔
 
+# フォント
 FONT = ("Arial", 16)
 
+# マウスの座標
 mx, my = 0, 0
 
+# 背景画像とイメージ
 bg_photo, bg_image = None, None
 
+# 鬼軍団の数
 TOTAL_DEMONS = 10
 
+# 鬼軍団
 demons = []
 
 # 鬼カウンタ
 counter = TOTAL_DEMONS
 
+# タイマー
+timer = F_RATE * 10 # 残り時間(10秒)
+
 def init():
     """ 初期化関数 """
     global bg_photo, bg_image
 
+    # 背景
     bg_photo = tkinter.PhotoImage(file="images/bg_jigoku.png")
     bg_image = cvs.create_image(W/2, H/2, image=bg_photo)
 
@@ -182,14 +199,16 @@ def init():
         demon = sprite.DemonSprite(cvs, x, y, 20)
         spd = random.randint(1, 4)
         deg = random.randint(0, 360)
-        demon.move(spd, deg)
+        demon.move(spd, deg) # ランダムで移動
         demons.append(demon)
     
 def update():
     """ 更新関数 """
+    global timer
     
     cvs.delete("hud")
 
+    # マウス座標を描画
     msg = "x:{}, y:{}".format(mx, my)
     cvs.create_text(mx, my, text=msg,
                     fill="white", font=FONT, tag="hud")
@@ -199,12 +218,27 @@ def update():
     cvs.create_text(20, 20, text=msg,
                     fill="white", font=FONT, tag="hud", anchor="nw")
 
+    # タイマーを描画
+    msg = "残り時間: {:.2f}秒".format(timer / F_RATE)
+    cvs.create_text(W-20, 20, text=msg,
+                    fill="white", font=FONT, tag="hud", anchor="ne")
+
     # 鬼軍団
     for demon in demons:
-        overlap_area(demon)
+        overlap_area(demon) # 画面外判定
         demon.update(cvs)
 
-    root.after(F_INTERVAL, update)
+    # タイマー
+    timer = timer - 1
+
+    # 画面更新
+    if 0 < counter and 0 <= timer:
+        root.after(F_INTERVAL, update)
+    else:
+        # ゲーム判定
+        msg = "GAME CLEAR" if counter <= 0 else "GAME OVER"
+        cvs.create_text(W/2, H-40, text=msg,
+                        fill="white", font=FONT, tag="hud")
 
 def overlap_area(obj):
     if obj.x < 0: obj.set_x(W)
@@ -244,8 +278,29 @@ root.mainloop()
 ```
 :::
 
-# 次回は...
+# 終わりに...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「残り時間を表示しよう」です。
-お楽しみに!!
+今回で、"Pythonで2Dゲームをかじる本_tkinter編"は終了です。
+
+今回作ったゲームはとてもシンプルですが、
+
+- スプライト管理
+- マウス入力
+- ゲームループ
+- 終了判定
+
+といった、ゲーム制作の基本要素がすべて含まれています。
+
+ここまで理解できていれば、
+Tkinterを使った簡単なゲームは、もう自力で作れるはずです。
+
+次は、
+- クラスを使ってコードを整理する  
+- 効果音を鳴らす  
+- もう一度遊べる仕組みを作る  
+
+などに挑戦してみるのもおすすめです。
+この連載が、そのきっかけになれば幸いです。
+
+
