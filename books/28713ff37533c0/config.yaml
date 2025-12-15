@@ -1,0 +1,12 @@
+title: "Pythonで2Dゲームをかじる本(Arcade編)"
+summary: "
+Pythonのゲーム専用ライブラリ「Arcade」を使って、2Dゲーム制作をかじってみる連載です。
+スプライト管理やマウス入力など、ゲームの基本要素を、
+Pythonの基礎的なコードだけで少しずつ作っていきます。"
+topics: ["python", "python3", "初心者向け","arcade","ゲーム開発"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - chap01
+  - chap02
