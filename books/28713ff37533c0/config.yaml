@@ -4,7 +4,7 @@ Pythonのゲーム専用ライブラリ「Python Arcade Library」を使って�
 スプライト管理やマウス入力など、ゲームの基本要素を、
 Pythonの基礎的なコードだけで少しずつ作っていきます。
 (執筆時点でのバージョンはv3.3.3です)"
-topics: ["python", "python3", "初心者向け","arcade","ゲーム開発"]
+topics: ["python", "python3", "arcade", "初心者向け", "ゲーム開発"]
 published: false
 price: 0 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう

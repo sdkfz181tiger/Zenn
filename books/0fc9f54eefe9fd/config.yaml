@@ -4,7 +4,7 @@ Python標準ライブラリ「Tkinter」を使って、2Dゲーム制作をか�
 スプライト管理やマウス入力など、ゲームの基本要素を、
 Pythonの基礎的なコードだけで少しずつ作っていきます。
 "
-topics: ["python", "python3", "初心者向け","tkinter","ゲーム開発"]
+topics: ["python", "python3", "tkinter", "初心者向け", "ゲーム開発"]
 published: true
 price: 0 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう
