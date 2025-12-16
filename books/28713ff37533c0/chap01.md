@@ -44,7 +44,7 @@ Pythonのインストール方法、基礎的な文法については、[Python�
 
 今回は、"Python Arcade Library"というライブラリを使って2Dゲームを作ります。
 
-## Arcadeとは
+## Python Arcade Libraryとは
 
 "[Python Arcade Library](https://api.arcade.academy/en/stable/)"は、ゲームに必要な"キャラクター"、"動き"、"当たり判定"などを簡単に扱えるライブラリです。
 難しいことを考えなくても、それっぽいゲームが作れるのが特徴です。
@@ -55,6 +55,7 @@ Pythonのインストール方法、基礎的な文法については、[Python�
 
 "Python Arcade Library"は、サードパッケージモジュールです。
 あらかじめ、"pip"コマンドで、コマンドラインからインストールしておく必要があります。
+("$"マークはコマンドに含めません)
 
 ```command: インストール
 $ pip install arcade
