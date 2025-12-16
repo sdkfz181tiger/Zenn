@@ -18,15 +18,7 @@ title: "第1章: はじめに"
 
 # Pythonって何?
 
-次に、Pythonについて簡単に紹介します。
-
-## どんな言語?
-
-[Python](https://www.python.org/downloads/)は、シンプルで読みやすいことを大切に作られたプログラミング言語です。
-専門用語が少なくコードもスッキリしているので、プログラミング初学者向けの言語として人気があります。
-(Pythonという名前は、イギリスのコメディ番組の名前から取られています!!)
-
-![](/images/0fc9f54eefe9fd/01_02.png)
+次に、Pythonについては、[こちら](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap01)に簡単に紹介しております。よろしければご参照ください。
 
 ## Pythonの基礎について
 
