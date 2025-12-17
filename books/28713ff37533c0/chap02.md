@@ -37,8 +37,6 @@ title: "第2章: ゲーム画面を作ってみよう"
 import arcade
 import math
 import random
-import sprite
-import utility
 
 W, H = 480, 320 # ゲーム画面の幅と高さ
 TITLE = "Hello, Arcade!!" # タイトル
@@ -78,9 +76,11 @@ self.background_color = arcade.color.PAYNE_GREY
 
 RGBカラーでも指定は可能ですが、[arcade.color](https://api.arcade.academy/en/stable/api_docs/arcade.color.html)から好きな色を直接指定することができます。
 
-"on_update()"で更新処理(1秒間に60回実行)を行い、
-"on_draw()"メソッドで画面の描画を行います。
-具体的には画面全体をクリア(背景色で塗りつぶす)しています。
+"on_update()"で更新処理(1秒間に沢山実行)を行います。
+引数の"delta_time"は、フレームとフレームの感覚(秒数)が格納されています。
+
+"on_draw()"メソッドで、画面の描画を行います。
+この時点では、画面全体をクリア(背景色で塗りつぶす)しているだけです。
 
 ```python:main.py(抜粋)
 self.clear() # Clear
@@ -89,12 +89,6 @@ self.clear() # Clear
 ## 3, ゲーム画面を用意する
 
 "main()"関数でゲーム画面を用意します。
-
-最初に、"arcade.Window()"メソッドを実行しゲームウィンドウを作ります。
-引数にはそれぞれ、画面の幅、高さを指定します。
-
-次に、"window.show_view()"メソッドで、先ほどの"GameView"インスタンスを指定し、
-"arcade.run()"でゲームが実行されます。
 
 具体的なコードは次のとおりです。
 
@@ -115,6 +109,12 @@ def main():
     arcade.run()
 ```
 
+最初に、"arcade.Window()"メソッドを実行しゲームウィンドウを作ります。
+引数にはそれぞれ、画面の幅、高さを指定します。
+
+次に、"window.show_view()"メソッドで、先ほどの"GameView"インスタンスを指定し、
+"arcade.run()"でゲームが実行されます。
+
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
@@ -124,8 +124,6 @@ def main():
 import arcade
 import math
 import random
-import sprite
-import utility
 
 W, H = 480, 320 # ゲーム画面の幅と高さ
 TITLE = "Hello, Arcade!!" # タイトル
@@ -173,6 +171,8 @@ if __name__ == "__main__":
     main()
 ```
 :::
+
+実行結果は次のようになります。
 
 ![](/images/28713ff37533c0/02_01.png)
 
