@@ -18,7 +18,7 @@ title: "第1章: はじめに"
 
 # Pythonって何?
 
-次に、Pythonについては、[こちら](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap01)に簡単に紹介しております。よろしければご参照ください。
+次に、Pythonについては、[こちら](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap01)で簡単に紹介しております。よろしければご参照ください。
 
 ## Pythonの基礎について
 
