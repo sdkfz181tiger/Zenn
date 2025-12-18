@@ -6,14 +6,52 @@ title: "第4章: プレイヤーを用意しよう"
 
 今回は、プレイヤーを用意します。
 
-## 1, 背景画像を用意する
+## 1, スプライトモジュールを用意する
 
-作業用フォルダに、"images"フォルダを作ります。
-画像素材はこのフォルダにまとめていきます。
+プレイヤー用のスプライトを定義する、専用のモジュールを用意します。
+ファイル名は"sprite.py"として以下の様に用意してください。
 
-背景画像として、以下の画像をお使いください。(今回の舞台は和風!!)
+フォルダ構成は次の通りです。
 
-![](/images/28713ff37533c0/bg_temple.png)
+```text:フォルダ構成
+作業用フォルダ/
+　├ main.py
+　├ sprite.py <- スプライトモジュール
+　└ images/
+　 　└ bg_temple.png
+```
+
+スプライトモジュールには、
+次のように、"arcade.Sprite"を継承した2つのクラスを定義します。
+
+```python:sprite.py
+import arcade
+import math
+import random
+
+class BaseSprite(arcade.Sprite):
+
+    def __init__(self, filename, x, y):
+        super().__init__(filename)
+        # Position
+        self.center_x = x
+        self.center_y = y
+
+class Player(BaseSprite):
+
+    def __init__(self, filename, x, y):
+        super().__init__(filename, x, y)
+```
+
+## 2, プレイヤー画像を用意する
+
+"images"フォルダに、新たに"ninja"フォルダを作り、以下の画像を格納します。
+(今回の主役は忍者!!)
+
+| 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| ![](/images/28713ff37533c0/ninja/front_01.png) | front_01.png | ![](/images/28713ff37533c0/ninja/front_02.png) | front_02.png | ![](/images/28713ff37533c0/ninja/front_03.png) | front_03.png |
+| ![](/images/28713ff37533c0/ninja/front_04.png) | front_04.png | ![](/images/28713ff37533c0/ninja/front_05.png) | front_05.png |
 
 フォルダ構成は次の通りです。
 
@@ -21,7 +59,13 @@ title: "第4章: プレイヤーを用意しよう"
 作業用フォルダ/
 　├ main.py
 　└ images/
-　 　└ bg_temple.png <- 背景画像
+　 　├ bg_temple.png <- 背景画像
+　　 └ ninja/
+　　　　├ front_01.png
+　　　　├ front_02.png
+　　　　├ front_03.png
+　　　　├ front_04.png
+　　　　└ front_05.png
 ```
 
 # 完成コード
@@ -41,5 +85,5 @@ title: "第4章: プレイヤーを用意しよう"
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「xxx用意しよう」です。
+次回のタイトルは「xxxしよう」です。
 お楽しみに!!
