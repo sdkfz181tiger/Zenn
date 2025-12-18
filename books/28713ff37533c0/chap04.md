@@ -24,10 +24,14 @@ title: "第4章: プレイヤーを用意しよう"
 スプライトモジュールには、
 次のように、"arcade.Sprite"を継承した2つのクラスを定義します。
 
+"BaseSprite"は、すべてのスプライトで共通の処理をまとめるための基底クラスです。
+今回は"位置の初期化"だけを担当します。
+
+"Player"は、今回の主役であるプレイヤーの設計図です。
+"BaseSprite"を継承しておきます。
+
 ```python:sprite.py
 import arcade
-import math
-import random
 
 class BaseSprite(arcade.Sprite):
 
@@ -68,22 +72,136 @@ class Player(BaseSprite):
 　　　　└ front_05.png
 ```
 
+## 3, プレイヤースプライトを作る
+
+"main.py"に、先ほど用意した"Player"クラスからスプライトを作ります。
+前回と同様に、複数のスプライトをまとめて管理、描画するために、"arcade.SpriteList"を使います。
+
+"sprite.Player()"の引数にはそれぞれ、"画像のパス", "x座標", "y座標"です。
+
+```python:main.py(抜粋)
+# プレイヤーリストを用意する
+self.players = arcade.SpriteList()
+
+# プレイヤースプライトを作る
+self.player = sprite.Player("images/ninja/front_01.png",
+                            x=W/2, y=H/2)
+
+self.players.append(self.player) # プレイヤーリストに追加する
+```
+
+## 4, プレイヤースプライトを更新する
+
+"on_update()"メソッドで、プレイヤーリストを一括で更新します。
+現状でプレイヤーは動きませんが、このタイミングで座標を更新しつつスプライトを移動させます。
+
+```python:main.py(抜粋)
+self.players.update() # プレイヤーリストを更新
+```
+
+## 5, プレイヤースプライトを描画する
+
+"on_draw()"メソッドで、プレイヤーリストを一括で描画します。
+(前回の背景スプライトと同じですね)
+
+```python:main.py(抜粋)
+self.players.draw() # プレイヤーリストを描画
+```
+
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
 
 :::details 完成コード
-```python:main.py(完成コード)
+```python:sprite.py(完成コード)
+import arcade
+import math
+import random
 
+class BaseSprite(arcade.Sprite):
+
+    def __init__(self, filename, x, y):
+        super().__init__(filename)
+        # Position
+        self.center_x = x
+        self.center_y = y
+
+class Player(BaseSprite):
+
+    def __init__(self, filename, x, y):
+        super().__init__(filename, x, y)
+```
+
+```python:main.py(完成コード)
+import arcade
+import sprite
+
+W, H = 480, 320 # ゲーム画面の幅と高さ
+TITLE = "Hello, Arcade!!" # タイトル
+
+class GameView(arcade.View):
+
+    def __init__(self):
+        super().__init__()
+
+        # 背景色
+        self.background_color = arcade.color.PAYNE_GREY
+
+        self.backgrounds = arcade.SpriteList()
+        bkg = arcade.Sprite("images/bg_temple.png")
+        bkg.center_x = W/2
+        bkg.center_y = H/2
+        self.backgrounds.append(bkg)
+
+        # プレイヤーリストを用意する
+        self.players = arcade.SpriteList()
+
+        # プレイヤースプライトを作る
+        self.player = sprite.Player("images/ninja/front_01.png",
+                                    x=W/2, y=H/2)
+
+        self.players.append(self.player) # プレイヤーリストに追加する
+
+    def on_key_press(self, key, key_modifiers):
+        pass
+
+    def on_key_release(self, key, key_modifiers):
+        pass
+
+    def on_update(self, delta_time):
+        self.players.update() # プレイヤーリストを更新
+
+    def on_draw(self):
+        self.clear() # Clear
+        self.backgrounds.draw()
+        self.players.draw() # プレイヤーリストを描画
+
+def main():
+    """ メイン処理 """
+
+    # Window
+    window = arcade.Window(W, H, TITLE)
+
+    # GameView
+    game = GameView()
+
+    # Show
+    window.show_view(game)
+
+    # Run
+    arcade.run()
+
+if __name__ == "__main__":
+    main()
 ```
 :::
 
 実行結果は次のようになります。
 
-![](/images/28713ff37533c0/03_01.png)
+![](/images/28713ff37533c0/04_01.png)
 
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「xxxしよう」です。
+次回のタイトルは「プレイヤーを動かしてみよう」です。
 お楽しみに!!
