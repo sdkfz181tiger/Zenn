@@ -62,9 +62,10 @@ class Player(BaseSprite):
 ```text:フォルダ構成
 作業用フォルダ/
 　├ main.py
+　├ sprite.py
 　└ images/
-　 　├ bg_temple.png <- 背景画像
-　　 └ ninja/
+　 　├ bg_temple.png
+　　 └ ninja/ <- 忍者画像を格納するフォルダ
 　　　　├ front_01.png
 　　　　├ front_02.png
 　　　　├ front_03.png
