@@ -24,12 +24,6 @@ title: "第4章: プレイヤーを用意しよう"
 スプライトモジュールには、
 次のように、"arcade.Sprite"を継承した2つのクラスを定義します。
 
-"BaseSprite"は、すべてのスプライトで共通の処理をまとめるための基底クラスです。
-今回は"位置の初期化"だけを担当します。
-
-"Player"は、今回の主役であるプレイヤーの設計図です。
-"BaseSprite"を継承しておきます。
-
 ```python:sprite.py
 import arcade
 
@@ -46,6 +40,12 @@ class Player(BaseSprite):
     def __init__(self, filename, x, y):
         super().__init__(filename, x, y)
 ```
+
+"BaseSprite"は、すべてのスプライトで共通の処理をまとめるための基底クラスです。
+今回は"位置の初期化"だけを担当します。
+
+"Player"は、今回の主役であるプレイヤーの設計図です。
+"BaseSprite"を継承しておきます。
 
 ## 2, プレイヤー画像を用意する
 
@@ -77,7 +77,7 @@ class Player(BaseSprite):
 "main.py"に、先ほど用意した"Player"クラスからスプライトを作ります。
 前回と同様に、複数のスプライトをまとめて管理、描画するために、"arcade.SpriteList"を使います。
 
-"sprite.Player()"の引数にはそれぞれ、"画像のパス", "x座標", "y座標"です。
+"sprite.Player()"の引数にはそれぞれ、"画像のパス", "x座標", "y座標"を指定します。
 
 ```python:main.py(抜粋)
 # プレイヤーリストを用意する
