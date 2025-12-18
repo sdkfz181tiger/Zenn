@@ -115,8 +115,6 @@ self.players.draw() # プレイヤーリストを描画
 :::details 完成コード
 ```python:sprite.py(完成コード)
 import arcade
-import math
-import random
 
 class BaseSprite(arcade.Sprite):
 
