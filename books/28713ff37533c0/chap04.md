@@ -97,7 +97,7 @@ self.players.append(self.player) # プレイヤーリストに追加する
 現状でプレイヤーは動きませんが、このタイミングで座標を更新しつつスプライトを移動させます。
 
 ```python:main.py(抜粋)
-self.players.update() # プレイヤーリストを更新
+self.players.update(delta_time) # プレイヤーリストを更新
 ```
 
 ## 5, プレイヤースプライトを描画する
@@ -169,7 +169,7 @@ class GameView(arcade.View):
         pass
 
     def on_update(self, delta_time):
-        self.players.update() # プレイヤーリストを更新
+        self.players.update(delta_time) # プレイヤーリストを更新
 
     def on_draw(self):
         self.clear() # Clear
