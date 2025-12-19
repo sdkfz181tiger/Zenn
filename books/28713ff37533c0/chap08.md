@@ -57,7 +57,41 @@ title: "第8章: アニメーションさせよう"
 　　　　└ coin_05.png
 ```
 
-## 3, 基底クラスに変数を追加する
+## 3, 忍者の画像を読み込む
+
+次に、"sprite.py"の、"Player"クラスのコンストラクタ部分で、
+忍者の画像を5枚分、"anim"リストへ追加します。
+
+```python:sprite.py(Playerに追加)
+def __init__(self, filename, x, y):
+    super().__init__(filename, x, y)
+
+    # 忍者の画像を5枚読み込む
+    self.anim.append(arcade.load_texture("images/ninja/front_01.png"))
+    self.anim.append(arcade.load_texture("images/ninja/front_02.png"))
+    self.anim.append(arcade.load_texture("images/ninja/front_03.png"))
+    self.anim.append(arcade.load_texture("images/ninja/front_04.png"))
+    self.anim.append(arcade.load_texture("images/ninja/front_05.png"))
+```
+
+## 4, 小判の画像を読み込む
+
+同様に、"sprite.py"の、"Coin"クラスのコンストラクタ部分で、
+小判の画像を5枚分、"anim"リストへ追加します。
+
+```python:sprite.py(Coinに追加)
+def __init__(self, filename, x, y):
+    super().__init__(filename, x, y)
+
+    # 小判の画像を5枚読み込む
+    self.anim.append(arcade.load_texture("images/coin/coin_01.png"))
+    self.anim.append(arcade.load_texture("images/coin/coin_02.png"))
+    self.anim.append(arcade.load_texture("images/coin/coin_03.png"))
+    self.anim.append(arcade.load_texture("images/coin/coin_04.png"))
+    self.anim.append(arcade.load_texture("images/coin/coin_05.png"))
+```
+
+## 5, 基底クラスに変数を追加する
 
 "sprite.py"の基底クラスである"BaseSprite"に、新たに4つの変数を追加します。
 これらの変数は、この後に実装する"update_animation()"メソッドで利用します。
@@ -78,7 +112,7 @@ def __init__(self, filename, x, y):
     self.anim = [] # テクスチャを格納するリスト
 ```
 
-## 4, アニメーション専用のメソッドを追加する
+## 6, アニメーション専用のメソッドを追加する
 
 同じ"BaseSprite"に、新たに"update_animation()"メソッドを追加します。
 
@@ -96,9 +130,9 @@ def update_animation(self):
 
 この部分では、"anim"に格納されたテクスチャ画像を、4フレームおきに順番に切り替える処理を行なっています。
 
-## 5, 更新メソッドで実行する
+## 7, 更新メソッドで実行する
 
-先ほどの、"update_animation()"メソッドを、"update()"メソッドから実行します。
+最後に、"update_animation()"メソッドを、"update()"メソッドから実行します。
 
 ```python:sprite.py(BaseSpriteに追加)
 def update(self, delta_time):
@@ -107,40 +141,6 @@ def update(self, delta_time):
     self.center_y += self.vy * delta_time
     # Animation
     self.update_animation()
-```
-
-## 6, 忍者のテクスチャを読み込む
-
-最後に、"sprite.py"の、"Player"クラスのコンストラクタ部分で、
-忍者の画像を5枚分、"anim"リストへ追加します。
-
-```python:sprite.py(Playerに追加)
-def __init__(self, filename, x, y):
-    super().__init__(filename, x, y)
-
-    # アニメーション用のテクスチャを5枚読み込む
-    self.anim.append(arcade.load_texture("images/ninja/front_01.png"))
-    self.anim.append(arcade.load_texture("images/ninja/front_02.png"))
-    self.anim.append(arcade.load_texture("images/ninja/front_03.png"))
-    self.anim.append(arcade.load_texture("images/ninja/front_04.png"))
-    self.anim.append(arcade.load_texture("images/ninja/front_05.png"))
-```
-
-## 7, 小判のテクスチャを読み込む
-
-同様に、"sprite.py"の、"Coin"クラスのコンストラクタ部分で、
-小判の画像を5枚分、"anim"リストへ追加します。
-
-```python:sprite.py(Coinに追加)
-def __init__(self, filename, x, y):
-    super().__init__(filename, x, y)
-
-    # アニメーション用のテクスチャを5枚読み込む
-    self.anim.append(arcade.load_texture("images/coin/coin_01.png"))
-    self.anim.append(arcade.load_texture("images/coin/coin_02.png"))
-    self.anim.append(arcade.load_texture("images/coin/coin_03.png"))
-    self.anim.append(arcade.load_texture("images/coin/coin_04.png"))
-    self.anim.append(arcade.load_texture("images/coin/coin_05.png"))
 ```
 
 # 完成コード
@@ -201,7 +201,7 @@ class Player(BaseSprite):
     def __init__(self, filename, x, y):
         super().__init__(filename, x, y)
 
-        # アニメーション用のテクスチャを5枚読み込む
+        # 忍者の画像を5枚読み込む
         self.anim.append(arcade.load_texture("images/ninja/front_01.png"))
         self.anim.append(arcade.load_texture("images/ninja/front_02.png"))
         self.anim.append(arcade.load_texture("images/ninja/front_03.png"))
@@ -213,7 +213,7 @@ class Coin(BaseSprite):
     def __init__(self, filename, x, y):
         super().__init__(filename, x, y)
 
-        # アニメーション用のテクスチャを5枚読み込む
+        # 小判の画像を5枚読み込む
         self.anim.append(arcade.load_texture("images/coin/coin_01.png"))
         self.anim.append(arcade.load_texture("images/coin/coin_02.png"))
         self.anim.append(arcade.load_texture("images/coin/coin_03.png"))
