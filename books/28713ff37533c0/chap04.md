@@ -52,10 +52,9 @@ class Player(BaseSprite):
 "images"フォルダに、新たに"ninja"フォルダを作り、以下の画像を格納します。
 (今回の主役は忍者!!)
 
-| 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
-| ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/front_01.png) | front_01.png | ![](/images/28713ff37533c0/ninja/front_02.png) | front_02.png | ![](/images/28713ff37533c0/ninja/front_03.png) | front_03.png |
-| ![](/images/28713ff37533c0/ninja/front_04.png) | front_04.png | ![](/images/28713ff37533c0/ninja/front_05.png) | front_05.png |
+| 画像 | ファイル名 |
+| ---- | ---- |
+| ![](/images/28713ff37533c0/ninja/front_01.png) | front_01.png |
 
 フォルダ構成は次の通りです。
 
@@ -66,11 +65,7 @@ class Player(BaseSprite):
 　└ images/
 　 　├ bg_temple.png
 　　 └ ninja/ <- 忍者画像を格納するフォルダ
-　　　　├ front_01.png
-　　　　├ front_02.png
-　　　　├ front_03.png
-　　　　├ front_04.png
-　　　　└ front_05.png
+　　　　└ front_01.png
 ```
 
 ## 3, プレイヤースプライトを作る
