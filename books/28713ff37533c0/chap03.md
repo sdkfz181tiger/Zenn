@@ -70,8 +70,8 @@ self.backgrounds.draw() # 背景リストを描画
 ```python:main.py(完成コード)
 import arcade
 
-W, H = 480, 320 # ゲーム画面の幅と高さ
-TITLE = "Hello, Arcade!!" # タイトル
+W, H = 480, 320
+TITLE = "Hello, Arcade!!"
 
 class GameView(arcade.View):
 
@@ -106,17 +106,9 @@ class GameView(arcade.View):
 
 def main():
     """ メイン処理 """
-
-    # Window
     window = arcade.Window(W, H, TITLE)
-
-    # GameView
     game = GameView()
-
-    # Show
     window.show_view(game)
-
-    # Run
     arcade.run()
 
 if __name__ == "__main__":
