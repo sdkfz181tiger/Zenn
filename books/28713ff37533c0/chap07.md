@@ -72,8 +72,9 @@ for i in range(10):
 
 ここでは、小判を10個(10回ループ)用意しています。
 配置する座標として、"random.random()"メソッドを利用します。
-(0.0以上 ~ 1.0未満)の値を使い、W(ゲーム画面幅)と掛け算しx座標を、
-次いで、H(ゲーム画面高さ)とを掛け算し、y座標をそれぞれ決めています。
+
+"random.random()"は、"0.0以上〜1.0未満"の小数を返すため、
+画面サイズと掛け算することで、画面内のランダムな位置を作ることができます。
 
 ## 5, 小判スプライトを更新する
 
@@ -90,7 +91,7 @@ self.coins.update(delta_time) # 小判リストを更新
 (要領がわかってきましたね!?)
 
 ```python:main.py(抜粋)
-self.cobans.draw() # 小判リストを描画
+self.coins.draw() # 小判リストを描画
 ```
 
 # 完成コード
@@ -115,7 +116,6 @@ class BaseSprite(arcade.Sprite):
 
     def update(self, delta_time):
         """ Update """
-        super().update(delta_time)
         self.center_x += self.vx * delta_time
         self.center_y += self.vy * delta_time
 
@@ -218,5 +218,5 @@ if __name__ == "__main__":
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「xxxしよう」です。
+次回のタイトルは「小判をゲットしよう」です。
 お楽しみに!!
