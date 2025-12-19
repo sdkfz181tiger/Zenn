@@ -1,10 +1,10 @@
 ---
-title: "第7章: 小判を配置しよう"
+title: "第7章: 小判をゲットしよう"
 ---
 
-# 小判を配置しよう
+# 小判をゲットしよう
 
-今回は、小判を大量に配置します。
+今回は、小判を大量に配置し、衝突判定で削除します。
 
 ## 1, 小判画像を用意する
 
@@ -93,6 +93,25 @@ self.coins.update(delta_time) # 小判リストを更新
 ```python:main.py(抜粋)
 self.coins.draw() # 小判リストを描画
 ```
+
+## 7, プレイヤーと小判リストの衝突判定
+
+最後に、"GameView"の"update()"メソッドで、プレイヤーと小判リストとの衝突判定を実装します。
+
+```python:main.py(抜粋)
+# プレイヤー x コインリストの衝突判定
+hit_coins = arcade.check_for_collision_with_list(self.player,
+                                                 self.coins)
+# 衝突したコインをコインリストから削除
+for coin in hit_coins:
+    hit_coins.remove_from_sprite_lists()
+```
+
+"check_for_collision_with_list()"メソッドは、
+第一引数のスプライトと、"SpriteList"とを衝突判定した結果を返すメソッドです。
+
+衝突判定後、そのリスト"hit_coins"に対し、
+"remove_from_sprite_lists()"メソッドで小判スプライトを削除します。
 
 # 完成コード
 
@@ -193,6 +212,13 @@ class GameView(arcade.View):
         self.players.update(delta_time)
         self.coins.update(delta_time) # 小判リストを更新
 
+        # プレイヤー x コインリストの衝突判定
+        hit_coins = arcade.check_for_collision_with_list(self.player,
+                                                         self.coins)
+        # 衝突したコインをコインリストから削除
+        for coin in hit_coins:
+            coin.remove_from_sprite_lists()
+
     def on_draw(self):
         self.clear() # Clear
         self.backgrounds.draw()
@@ -218,5 +244,5 @@ if __name__ == "__main__":
 # 次回は...
 
 ここまで読んでいただき有り難うございました。
-次回のタイトルは「小判をゲットしよう」です。
+次回のタイトルは「アニメーションさせてみよう」です。
 お楽しみに!!
