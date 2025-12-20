@@ -43,6 +43,9 @@ Pythonのインストール方法、基礎的な文法については、[Python�
 
 ![](/images/28713ff37533c0/01_02.png)
 
+[API References](https://api.arcade.academy/en/stable/api_docs/arcade.html)では、本ライブラリに関するすべての機能を確認することができます。
+[Examples](https://api.arcade.academy/en/stable/example_code/index.html)では、本ライブラリを使ったサンプルコードを確認することができます。
+
 ## Arcadeライブラリのインストールについて
 
 "Python Arcade Library"は、サードパッケージモジュールです。
