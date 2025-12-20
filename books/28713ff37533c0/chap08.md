@@ -109,7 +109,7 @@ def __init__(self, filename, x, y):
     self.anim_counter = 0 # カウンタ
     self.anim_interval = 4 # 4フレームおきにカウント
     self.anim_index = 0 # フレーム番号
-    self.anim = [] # テクスチャを格納するリスト
+    self.anim = [] # 画像を格納するリスト
 ```
 
 ## 6, アニメーション専用のメソッドを追加する
@@ -123,12 +123,14 @@ def update_animation(self):
     self.anim_counter += 1 # カウンタに+1
     if(self.anim_counter < self.anim_interval): return # 4フレームおきにカウント
     self.anim_counter = 0 # カウンタをリセット
-    self.anim_index += 1 # テクスチャ番号を次へ
+    self.anim_index += 1 # 画像番号を次へ
     if len(self.anim) <= self.anim_index: self.anim_index = 0 # 最後であれば0に
-    self.texture = self.anim[self.anim_index] # テクスチャをセット
+    self.texture = self.anim[self.anim_index] # 画像をセット
 ```
 
-この部分では、"anim"に格納されたテクスチャ画像を、4フレームおきに順番に切り替える処理を行なっています。
+この部分では、"anim"に格納された画像を、4フレームおきに順番に切り替える処理を行なっています。
+この値を小さくすれば、画像の切り替えが早くなり、大きくすると切り替えが遅くなります。
+(是非試してみてくださいね)
 
 ## 7, 更新メソッドで実行する
 
@@ -166,7 +168,7 @@ class BaseSprite(arcade.Sprite):
         self.anim_counter = 0 # カウンタ
         self.anim_interval = 4 # 4フレームおきにカウント
         self.anim_index = 0 # フレーム番号
-        self.anim = [] # テクスチャを格納するリスト
+        self.anim = [] # 画像を格納するリスト
 
     def update(self, delta_time):
         """ Update """
@@ -192,9 +194,9 @@ class BaseSprite(arcade.Sprite):
         self.anim_counter += 1 # カウンタに+1
         if(self.anim_counter < self.anim_interval): return # 4フレームおきにカウント
         self.anim_counter = 0 # カウンタをリセット
-        self.anim_index += 1 # テクスチャ番号を次へ
+        self.anim_index += 1 # 画像番号を次へ
         if len(self.anim) <= self.anim_index: self.anim_index = 0 # 最後であれば0に
-        self.texture = self.anim[self.anim_index] # テクスチャをセット
+        self.texture = self.anim[self.anim_index] # 画像をセット
 
 class Player(BaseSprite):
 
