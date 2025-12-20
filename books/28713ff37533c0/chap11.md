@@ -51,7 +51,17 @@ title: "第11章(番外編): アニメーションを切り替えよう"
 　　　　├ back_02.png
 　　　　├ back_03.png
 　　　　├ back_04.png
-　　　　└ back_05.png
+　　　　├ back_05.png
+　　　　├ left_01.png
+　　　　├ left_02.png
+　　　　├ left_03.png
+　　　　├ left_04.png
+　　　　├ left_05.png
+　　　　├ right_01.png
+　　　　├ right_02.png
+　　　　├ right_03.png
+　　　　├ right_04.png
+　　　　└ right_05.png
 ```
 
 # 完成コード
