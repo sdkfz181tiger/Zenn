@@ -19,8 +19,8 @@ self.score = 0
 # テキストオブジェクト
 self.score_text = arcade.Text(
     "SCORE: {}".format(self.score), 
-    W/2, H-20, arcade.color.BLACK,
-    16, anchor_x="center", anchor_y="top")
+    W/2, H-20, arcade.color.BLACK, 16,
+    anchor_x="center", anchor_y="top")
 ```
 
 ## 2, スコアを加算してテキストを変更する
@@ -46,8 +46,7 @@ def on_update(self, delta_time):
 
 ## 3, テキストを描画する
 
-最後に、"main.py"にある、"GameView"クラスの"on_draw()"メソッドでテキストオブジェクトを描画します。
-(意外に忘れがち...w)
+最後に、"main.py"にある、"GameView"クラスの"on_draw()"メソッドでテキストオブジェクトを描画します。(意外に忘れがち...w)
 
 ```python:python:main.py(抜粋)
 def on_draw(self):
@@ -177,8 +176,8 @@ class GameView(arcade.View):
         # テキストオブジェクト
         self.score_text = arcade.Text(
             "SCORE: {}".format(self.score), 
-            W/2, H-20, arcade.color.BLACK,
-            16, anchor_x="center", anchor_y="top")
+            W/2, H-20, arcade.color.BLACK, 16,
+            anchor_x="center", anchor_y="top")
 
     def on_key_press(self, key, key_modifiers):
         # Move(WASD)
@@ -225,7 +224,7 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/28713ff37533c0/05_01.gif)
+![](/images/28713ff37533c0/09_01.gif)
 
 # 次回は...
 
