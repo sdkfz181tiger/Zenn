@@ -7,10 +7,58 @@ title: "第11章(番外編): アニメーションを切り替えよう"
 今回は、サンプルコードの紹介です。
 プレイヤーの動作に応じてアニメーションを切り替えます。
 
+## 忍者の画像を追加する
+
+"images"フォルダの、"ninja"フォルダに以下の画像を追加します。
+
+### 1, 後ろ姿
+
+| 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| ![](/images/28713ff37533c0/ninja/back_01.png) | back_01.png | ![](/images/28713ff37533c0/ninja/back_02.png) | back_02.png | ![](/images/28713ff37533c0/ninja/back_03.png) | back_03.png |
+| ![](/images/28713ff37533c0/ninja/back_04.png) | back_04.png | ![](/images/28713ff37533c0/ninja/back_05.png) | back_05.png |
+
+### 2, 左に走る
+
+| 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| ![](/images/28713ff37533c0/ninja/left_01.png) | left_01.png | ![](/images/28713ff37533c0/ninja/left_02.png) | left_02.png | ![](/images/28713ff37533c0/ninja/left_03.png) | left_03.png |
+| ![](/images/28713ff37533c0/ninja/left_04.png) | left_04.png | ![](/images/28713ff37533c0/ninja/left_05.png) | left_05.png |
+
+### 3, 右に走る
+
+| 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| ![](/images/28713ff37533c0/ninja/right_01.png) | right_01.png | ![](/images/28713ff37533c0/ninja/right_02.png) | right_02.png | ![](/images/28713ff37533c0/ninja/right_03.png) | right_03.png |
+| ![](/images/28713ff37533c0/ninja/right_04.png) | right_04.png | ![](/images/28713ff37533c0/ninja/right_05.png) | right_05.png |
+
+フォルダ構成は次の通りです。
+
+```text:フォルダ構成
+作業用フォルダ/
+　├ main.py
+　├ sprite.py
+　└ images/
+　 　├ bg_temple.png
+　 　├ coins/
+　　 └ ninja/ <- 忍者画像を格納するフォルダ
+　　　　├ front_01.png
+　　　　├ front_02.png
+　　　　├ front_03.png
+　　　　├ front_04.png
+　　　　├ front_05.png
+　　　　├ back_01.png
+　　　　├ back_02.png
+　　　　├ back_03.png
+　　　　├ back_04.png
+　　　　└ back_05.png
+```
+
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
 
+:::details 完成コード
 ```python:sprite.py(完成コード)
 import arcade
 import math
@@ -202,6 +250,7 @@ def main():
 if __name__ == "__main__":
     main()
 ```
+:::
 
 実行結果は次のようになります。
 
