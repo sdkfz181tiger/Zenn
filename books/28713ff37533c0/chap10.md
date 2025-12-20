@@ -12,7 +12,7 @@ title: "第10章: サウンドを再生しよう"
 
 | 音源ファイル | ファイル名 |
 | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/front_01.png) | se_coin.ogg |
+| [se_coin.oggをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/28713ff37533c0/se_coin.ogg) | se_coin.ogg |
 
 音源ファイルは、[SEADENDEN 8bit Free BGM](https://seadenden-8bit.com/)からお借りしました。
 (筆者激推し!!)
