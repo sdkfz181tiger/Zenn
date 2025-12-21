@@ -1,266 +1,174 @@
 ---
-title: "第11章(番外編): アニメーションを切り替えよう"
+title: "第11章(番外編): 画面を切り替えよう"
 ---
 
-# アニメーションを切り替えよう
+# 画面を切り替えよう
 
-今回は、サンプルコードの紹介です。
-プレイヤーの移動方向に応じて、アニメーションを切り替えます。
+今回は、番外編として、画面の切り替えを行う例を紹介します。
+"タイトル画面" → "ゲーム画面" → "結果画面" といった、
+ゲームでよくある画面遷移を実装します。
 
-## 忍者の画像を追加する
+## 1, ファイルを整理する
 
-"images"フォルダの、"ninja"フォルダに以下の画像を追加します。
+開発を続けていくに連れて、ソースコードを書くファイルも増えていくため、
+管理が大変になっていきます。
 
-### 1, 後ろ姿
+そこで、ソースコードを格納する専用の"src"フォルダを作り、
+画面単位で3つのモジュールに分割します。
 
-| 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
-| ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/back_01.png) | back_01.png | ![](/images/28713ff37533c0/ninja/back_02.png) | back_02.png | ![](/images/28713ff37533c0/ninja/back_03.png) | back_03.png |
-| ![](/images/28713ff37533c0/ninja/back_04.png) | back_04.png | ![](/images/28713ff37533c0/ninja/back_05.png) | back_05.png |
+| ファイル名 | 役割 | 格納場所 |
+| ---- | ---- | ---- |
+| title.py | タイトル画面 | src/title.py |
+| game.py | ゲーム画面 | src/game.py |
+| result.py | 結果画面 | src/result.py |
 
-### 2, 左に走る
-
-| 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
-| ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/left_01.png) | left_01.png | ![](/images/28713ff37533c0/ninja/left_02.png) | left_02.png | ![](/images/28713ff37533c0/ninja/left_03.png) | left_03.png |
-| ![](/images/28713ff37533c0/ninja/left_04.png) | left_04.png | ![](/images/28713ff37533c0/ninja/left_05.png) | left_05.png |
-
-### 3, 右に走る
-
-| 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
-| ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/right_01.png) | right_01.png | ![](/images/28713ff37533c0/ninja/right_02.png) | right_02.png | ![](/images/28713ff37533c0/ninja/right_03.png) | right_03.png |
-| ![](/images/28713ff37533c0/ninja/right_04.png) | right_04.png | ![](/images/28713ff37533c0/ninja/right_05.png) | right_05.png |
-
-フォルダ構成は次の通りです。
+フォルダ構成は次のとおりです。
 
 ```text:フォルダ構成
 作業用フォルダ/
 　├ main.py
-　├ sprite.py
-　└ images/
-　 　├ bg_temple.png
-　 　├ coin/
-　　 └ ninja/ <- 忍者画像を格納するフォルダ
-　　　　├ front_01.png
-　　　　├ front_02.png
-　　　　├ front_03.png
-　　　　├ front_04.png
-　　　　├ front_05.png
-　　　　├ back_01.png
-　　　　├ back_02.png
-　　　　├ back_03.png
-　　　　├ back_04.png
-　　　　├ back_05.png
-　　　　├ left_01.png
-　　　　├ left_02.png
-　　　　├ left_03.png
-　　　　├ left_04.png
-　　　　├ left_05.png
-　　　　├ right_01.png
-　　　　├ right_02.png
-　　　　├ right_03.png
-　　　　├ right_04.png
-　　　　└ right_05.png
+　├ images/
+　└ src/ <- ソースコードを格納するフォルダ
+　 　├ title.py
+　 　├ game.py
+　 　└ result.py
+```
+
+## 2, 画面を切り替える
+
+画面を切り替えるコードは、これまでの事例と同じです。
+
+以下と同様の処理を、画面切り替えの必要なタイミングで実装します。
+"arcade.View"を生成し、"window.show_view()"メソッドに渡すだけで切り替えられます。
+
+```python:python:main.py(完成コード)
+view = title.TitleView(window) # TitleView
+window.show_view(view)
 ```
 
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
+SPACEキーを押す事で、"タイトル画面" -> "ゲーム画面" -> "結果画面"に切り替わっていきます。
 コードをそのままコピーしても動作します。
 
 :::details 完成コード
-```python:sprite.py(完成コード)
-import arcade
-import math
-
-class BaseSprite(arcade.Sprite):
-
-    def __init__(self, filename, x, y):
-        super().__init__(filename)
-        # Position
-        self.center_x = x
-        self.center_y = y
-        # Velocity
-        self.vx = 0
-        self.vy = 0
-        # Animation
-        self.anim_counter = 0
-        self.anim_interval = 4
-        self.anim_index = 0
-        self.anim_key = "" # 選択中のアニメ
-        self.anim_pause = True # 停止中かどうか
-        self.anims = {} # アニメーションリスト(ディクショナリ)
-
-    def update(self, delta_time):
-        """ Update """
-        self.center_x += self.vx * delta_time
-        self.center_y += self.vy * delta_time
-        # Animation
-        self.update_animation() # アニメーション更新
-
-    def move(self, spd, deg, tag=""):
-        """ Move Sprite """
-        rad = deg * math.pi / 180
-        self.vx = spd * math.cos(rad)
-        self.vy = spd * math.sin(rad)
-        if tag: self.change_animation(tag) # アニメーション変更
-
-    def stop(self):
-        """ Stop Sprite """
-        self.vx = 0
-        self.vy = 0
-        self.stop_animation() # アニメーション停止
-
-    def update_animation(self):
-        """ Update Animation """
-        if not self.anim_key in self.anims: return
-        if self.anim_pause: return
-        self.anim_counter += 1
-        if(self.anim_counter < self.anim_interval): return
-        self.anim_counter = 0
-        self.anim_index += 1
-        anim = self.anims[self.anim_key]
-        if len(anim) <= self.anim_index: self.anim_index = 0
-        self.texture = anim[self.anim_index]
-
-    def load_animation(self, key, filename, num):
-        """ Load Animation """
-        anim = []
-        for i in range(num):
-            path = filename.format(i+1)
-            anim.append(arcade.load_texture(path))
-        self.anims[key] = anim # アニメーションリストに追加
-
-    def change_animation(self, key):
-        """ Change Animation """
-        if not key in self.anims: return
-        self.anim_counter = 0
-        self.anim_index = 0
-        self.anim_key = key
-        self.texture = self.anims[key][0]
-        self.start_animation() # アニメーション開始
-
-    def start_animation(self):
-        """ Start Animation """
-        self.anim_pause = False # アニメーション開始
-
-    def stop_animation(self):
-        """ Stop Animation """
-        self.anim_pause = True # アニメーション停止
-
-class Player(BaseSprite):
-
-    def __init__(self, filename, x, y):
-        super().__init__(filename, x, y)
-
-        # アニメーションを登録
-        self.load_animation("front", "images/ninja/front_{:02d}.png", 5)
-        self.load_animation("left", "images/ninja/left_{:02d}.png", 5)
-        self.load_animation("right", "images/ninja/right_{:02d}.png", 5)
-        self.load_animation("back", "images/ninja/back_{:02d}.png", 5)
-        self.change_animation("front")
-
-class Coin(BaseSprite):
-
-    def __init__(self, filename, x, y):
-        super().__init__(filename, x, y)
-
-        # アニメーションを登録
-        self.load_animation("coin", "images/coin/coin_{:02d}.png", 5)
-        self.change_animation("coin")
-```
-
 ```python:main.py(完成コード)
 import arcade
-import sprite
 import random
+import src.title as title
 
+def main():
+    """ メイン処理 """
+    window = arcade.Window(480, 320, "Hello, Arcade!!")
+    view = title.TitleView(window) # TitleView
+    window.show_view(view)
+    arcade.run()
+
+if __name__ == "__main__":
+    main()
+```
+
+```python:title.py(完成コード)
+import arcade
+import random
+import src.game as game
+
+# Title
+class TitleView(arcade.View):
+
+    def __init__(self, window):
+        super().__init__()
+        self.window = window
+        self.background_color = arcade.color.PRUNE
+
+        # Info
+        self.msg_info = arcade.Text(
+            "TITLE: SPACE TO NEXT", 
+            window.width/2, window.height-20, 
+            arcade.color.WHITE, 12,
+            anchor_x="center", anchor_y="top")
+
+    def on_key_press(self, key, key_modifiers):
+        # Space to Game
+        if key == arcade.key.SPACE:
+            view = game.GameView(self.window) # GameView
+            self.window.show_view(view)
+
+    def on_update(self, delta_time):
+        pass
+
+    def on_draw(self):
+        self.clear() # Clear
+        self.msg_info.draw()
+```
+
+```python:game.py(完成コード)
+import arcade
+import random
+import src.result as result
+
+# Game
 class GameView(arcade.View):
 
     def __init__(self, window):
         super().__init__()
         self.window = window
-        self.w = self.window.width
-        self.h = self.window.height
+        self.background_color = arcade.color.DARK_SPRING_GREEN
 
-        # 背景色
-        self.background_color = arcade.color.PAYNE_GREY
-
-        # 背景スプライト
-        self.backgrounds = arcade.SpriteList()
-        bkg = arcade.Sprite("images/bg_temple.png")
-        bkg.center_x = self.w / 2
-        bkg.center_y = self.h / 2
-        self.backgrounds.append(bkg)
-
-        # プレイヤースプライト
-        self.players = arcade.SpriteList()
-        self.player = sprite.Player("images/ninja/front_01.png",
-                                    x=self.w/2, y=self.h/2)
-        self.players.append(self.player)
-
-        # 小判スプライト
-        self.coins = arcade.SpriteList()
-        for i in range(10):
-            x = random.random() * self.w
-            y = random.random() * self.h
-            coin = sprite.Coin("images/coin/coin_01.png",
-                               x=x, y=y)
-            self.coins.append(coin)
-
-        # スコア
-        self.score = 0
-        self.score_text = arcade.Text(
-            "SCORE: {}".format(self.score), 
-            self.w/2, self.h-20,
-            arcade.color.BLACK, 16,
+        # Info
+        self.msg_info = arcade.Text(
+            "GAME: SPACE TO NEXT", 
+            window.width/2, window.height-20, 
+            arcade.color.WHITE, 12,
             anchor_x="center", anchor_y="top")
 
-        # サウンドオブジェクト
-        self.se_coin = arcade.Sound("sounds/se_coin.ogg")
-
     def on_key_press(self, key, key_modifiers):
-        # Move(WASD)
-        if key == arcade.key.W: self.player.move(90, 90, "back") # 上へ
-        if key == arcade.key.A: self.player.move(90, 180, "left") # 左へ
-        if key == arcade.key.S: self.player.move(90, 270, "front") # 下へ
-        if key == arcade.key.D: self.player.move(90, 0, "right") # 右へ
-
-    def on_key_release(self, key, key_modifiers):
-        self.player.stop()
+        # Space to Result
+        if key == arcade.key.SPACE: 
+            view = result.ResultView(self.window) # ResultView
+            self.window.show_view(view)
 
     def on_update(self, delta_time):
-        self.players.update(delta_time)
-        self.coins.update(delta_time)
-
-        # プレイヤー x コインリスト
-        hit_coins = arcade.check_for_collision_with_list(self.player,
-                                                         self.coins)
-        for coin in hit_coins:
-            coin.remove_from_sprite_lists()
-            # スコア
-            self.score += 1
-            self.score_text.text = "SCORE: {}".format(self.score)
-            # サウンドを再生
-            arcade.play_sound(self.se_coin)
+        pass
 
     def on_draw(self):
         self.clear() # Clear
-        self.backgrounds.draw()
-        self.players.draw()
-        self.coins.draw()
-        self.score_text.draw()
+        self.msg_info.draw()
+```
 
-def main():
-    """ メイン処理 """
-    window = arcade.Window(480, 320, "Hello, Arcade!!")
-    game = GameView(window)
-    window.show_view(game)
-    arcade.run()
+```python:result.py(完成コード)
+import arcade
+import random
+import src.title as title
 
-if __name__ == "__main__":
-    main()
+# Result
+class ResultView(arcade.View):
+
+    def __init__(self, window):
+        super().__init__()
+        self.window = window
+        self.background_color = arcade.color.CERULEAN
+
+        # Info
+        self.msg_info = arcade.Text(
+            "RESULT: SPACE TO NEXT", 
+            window.width/2, window.height-20,
+            arcade.color.WHITE, 12,
+            anchor_x="center", anchor_y="top")
+
+    def on_key_press(self, key, key_modifiers):
+        # Space to Title
+        if key == arcade.key.SPACE:
+            view = title.TitleView(self.window) # TitleView
+            self.window.show_view(view)
+
+    def on_update(self, delta_time):
+        pass
+
+    def on_draw(self):
+        self.clear() # Clear
+        self.msg_info.draw()
 ```
 :::
 
