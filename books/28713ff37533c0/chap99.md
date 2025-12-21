@@ -10,7 +10,7 @@ title: "第xx章: xxx"
 
 xxx
 
-```python:python:main.py(抜粋)
+```python:main.py(抜粋)
 
 ```
 
