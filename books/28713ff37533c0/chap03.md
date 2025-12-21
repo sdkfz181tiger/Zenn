@@ -5,6 +5,7 @@ title: "第3章: 背景を表示しよう"
 # 背景を表示しよう
 
 今回は、背景を表示します。
+前回では灰色だった画面が、画像付きのゲーム画面になります。
 
 ## 1, 背景画像を用意する
 
@@ -26,8 +27,9 @@ title: "第3章: 背景を表示しよう"
 
 ## 2, SpriteListとSprite
 
+スプライトとは、"画像や位置情報を持ったオブジェクト"のことです。
 ゲーム画面に登場するキャラクターや背景などは、全て"arcade.Sprite"クラスで作ります。
-複数のスプライトをまとめて管理、描画するために、"arcade.SpriteList"を使います。
+複数のスプライトをまとめて管理するために、"arcade.SpriteList"を使います。
 
 ```python:main.py(抜粋)
 # 背景リストを用意する
@@ -41,14 +43,14 @@ self.backgrounds = arcade.SpriteList()
 ```python:main.py(抜粋)
 # 背景スプライトを作る
 bkg = arcade.Sprite("images/bg_temple.png")
-bkg.center_x = self.w / 2
-bkg.center_y = self.h / 2
+bkg.center_x = self.w / 2 # 画面の左右中央
+bkg.center_y = self.h / 2 # 画面の上下中央
 ```
 
 最後に、先ほどのリストに背景スプライトを追加します。
 
 ```python:main.py(抜粋)
-self.backgrounds.append(bkg)# 背景リストに追加する
+self.backgrounds.append(bkg) # 背景リストに追加する
 ```
 
 ## 3, SpriteListを描画する
@@ -88,10 +90,10 @@ class GameView(arcade.View):
 
         # 背景スプライトを作る
         bkg = arcade.Sprite("images/bg_temple.png")
-        bkg.center_x = self.w / 2
-        bkg.center_y = self.h / 2
+        bkg.center_x = self.w / 2 # 画面の左右中央
+        bkg.center_y = self.h / 2 # 画面の上下中央
 
-        self.backgrounds.append(bkg)# 背景リストに追加する
+        self.backgrounds.append(bkg) # 背景リストに追加する
 
     def on_key_press(self, key, key_modifiers):
         pass
