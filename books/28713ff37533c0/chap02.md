@@ -30,6 +30,9 @@ title: "第2章: ゲーム画面を作ってみよう"
 | \_\_init\_\_ | 初期化 | スコアやキャラクターの初期化等 |
 | on_key_press | キーボードを押した時 | プレイヤーの移動 |
 | on_key_release | キーボードを離した時 | プレイヤーの停止 |
+| on_mouse_press | マウスを押した時 | - |
+| on_mouse_release | マウスを離した時 | - |
+| on_mouse_motion | マウスを動かした時 | - |
 | on_update | 更新処理 | キャラクター等の座標移動 |
 | on_draw | 描画処理 | キャラクター等の描画 |
 
@@ -37,9 +40,6 @@ title: "第2章: ゲーム画面を作ってみよう"
 import arcade
 import math
 import random
-
-W, H = 480, 320 # ゲーム画面の幅と高さ
-TITLE = "Hello, Arcade!!" # タイトル
 
 class GameView(arcade.View):
 
@@ -55,6 +55,18 @@ class GameView(arcade.View):
 
     def on_key_release(self, key, key_modifiers):
         """ キーを離した時 """
+        pass
+
+    def on_mouse_press(self, x, y, button, key_modifiers):
+        """ マウスを押した時 """
+        pass
+
+    def on_mouse_release(self, x, y, button, key_modifiers):
+        """ マウスを離した時 """
+        pass
+
+    def on_mouse_motion(self, x, y, delta_x, delta_y):
+        """ マウスを動かした時 """
         pass
 
     def on_update(self, delta_time):
@@ -95,17 +107,9 @@ self.clear() # Clear
 ```python:main.py(抜粋)
 def main():
     """ メイン処理 """
-
-    # Window
-    window = arcade.Window(W, H, TITLE)
-
-    # GameView
-    game = GameView()
-
-    # Show
+    window = arcade.Window(480, 320, "Hello, Arcade!!")
+    game = GameView(window)
     window.show_view(game)
-
-    # Run
     arcade.run()
 ```
 
@@ -125,14 +129,14 @@ import arcade
 import math
 import random
 
-W, H = 480, 320 # ゲーム画面の幅と高さ
-TITLE = "Hello, Arcade!!" # タイトル
-
 class GameView(arcade.View):
 
-    def __init__(self):
-        """ 初期化 """
+    def __init__(self, window):
         super().__init__()
+        self.window = window
+        self.w = self.window.width # ゲーム画面の幅
+        self.h = self.window.height # ゲーム画面の高さ
+
         # 背景色
         self.background_color = arcade.color.PAYNE_GREY
 
@@ -154,17 +158,9 @@ class GameView(arcade.View):
 
 def main():
     """ メイン処理 """
-
-    # Window
-    window = arcade.Window(W, H, TITLE)
-
-    # GameView
-    game = GameView()
-
-    # Show
+    window = arcade.Window(480, 320, "Hello, Arcade!!")
+    game = GameView(window)
     window.show_view(game)
-
-    # Run
     arcade.run()
 
 if __name__ == "__main__":
@@ -181,3 +177,4 @@ if __name__ == "__main__":
 ここまで読んでいただき有り難うございました。
 次回のタイトルは「背景を表示しよう」です。
 お楽しみに!!
+(よろしければ👍頂けると大変励みになります!!)

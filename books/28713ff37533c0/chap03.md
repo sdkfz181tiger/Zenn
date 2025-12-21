@@ -41,8 +41,8 @@ self.backgrounds = arcade.SpriteList()
 ```python:main.py(抜粋)
 # 背景スプライトを作る
 bkg = arcade.Sprite("images/bg_temple.png")
-bkg.center_x = W/2
-bkg.center_y = H/2
+bkg.center_x = self.w / 2
+bkg.center_y = self.h / 2
 ```
 
 最後に、先ほどのリストに背景スプライトを追加します。
@@ -69,14 +69,16 @@ self.backgrounds.draw() # 背景リストを描画
 :::details 完成コード
 ```python:main.py(完成コード)
 import arcade
-
-W, H = 480, 320
-TITLE = "Hello, Arcade!!"
+import math
+import random
 
 class GameView(arcade.View):
 
-    def __init__(self):
+    def __init__(self, window):
         super().__init__()
+        self.window = window
+        self.w = self.window.width # ゲーム画面の幅
+        self.h = self.window.height # ゲーム画面の高さ
 
         # 背景色
         self.background_color = arcade.color.PAYNE_GREY
@@ -86,8 +88,8 @@ class GameView(arcade.View):
 
         # 背景スプライトを作る
         bkg = arcade.Sprite("images/bg_temple.png")
-        bkg.center_x = W/2
-        bkg.center_y = H/2
+        bkg.center_x = self.w / 2
+        bkg.center_y = self.h / 2
 
         self.backgrounds.append(bkg)# 背景リストに追加する
 
@@ -106,8 +108,8 @@ class GameView(arcade.View):
 
 def main():
     """ メイン処理 """
-    window = arcade.Window(W, H, TITLE)
-    game = GameView()
+    window = arcade.Window(480, 320, "Hello, Arcade!!")
+    game = GameView(window)
     window.show_view(game)
     arcade.run()
 
@@ -125,3 +127,4 @@ if __name__ == "__main__":
 ここまで読んでいただき有り難うございました。
 次回のタイトルは「プレイヤーを用意しよう」です。
 お楽しみに!!
+(よろしければ👍頂けると大変励みになります!!)
