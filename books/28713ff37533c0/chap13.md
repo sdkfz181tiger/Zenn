@@ -33,9 +33,9 @@ self.camera.position = arcade.math.lerp_2d(
 
 ## 3, カメラを有効にする
 
-最後に、"on_draw()"メソッドで、2つのカメラいずれかを使うかを決めます。
-"self.camera.use()"の後に描画をすればカメラに追随し、
-"self.camera_gui.use()"の後に描画を行えば定位置に描画されます。
+最後に、"on_draw()"メソッドで、2つのカメラいずれかの利用を決めます。
+"self.camera.use()"の後に描画をすれば、カメラに追随し、
+"self.camera_gui.use()"の後に描画を行えば、定位置に描画されます。
 
 ```python:main.py(抜粋)
 def on_draw(self):
