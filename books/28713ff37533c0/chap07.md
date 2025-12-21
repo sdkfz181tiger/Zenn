@@ -8,7 +8,7 @@ title: "第7章: 小判をゲットしよう"
 
 ## 1, 小判画像を用意する
 
-"images"フォルダに、新たに"coin"フォルダを作り、以下の画像を格納します。
+"images"フォルダに、新たに"coin"フォルダを作り(画像の種類ごとにフォルダを分けます)、以下の画像を格納します。
 (忍者といえば小判!!)
 
 | 画像 | ファイル名 |
@@ -70,6 +70,7 @@ for i in range(10):
 
 "random.random()"は、"0.0以上〜1.0未満"の小数を返すため、
 画面サイズと掛け算することで、画面内のランダムな位置を作ることができます。
+(画面端ギリギリに配置されることもありますが、今回は気にしません)
 
 ## 5, 小判スプライトを更新する
 
@@ -100,7 +101,7 @@ hit_coins = arcade.check_for_collision_with_list(self.player,
                                                  self.coins)
 # 衝突したコインをコインリストから削除
 for coin in hit_coins:
-    hit_coins.remove_from_sprite_lists()
+    coin.remove_from_sprite_lists()
 ```
 
 "check_for_collision_with_list()"メソッドは、
@@ -112,6 +113,7 @@ for coin in hit_coins:
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
+コードをそのままコピーしても動作します。
 
 :::details 完成コード
 ```python:sprite.py(完成コード)

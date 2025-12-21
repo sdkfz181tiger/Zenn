@@ -148,6 +148,7 @@ def update(self, delta_time):
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
+コードをそのままコピーしても動作します。
 
 :::details 完成コード
 ```python:sprite.py(完成コード)

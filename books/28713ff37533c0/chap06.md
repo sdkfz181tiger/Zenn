@@ -21,7 +21,8 @@ def on_key_press(self, key, key_modifiers):
     if key == arcade.key.D: self.player.move(90, 0) # 右へ
 ```
 
-ここでは、Wキーで上方向(90°)、Aキーで左方向(180°)、Sキーで下方向(270°)、Dキーで右方向(0°)へ移動する判定を実装します。速度は全て"90"に指定しています。
+ここでは、Wキーで上方向(90°)、Aキーで左方向(180°)、Sキーで下方向(270°)、Dキーで右方向(0°)へ移動する判定を実装します。
+速度は全て"90"に指定しています(1秒間に90ピクセル移動するイメージです)。
 (仕組みがわかったら、斜め移動が出来るように調整してみましょう)
 
 ## 2, キーボードを離したら停止
@@ -39,6 +40,7 @@ def on_key_release(self, key, key_modifiers):
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
+コードをそのままコピーしても動作します。
 
 :::details 完成コード
 ```python:sprite.py(完成コード)
@@ -58,7 +60,6 @@ class BaseSprite(arcade.Sprite):
 
     def update(self, delta_time):
         """ Update """
-        super().update(delta_time)
         self.center_x += self.vx * delta_time
         self.center_y += self.vy * delta_time
 

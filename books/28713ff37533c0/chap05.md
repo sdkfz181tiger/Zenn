@@ -4,14 +4,15 @@ title: "第5章: プレイヤーを動かしてみよう"
 
 # プレイヤーを動かしてみよう
 
-今回は、プレイヤーを動かします。
+今回は、キーボード操作は行わず、
+プログラムからプレイヤーを動かしてみます。
 
 ## 1, プレイヤースプライトを改良する
 
 最初に、"math"モジュールをインポートします。
 このモジュールは、数学的計算を手軽に扱える定番モジュールの一つです。
 
-```python:python:sprite.py(抜粋)
+```python:sprite.py(抜粋)
 import math # 数学的計算をするモジュール
 ```
 
@@ -54,7 +55,7 @@ def update(self, delta_time):
 
 "move()"メソッドを追加し、移動速度と角度を指定する処理を実装します。
 このメソッドは、引数に"速度"、"角度"を指定して実行します。
-なお、角度は"右方向を0°"として、反時計回りに増えていきます。
+0°は右方向、90°は上方向、180°は左方向、270°は下方向です。
 
 ```python:sprite.py(BaseSpriteに追加)
 def move(self, spd, deg):
@@ -104,6 +105,7 @@ self.player.move(90, 30) # プレイヤーを移動させてみる
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
+コードをそのままコピーしても動作します。
 
 :::details 完成コード
 ```python:sprite.py(完成コード)
@@ -180,7 +182,7 @@ class GameView(arcade.View):
         pass
 
     def on_update(self, delta_time):
-        self.players.update()
+        self.players.update(delta_time)
 
     def on_draw(self):
         self.clear() # Clear
