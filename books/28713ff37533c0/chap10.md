@@ -4,7 +4,7 @@ title: "第10章: サウンドを再生しよう"
 
 # サウンドを再生しよう
 
-今回は、サウンドを再生します。
+今回は、サウンド(効果音)を再生します。
 
 ## 1, 音源ファイルを用意する
 
@@ -13,6 +13,8 @@ title: "第10章: サウンドを再生しよう"
 | 音源ファイル | ファイル名 |
 | ---- | ---- |
 | [se_coin.oggをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/28713ff37533c0/se_coin.ogg) | se_coin.ogg |
+
+※GitHubのリンクから直接ダウンロードできない場合は、ページ右上の"Download"から保存してください。
 
 音源ファイルは、[SEADENDEN 8bit Free BGM](https://seadenden-8bit.com/)からお借りしました。
 (筆者激推し!!)
@@ -30,7 +32,8 @@ title: "第10章: サウンドを再生しよう"
 
 ## 2, サウンドオブジェクトを作る
 
-サウンドオブジェクトは、次のようにして作ります。
+"arcade.Sound()"メソッドに音源ファイルのパスを渡すことで、
+サウンドオブジェクトを作成できます。
 
 ```python:python:main.py(抜粋)
 # サウンドオブジェクト
@@ -39,12 +42,16 @@ self.se_coin = arcade.Sound("sounds/se_coin.ogg")
 
 ## 3, サウンドを再生する
 
-サウンドの再生は、次のようにして再生します。
+作成したサウンドオブジェクトは、
+"arcade.play_sound()"メソッドで指定し再生します。
 
 ```python:python:main.py(抜粋)
 # サウンドを再生
 arcade.play_sound(self.se_coin)
 ```
+
+※音が鳴らない場合は、PCの音量やミュート設定、
+または音源ファイルのパスが正しいかを確認してください。
 
 # 完成コード
 
