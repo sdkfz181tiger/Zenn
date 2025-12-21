@@ -5,7 +5,8 @@ title: "第12章(番外編): 画面を切り替えよう"
 # 画面を切り替えよう
 
 今回は、番外編として、画面の切り替えを行う例を紹介します。
-"タイトル画面"->"ゲーム画面"->"結果画面"といった画面遷移を行います。
+"タイトル画面" → "ゲーム画面" → "結果画面" といった、
+ゲームでよくある画面遷移を実装します。
 
 ## 1, ファイルを整理する
 
@@ -38,6 +39,7 @@ title: "第12章(番外編): 画面を切り替えよう"
 画面を切り替えるコードは、これまでの事例と同じです。
 
 以下と同様の処理を、画面切り替えの必要なタイミングで実装します。
+"arcade.View"を生成し、"window.show_view()"メソッドに渡すだけで切り替えられます。
 
 ```python:python:main.py(完成コード)
 view = title.TitleView(window) # TitleView
@@ -54,8 +56,6 @@ SPACEキーを押す事で、"タイトル画面" -> "ゲーム画面" -> "結�
 ```python:main.py(完成コード)
 import arcade
 import random
-import src.sprite as sprite
-import src.utility as utility
 import src.title as title
 
 def main():
@@ -72,8 +72,6 @@ if __name__ == "__main__":
 ```python:title.py(完成コード)
 import arcade
 import random
-import src.sprite as sprite
-import src.utility as utility
 import src.game as game
 
 # Title
@@ -108,8 +106,6 @@ class TitleView(arcade.View):
 ```python:game.py(完成コード)
 import arcade
 import random
-import src.sprite as sprite
-import src.utility as utility
 import src.result as result
 
 # Game
@@ -128,7 +124,7 @@ class GameView(arcade.View):
             anchor_x="center", anchor_y="top")
 
     def on_key_press(self, key, key_modifiers):
-        # Space to Game
+        # Space to Result
         if key == arcade.key.SPACE: 
             view = result.ResultView(self.window) # ResultView
             self.window.show_view(view)
@@ -144,8 +140,6 @@ class GameView(arcade.View):
 ```python:result.py(完成コード)
 import arcade
 import random
-import src.sprite as sprite
-import src.utility as utility
 import src.title as title
 
 # Result
@@ -164,7 +158,7 @@ class ResultView(arcade.View):
             anchor_x="center", anchor_y="top")
 
     def on_key_press(self, key, key_modifiers):
-        # Space to Game
+        # Space to Title
         if key == arcade.key.SPACE:
             view = title.TitleView(self.window) # TitleView
             self.window.show_view(view)
