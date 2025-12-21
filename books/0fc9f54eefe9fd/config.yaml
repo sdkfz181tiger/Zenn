@@ -1,4 +1,4 @@
-title: "Pythonで2Dゲームをかじる本(Tkinter編)"
+title: "Pythonで2Dゲームをかじる本(Tkinter基礎編)"
 summary: "
 Python標準ライブラリ「Tkinter」を使って、2Dゲーム制作をかじってみる連載です。
 スプライト管理やマウス入力など、ゲームの基本要素を、
