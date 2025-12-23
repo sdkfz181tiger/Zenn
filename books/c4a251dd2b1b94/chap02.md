@@ -2,7 +2,7 @@
 title: "第2章: 実行してみよう(Google Coloab編)"
 ---
 
-# Pythonを"Google Colab"で実行する
+# 実行してみよう(Google Coloab編)
 
 ここでは、気軽にPythonを試せるオンラインサービス、"Google Colab"を紹介します。
 このサービスを利用することで、開発環境の準備が不要になります。
