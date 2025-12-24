@@ -44,6 +44,13 @@ Pythonは実用だけでなく、趣味のプログラミングにもぴった�
 Pythonで使える2Dゲーム開発向けライブラリを少し紹介します。
 (レトロゲームが大好き)
 
+## Python Arcade Library
+
+"[Python Arcade Library](https://api.arcade.academy/en/stable/)"は、本格的な描画機能を持ちながら扱いやすい、人気が伸びているライブラリ。
+教育向けにも広く使われています。(筆者激推し)
+
+![](/images/c4a251dd2b1b94/01_04.png)
+
 ## Pyxel
 
 "[Pyxel](https://github.com/kitao/pyxel)"は、レトロな8bit風ゲーム制作に特化した、かわいいゲームエンジンです。
@@ -58,13 +65,6 @@ Pythonで使える2Dゲーム開発向けライブラリを少し紹介します
 シンプルな2Dゲームを作りたい人に向いています。
 
 ![](/images/c4a251dd2b1b94/01_03.png)
-
-## Python Arcade Library
-
-"[Python Arcade Library](https://api.arcade.academy/en/stable/)"は、本格的な描画機能を持ちながら扱いやすい、人気が伸びているライブラリ。
-教育向けにも広く使われています。
-
-![](/images/c4a251dd2b1b94/01_04.png)
 
 ## Tkinter
 
