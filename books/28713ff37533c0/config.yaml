@@ -1,4 +1,4 @@
-title: "Pythonで2Dゲームをかじる本(Arcade入門編)"
+title: "Pythonで2Dゲームをかじる本(Arcade導入編)"
 summary: "
 Pythonのゲーム専用ライブラリ「Python Arcade Library」を使って、2Dゲーム制作をかじってみる連載です。
 スプライト管理やキーボード入力、サウンド再生といった基本要素を、

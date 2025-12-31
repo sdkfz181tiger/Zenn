@@ -1,0 +1,15 @@
+title: "Pythonで2Dゲームをかじる本(Pyxel導入編)"
+summary: "
+Pythonのゲーム専用エンジン「Pyxel」を使って、2Dゲーム制作をかじってみる連載です。
+スプライト管理やキーボード入力、衝突判定といった基本要素を、
+Pythonの基礎的なコードだけで少しずつ作っていきます。
+(執筆時点でのバージョンはv2.5.11です)"
+topics: ["python", "python3", "pyxel", "初心者向け", "ゲーム開発"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - chap01
+  - chap02
+  - chap03
+  - chap04
