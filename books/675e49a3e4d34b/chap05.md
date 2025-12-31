@@ -31,7 +31,7 @@ title: "第5章: キャラクターをクラスで管理しよう"
 用意した、"sprite.py"ファイルに、"BaseSprite"クラスを記述します。
 このクラスが、全てのスプライトの共通クラスになります。
 
-```python:sprite.py(抜粋)
+```python: sprite.py(抜粋)
 import pyxel
 import math
 import random
@@ -60,7 +60,7 @@ class BaseSprite:
 このクラスは"BaseSprite"クラスを継承させておきます。
 プレイヤーは、このクラスから生成します。
 
-```python:sprite.py(抜粋)
+```python: sprite.py(抜粋)
 # 省略
 
 class ShipSprite(BaseSprite):
@@ -85,7 +85,7 @@ class ShipSprite(BaseSprite):
 
 "Game"クラスのコンストラクタで、プレイヤーオブジェクトを生成します。
 
-```python:main.py(抜粋)
+```python: main.py(抜粋)
 # プレイヤーを初期化(画面中央下に配置)
 self.ship = sprite.ShipSprite(W/2, H - 40)
 ```
@@ -95,7 +95,7 @@ self.ship = sprite.ShipSprite(W/2, H - 40)
 "Game"クラスの"update()"メソッドで、プレイヤーオブジェクトを更新します。
 (この章では"構造を作る"ことが目的なので、まだ動きません)
 
-```python:main.py(抜粋)
+```python: main.py(抜粋)
 # プレイヤーを更新
 self.ship.update()
 ```
@@ -104,7 +104,7 @@ self.ship.update()
 
 "Game"クラスの"draw()"メソッドで、プレイヤーオブジェクトを描画します。
 
-```python:main.py(抜粋)
+```python: main.py(抜粋)
 # プレイヤーを描画
 self.ship.draw()
 ```
