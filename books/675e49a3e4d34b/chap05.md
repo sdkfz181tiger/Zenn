@@ -1,8 +1,8 @@
 ---
-title: "第x章: xxxしよう"
+title: "第5章: Spriteクラスを用意しよう"
 ---
 
-# xxxしよう
+# Spriteクラスを用意しよう
 
 xxx
 
