@@ -1,78 +1,61 @@
 ---
-title: "第9章: 弾丸を発射しよう"
+title: "第11章: ゲームオーバーを判定しよう"
 ---
 
-# 弾丸を発射しよう
+# ゲームオーバーを判定しよう
 
-今回は、プレイヤースプライトから弾丸を発射する処理を実装します。
+今回は、プレイヤーと隕石の衝突判定を行い。
+"GAME OVER"を画面に表示します。
 
-## 1, 弾丸スプライトを用意する
+## 1, フラグを用意する
 
-前回と同様に、"sprite.py"に、新たに"BulletSprite"クラスを追加します。
+"main.py"の"Game"クラスのコンストラクタで、
+ゲームオーバー用のフラグを用意します。
+プレイヤーと隕石が衝突したタイミングで、このフラグを"True"します。
 
-ここではシンプルに画像は使わず、
-"pyxel.rect()"で、2x2の正方形を描画しています。
-
-```python: sprite.py(クラスを追加)
-class BulletSprite(BaseSprite):
-
-    def __init__(self, x, y):
-        """ コンストラクタ """
-        super().__init__(x, y)
-        self.x += self.w / 2 - 1 # 中央に調整
-
-    def draw(self):
-        """ 描画処理 """
-        pyxel.rect(self.x, self.y, 2, 2, 12)
+```python: main.py(Gameクラスのコンストラクタ内)
+# ゲームオーバーフラグ
+self.game_over_flg = False
 ```
 
-## 2, 定数を用意する
+## 2, 更新処理のフラグ監視
 
-"main.py"に、弾丸の速度として、次の定数を追加します。
+"Game"クラスの、"update()"で、先ほどのフラグを監視します。
+フラグが"True"の時は、"return"によって以降の処理をキャンセルします。
+ゲームオーバー後は、キャラクターや弾丸が更新されなくなります。
 
-```python: main.py(定数を追加)
-BULLET_SPD = 3 # 弾丸の速度
+```python: main.py(Gameクラスの"update()"メソッド内)
+# ゲームオーバー
+if self.game_over_flg:
+    return
 ```
 
-## 3, 弾丸を発射する
+## 3, 描画処理でテキストを表示
 
-プレイヤーが切り返すタイミングで、弾丸を発射します。
-弾丸は、単純に真上(270度)に移動させます。
+"Game"クラスの、"draw()"では、
+ゲームオーバー時だけ、"GAME OVER"の文字を表示します。
 
-```python: main.py(Gameクラスの"control_ship()"メソッドに追加)
-def control_ship(self):
-    """ アクション """
-    if pyxel.btnp(pyxel.KEY_SPACE):
-        self.ship.flip_x() # 移動反転
-        # 弾丸発射
-        bullet = sprite.BulletSprite(self.ship.x, self.ship.y)
-        bullet.move(BULLET_SPD, 270)
-        self.bullets.append(bullet)
+```python: main.py(Gameクラスの"draw()"メソッド内)
+# ゲームオーバー
+if self.game_over_flg:
+    msg = "GAME OVER"
+    pyxel.text(W/2-len(msg)*2, H/2, msg, 13)
 ```
 
-## 4, 弾丸の更新と描画
+## 4, プレイヤーと隕石の衝突判定
 
-"Game"クラスの"update()"メソッドで、
-弾丸の更新をまとめて行います。
-同時に、画面上部を超えた弾丸は、リストから削除します。
-ここでは、走査中の要素を削除するため、リストには逆順にアクセスします。
+"Game"クラスの、"update()"で、
+プレイヤーと隕石の衝突判定を行います。
+衝突時、"self.game_over_flg"を"True"にします。
 
-```python: main.py(Gameクラスのupdateメソッドに追加)
-# 弾丸の更新(逆順)
-for bullet in self.bullets[::-1]:
-    bullet.update()
-    # 画面外削除
-    if bullet.y < 0:
-        self.bullets.remove(bullet)
-        continue
-```
-
-次に、"draw()"メソッドで弾丸の描画をまとめて行います。
-
-```python: main.py(Gameクラスのdrawメソッドに追加)
-# 弾丸の描画
-for bullet in self.bullets:
-    bullet.draw()
+```python: main.py(Gameクラスの"update()"メソッド内)
+# 隕石の更新
+for asteroid in self.asteroids:
+    asteroid.update()
+    self.overlap_spr(asteroid)
+    # 衝突判定(隕石 x プレイヤー)
+    if asteroid.intersects(self.ship):
+        self.game_over_flg = True # ゲームオーバー
 ```
 
 # 完成コード
@@ -114,6 +97,14 @@ class BaseSprite:
     def flip_x(self):
         """ x方向反転 """
         self.vx *= -1
+
+    def intersects(self, other):
+        """ 矩形同士の当たり判定(AABB) """
+        if other.x + other.w < self.x: return False
+        if self.x + self.w < other.x: return False
+        if other.y + other.h < self.y: return False
+        if self.y + self.h < other.y: return False
+        return True
 
 class ShipSprite(BaseSprite):
 
@@ -168,12 +159,15 @@ ASTEROID_SPD_MAX = 2.0
 ASTEROID_DEG_MIN = 30
 ASTEROID_DEG_MAX = 150
 
-BULLET_SPD = 3 # 弾丸の速度
+BULLET_SPD = 3
 
 # Game
 class Game:
     def __init__(self):
         """ コンストラクタ """
+
+        # ゲームオーバーフラグ
+        self.game_over_flg = False
 
         # スコアを初期化
         self.score = 0
@@ -198,6 +192,10 @@ class Game:
     def update(self):
         """ 更新処理 """
 
+        # ゲームオーバー
+        if self.game_over_flg:
+            return
+
         # プレイヤーを更新
         self.ship.update()
         self.control_ship()
@@ -209,18 +207,33 @@ class Game:
         for asteroid in self.asteroids:
             asteroid.update()
             self.overlap_spr(asteroid)
+            # 衝突判定(隕石 x プレイヤー)
+            if asteroid.intersects(self.ship):
+                self.game_over_flg = True # ゲームオーバー
 
-        # 弾丸の更新
+        # 弾丸の更新(逆順)
         for bullet in self.bullets[::-1]:
             bullet.update()
             # 画面外削除
             if bullet.y < 0:
                 self.bullets.remove(bullet)
                 continue
+            # 衝突判定(弾丸 x 隕石)
+            for asteroid in self.asteroids[::-1]:
+                if asteroid.intersects(bullet):
+                    self.score += 1 # スコア
+                    self.bullets.remove(bullet)
+                    self.asteroids.remove(asteroid)
+                    return
 
     def draw(self):
         """ 描画処理 """
         pyxel.cls(0)
+
+        # ゲームオーバー
+        if self.game_over_flg:
+            msg = "GAME OVER"
+            pyxel.text(W/2-len(msg)*2, H/2, msg, 13)
 
         # スコアを描画
         pyxel.text(10, 10, 
@@ -288,10 +301,24 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/675e49a3e4d34b/09_01.gif)
+![](/images/675e49a3e4d34b/11_01.gif)
 
-# 次回は...
+# 終わりに...
 
-ここまで読んでいただきありがとうございました。
-次回のタイトルは「衝突判定を実装しよう」です。
-お楽しみに!!
+ここまで読んでいただき、ありがとうございました。
+今回で、"Pythonで2Dゲームをかじる本_Pyxel導入編"は終了です。
+お疲れ様でした!!
+
+今回作ったゲームはとてもシンプルですが、
+
+- スプライト管理
+- キーボード入力
+- 衝突判定と削除
+
+といった、ゲーム制作の基本要素が含まれています。
+
+ここまで理解できていれば、
+Pyxelを使った簡単なゲームを作れるはずです。
+
+この連載が、ゲーム開発のきっかけになれば幸いです。ޱ(ఠ皿ఠ)ว
+(よろしければ👍頂けると大変励みになります!!)

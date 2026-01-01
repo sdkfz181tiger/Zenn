@@ -1,63 +1,38 @@
 ---
-title: "第9章: 弾丸を発射しよう"
+title: "第10章: 衝突判定を実装しよう"
 ---
 
-# 弾丸を発射しよう
+# 衝突判定を実装しよう
 
-今回は、プレイヤースプライトから弾丸を発射する処理を実装します。
+今回は、弾丸と隕石の衝突判定を実装します。
 
-## 1, 弾丸スプライトを用意する
+## 1, 衝突判定を実装する
 
-前回と同様に、"sprite.py"に、新たに"BulletSprite"クラスを追加します。
+"sprite.py"の、"BaseSprite"クラスに、新たに"intersects()"メソッドを実装します。
+このメソッドは、引数で与えられたスプライトとの重なりを判定する処理が実装されています。
+衝突していれば、"True"、していなければ、"False"を返します。
+(AABBという考え方で実装していますが、ここでは深く考えなくて大丈夫です)
 
-ここではシンプルに画像は使わず、
-"pyxel.rect()"で、2x2の正方形を描画しています。
-
-```python: sprite.py(クラスを追加)
-class BulletSprite(BaseSprite):
-
-    def __init__(self, x, y):
-        """ コンストラクタ """
-        super().__init__(x, y)
-        self.x += self.w / 2 - 1 # 中央に調整
-
-    def draw(self):
-        """ 描画処理 """
-        pyxel.rect(self.x, self.y, 2, 2, 12)
+```python: sprite.py(BaseSpriteに追加)
+def intersects(self, other):
+    """ 矩形同士の当たり判定(AABB) """
+    if other.x + other.w < self.x: return False
+    if self.x + self.w < other.x: return False
+    if other.y + other.h < self.y: return False
+    if self.y + self.h < other.y: return False
+    return True
 ```
 
-## 2, 定数を用意する
+## 2, 弾丸と隕石の衝突
 
-"main.py"に、弾丸の速度として、次の定数を追加します。
+弾丸の更新タイミングで、隕石との衝突判定を行います。
+ここでも、走査中のリストから削除を直接行う都合上、
+リストには逆順にアクセスしています。
+(今回は、簡便に処理を優先し、単純にreturnしています)
 
-```python: main.py(定数を追加)
-BULLET_SPD = 3 # 弾丸の速度
-```
+衝突と同時に、スコアに+1しています。
 
-## 3, 弾丸を発射する
-
-プレイヤーが切り返すタイミングで、弾丸を発射します。
-弾丸は、単純に真上(270度)に移動させます。
-
-```python: main.py(Gameクラスの"control_ship()"メソッドに追加)
-def control_ship(self):
-    """ アクション """
-    if pyxel.btnp(pyxel.KEY_SPACE):
-        self.ship.flip_x() # 移動反転
-        # 弾丸発射
-        bullet = sprite.BulletSprite(self.ship.x, self.ship.y)
-        bullet.move(BULLET_SPD, 270)
-        self.bullets.append(bullet)
-```
-
-## 4, 弾丸の更新と描画
-
-"Game"クラスの"update()"メソッドで、
-弾丸の更新をまとめて行います。
-同時に、画面上部を超えた弾丸は、リストから削除します。
-ここでは、走査中の要素を削除するため、リストには逆順にアクセスします。
-
-```python: main.py(Gameクラスのupdateメソッドに追加)
+```python: main.py(Gameクラスの"update()"メソッドに追加)
 # 弾丸の更新(逆順)
 for bullet in self.bullets[::-1]:
     bullet.update()
@@ -65,14 +40,13 @@ for bullet in self.bullets[::-1]:
     if bullet.y < 0:
         self.bullets.remove(bullet)
         continue
-```
-
-次に、"draw()"メソッドで弾丸の描画をまとめて行います。
-
-```python: main.py(Gameクラスのdrawメソッドに追加)
-# 弾丸の描画
-for bullet in self.bullets:
-    bullet.draw()
+    # 衝突判定(弾丸 x 隕石)
+    for asteroid in self.asteroids[::-1]:
+        if asteroid.intersects(bullet):
+            self.score += 1 # スコア
+            self.bullets.remove(bullet)
+            self.asteroids.remove(asteroid)
+            return # ここでは簡便に...
 ```
 
 # 完成コード
@@ -114,6 +88,14 @@ class BaseSprite:
     def flip_x(self):
         """ x方向反転 """
         self.vx *= -1
+
+    def intersects(self, other):
+        """ 矩形同士の当たり判定(AABB) """
+        if other.x + other.w < self.x: return False
+        if self.x + self.w < other.x: return False
+        if other.y + other.h < self.y: return False
+        if self.y + self.h < other.y: return False
+        return True
 
 class ShipSprite(BaseSprite):
 
@@ -168,7 +150,7 @@ ASTEROID_SPD_MAX = 2.0
 ASTEROID_DEG_MIN = 30
 ASTEROID_DEG_MAX = 150
 
-BULLET_SPD = 3 # 弾丸の速度
+BULLET_SPD = 3
 
 # Game
 class Game:
@@ -210,13 +192,20 @@ class Game:
             asteroid.update()
             self.overlap_spr(asteroid)
 
-        # 弾丸の更新
+        # 弾丸の更新(逆順)
         for bullet in self.bullets[::-1]:
             bullet.update()
             # 画面外削除
             if bullet.y < 0:
                 self.bullets.remove(bullet)
                 continue
+            # 衝突判定(弾丸 x 隕石)
+            for asteroid in self.asteroids[::-1]:
+                if asteroid.intersects(bullet):
+                    self.score += 1 # スコア
+                    self.bullets.remove(bullet)
+                    self.asteroids.remove(asteroid)
+                    return # ここでは簡便に...
 
     def draw(self):
         """ 描画処理 """
@@ -288,10 +277,10 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/675e49a3e4d34b/09_01.gif)
+![](/images/675e49a3e4d34b/10_01.gif)
 
 # 次回は...
 
 ここまで読んでいただきありがとうございました。
-次回のタイトルは「衝突判定を実装しよう」です。
+次回のタイトルは「ゲームオーバーを判定しよう」です。
 お楽しみに!!
