@@ -51,15 +51,20 @@ class BaseSprite:
         self.vy = spd * math.sin(rad) # y方向の速度
 ```
 
-## 2, スプライトの動きをテストする
+## 2, 定数を用意する
+
+"main.py"に、プレイヤーの速度として、次の定数を追加します。
+
+```python: main.py(定数を追加)
+SHIP_SPD = 1.4 # プレイヤーの速度
+```
+
+## 3, スプライトの動きをテストする
 
 "Game"クラスのコンストラクタで、動きをテストしてみましょう。
+(角度を変えて繰り返しテストしましょう)
 
-```python: main.py(抜粋)
-SHIP_SPD = 1.4 # プレイヤーの速度
-
-# 中略
-
+```python: main.py(Gameクラスのコンストラクタに追加)
 # 移動をテスト(左上へ)
 self.ship.move(SHIP_SPD, 220)
 ```

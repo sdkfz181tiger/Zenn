@@ -6,7 +6,7 @@ title: "第8章: 隕石を発生させよう"
 
 今回は、一定間隔で隕石を発生させる処理を実装します。
 
-## 1, 隕石スプライトを作る
+## 1, 隕石スプライトを用意する
 
 "sprite.py"に、新たに"AsteroidSprite"クラスを追加します。
 コンストラクタでは、ランダム値を利用し隕石画像を選択します。
@@ -32,7 +32,7 @@ class AsteroidSprite(BaseSprite):
 定数にしてまとめておくことで、
 ゲームの難易度を一括で管理することができるようになります。
 
-```python: sprite.py(定数を追加)
+```python: main.py(定数を追加)
 ASTEROID_INTERVAL = 20 # 隕石の発生間隔
 ASTEROID_LIMIT = 30 # 隕石の最大数
 
@@ -94,7 +94,7 @@ for asteroid in self.asteroids:
     self.overlap_spr(asteroid)
 ```
 
-次に、"draw()"メソッドで隕石全体の描画を行います。
+次に、"draw()"メソッドで隕石の描画をまとめて行います。
 
 ```python: main.py(Gameクラスのdrawメソッドに追加)
 # 隕石の描画
