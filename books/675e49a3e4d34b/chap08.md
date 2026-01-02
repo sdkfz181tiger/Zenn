@@ -5,12 +5,21 @@ title: "第8章: 隕石を発生させよう"
 # 隕石を発生させよう
 
 今回は、一定間隔で隕石を発生させる処理を実装します。
+
+この章では、
+- 複数のスプライトを管理する
+- 一定時間ごとに処理を行う
+といった、ゲームらしい仕組みを作っていきます。
+
 ※完成コードは最後に記述してあります。
 
 ## 1, 隕石スプライトを用意する
 
+まずは、隕石用のスプライトクラスを用意します。
+
 "sprite.py"に、新たに"AsteroidSprite"クラスを追加します。
-コンストラクタでは、ランダム値を利用し隕石画像を選択します。
+コンストラクタでは、ランダム値を利用して、
+表示する隕石画像を選択します。
 
 ```python: sprite.py(クラスを追加)
 class AsteroidSprite(BaseSprite):
@@ -26,12 +35,15 @@ class AsteroidSprite(BaseSprite):
                 self.w, self.h, 0) # Ship
 ```
 
+これにより、生成されるたびに、
+見た目の異なる隕石が表示されるようになります。
+
 ## 2, 定数と変数を用意する
 
-"main.py"に、次の定数を追加します。
+次に、"main.py"に隕石関連の定数を追加します。
 
 定数にしてまとめておくことで、
-ゲームの難易度を一括で管理することができるようになります。
+ゲームの難易度調整を一括で行いやすくなります。
 
 ```python: main.py(定数を追加)
 ASTEROID_INTERVAL = 20 # 隕石の発生間隔
@@ -43,25 +55,25 @@ ASTEROID_DEG_MIN = 30 # 隕石の最低角度
 ASTEROID_DEG_MAX = 150 # 隕石の最高角度
 ```
 
-"Game"クラスのコンストラクタに、次の変数とリストを追加します。
-この後、これらを利用し、一定間隔で隕石が発生する仕組みを実装します。
+続いて、"Game"クラスのコンストラクタに、
+隕石管理用の変数とリストを追加します。
 
 ```python: sprite.py(Gameクラスのコンストラクタに追加)
 # 隕石
-self.asteroid_time = 0
-self.asteroids = []
+self.asteroid_time = 0 # 出現間隔のカウンタ
+self.asteroids = [] # 隕石のリスト
 ```
 
 ## 3, 隕石の発生処理
 
-"Game"クラスに、"check_interval()"メソッドを追加します。
+"Game"クラスに、隕石を一定間隔で発生させる、
+"check_interval()"メソッドを追加します。
 
-隕石は、先ほど用意した"ASTEROID_INTERVAL"の間隔で発生します。
-同時に、"ASTEROID_LIMIT"で、発生する最大数に制限をかけています。
+隕石は、"ASTEROID_INTERVAL"で指定した間隔ごとに出現します。
+また、"ASTEROID_LIMIT"で、隕石の最大数に制限をかけています。
 
-発生する隕石の座標として、ゲーム画面上端からランダムで選択します。
-速度は、"ASTEROID_SPD_MIN ~ ASTEROID_SPD_MAX"で、
-角度は、"ASTEROID_DEG_MIN ~ ASTEROID_DEG_MAX"からランダムで決定します。
+出現位置はゲーム画面の上端からランダムで選択し、
+速度と角度も、それぞれ指定した範囲内からランダムで決定します。
 
 ```python: main.py(Gameクラスに追加)
 def check_interval(self):
@@ -83,7 +95,9 @@ def check_interval(self):
 
 ## 4, 隕石の更新と描画
 
-"Game"クラスの"update()"メソッドで、
+次に、隕石の更新処理と描画処理を追加します。
+
+"Game"クラスの"update()"メソッドでは、
 隕石の発生処理と、更新を行います。
 
 ```python: main.py(Gameクラスのupdateメソッドに追加)
@@ -95,13 +109,16 @@ for asteroid in self.asteroids:
     self.overlap_spr(asteroid)
 ```
 
-次に、"draw()"メソッドで隕石の描画をまとめて行います。
+"draw()"メソッドでは、
+隕石の描画をまとめて行います。
 
 ```python: main.py(Gameクラスのdrawメソッドに追加)
 # 隕石の描画
 for asteroid in self.asteroids:
     asteroid.draw()
 ```
+
+これで、複数の隕石が画面上を流れるようになります。
 
 # 完成コード
 
@@ -199,8 +216,8 @@ class Game:
         self.ship.move(SHIP_SPD, deg)
 
         # 隕石
-        self.asteroid_time = 0
-        self.asteroids = []
+        self.asteroid_time = 0 # 出現間隔のカウンタ
+        self.asteroids = [] # 隕石のリスト
 
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
