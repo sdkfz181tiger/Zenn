@@ -1,4 +1,4 @@
-title: "Pythonで2Dゲームをかじる本(Pyxel導入編)"
+title: "PythonでPyxelをかじる本(導入編)"
 summary: "
 Pythonのゲーム専用エンジン「Pyxel」を導入する手順書です。
 スプライト管理やキーボード入力、衝突判定といった基本要素を、
