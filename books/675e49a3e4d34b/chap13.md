@@ -71,14 +71,14 @@ self.background = sprite.Background(W, H)
 
 次に、"update()"で、更新処理を実行します。
 
-```python: main.py(Gameクラスのコンストラクタ内)
+```python: main.py(Gameクラスのupdate()メソッド内)
 # 背景
 self.background.update()
 ```
 
 最後に、"draw()"で、描画処理を実行します。
 
-```python: main.py(Gameクラスのコンストラクタ内)
+```python: main.py(Gameクラスのdraw()メソッド内)
 # 背景
 self.background.draw()
 ```
