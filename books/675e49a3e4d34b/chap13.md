@@ -40,7 +40,7 @@ class Background():
     def __init__(self, w, h):
         """ コンストラクタ """
         self.w = w # ゲーム画面の幅
-        self.h = h # ゲーム場面の高さ
+        self.h = h # ゲーム画面の高さ
         self.stars = [] # 星を管理するリスト
         for i in range(30):
             x = random.randint(0, w)
