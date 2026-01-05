@@ -4,18 +4,18 @@ title: "第14章(番外編): トンネル避けゲーム(サンプル)"
 
 # トンネル避けゲーム(サンプル)
 
-今回は、トンネルの隙間をジャンプで抜ける(なんだか懐かしい)ゲームを紹介します。
+今回は、トンネルの隙間をジャンプで抜ける、どこか懐かしいゲームを紹介します。
 ここでは、サンプルコードのみの紹介です。
 
 ## 1, 素材を用意する
 
-"Pyxel Editor"で、プレイヤー&トンネルの素材を描きます。
+"Pyxel Editor"で、プレイヤーとトンネルの素材を描きます。
 
 ![](/images/675e49a3e4d34b/14_01.png)
 
-# 完成コード
+# サンプルコード
 
-ここまでの機能を実装した完成コードは、次の通りです。
+今回のサンプルコードは、次の通りです。
 
 :::details 完成コード
 ```python: sprite.py
@@ -62,14 +62,12 @@ class PlayerSprite(BaseSprite):
     def __init__(self, x, y):
         """ コンストラクタ """
         super().__init__(x, y)
-        self.start_flg = False
         self.gravity = 0.4 # 重力
-        self.jump_x = 0.6 # ジャンプx
+        self.jump_x = 1.0 # ジャンプx
         self.jump_y = -3.4 # ジャンプy
 
     def update(self):
         """ 更新処理 """
-        if(not self.start_flg): return
         super().update()
         self.vy += self.gravity # Gravity
 
@@ -82,7 +80,6 @@ class PlayerSprite(BaseSprite):
 
     def jump(self):
         """ ジャンプ """
-        if(not self.start_flg): self.start_flg = True
         self.vx = self.jump_x # ジャンプx
         self.vy = self.jump_y # ジャンプy
 
