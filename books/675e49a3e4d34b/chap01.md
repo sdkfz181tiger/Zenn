@@ -16,6 +16,8 @@ title: "第1章: はじめに"
 
 ![](/images/675e49a3e4d34b/13_01.gif)
 
+![](/images/675e49a3e4d34b/14_02.gif)
+
 # Pythonって何?
 
 次に、Pythonについては、[別の記事](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap01)で簡単に紹介しています。よろしければご参照ください。
