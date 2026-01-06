@@ -58,14 +58,6 @@ Pythonで使える2Dゲーム開発向けライブラリを少し紹介します
 
 ![](/images/c4a251dd2b1b94/01_02.png)
 
-## pygame
-
-"[pygame](https://www.pygame.org/news)"は、歴史が長い2Dゲームライブラリです。
-チュートリアルやサンプルが豊富で、
-シンプルな2Dゲームを作りたい人に向いています。
-
-![](/images/c4a251dd2b1b94/01_03.png)
-
 ## Tkinter
 
 "[Tkinter](https://tkdocs.com/pyref)"は、デスクトップアプリやWebアプリ開発向けに作られた定番ライブラリの一つです。
