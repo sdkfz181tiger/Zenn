@@ -16,7 +16,7 @@ title: "第1章: はじめに"
 
 ![](/images/675e49a3e4d34b/13_01.gif)
 
-![](/images/675e49a3e4d34b/14_02.gif)
+![](/images/675e49a3e4d34b/15_02.gif)
 
 # Pythonって何?
 
