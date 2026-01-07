@@ -30,11 +30,11 @@ $ pyxel edit ファイル名.pyxres
 - [Pyxel エディタでいろいろ作ってみよう](https://www.tento-net.com/learning-materials/python/app/pyxel/pyxel-05/)
 
 今回は、次のような素材を用意しました。
-[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/shooter.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
-
 - 宇宙船x2
 - 隕石x6
 - ブースターx2
+
+[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/shooter.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
 
 ![](/images/675e49a3e4d34b/03_02.png)
 
