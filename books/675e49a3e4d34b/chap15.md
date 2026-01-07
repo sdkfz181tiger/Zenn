@@ -145,7 +145,7 @@ class Game:
 
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
-        pyxel.load("shooter.pyxres")
+        pyxel.load("flappy.pyxres")
         pyxel.run(self.update, self.draw)
 
     def update(self):
