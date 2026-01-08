@@ -196,7 +196,7 @@ class Game:
 
         # メッセージ
         if self.game_mode == MODE_TITLE:
-            msg = "TAP TO PLAY"
+            msg = "SPACE TO PLAY"
             pyxel.text(W/2-len(msg)*2, H/2, msg, 1)
         elif self.game_mode == MODE_GAME_OVER:
             msg = "GAME OVER"
