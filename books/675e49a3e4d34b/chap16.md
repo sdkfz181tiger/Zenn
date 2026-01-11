@@ -80,6 +80,15 @@ class BaseSprite:
         if self.y + self.h < other.y: return False
         return True
 
+    def contains_center(self, other):
+        """ 矩形の中に中心座標が含まれるか """
+        x, y = self.get_center()
+        if other.x + other.w < x: return False
+        if x < other.x: return False
+        if other.y + other.h < y: return False
+        if y < other.y: return False
+        return True
+
     def get_distance(self, other):
         """ 距離を計算する """
         d_x = self.x - other.x
@@ -98,7 +107,7 @@ class PlayerSprite(BaseSprite):
     def __init__(self, x, y, u, v, spd, game):
         """ コンストラクタ """
         super().__init__(x, y, u, v, spd)
-        self.shot_interval = 8
+        self.shot_interval = 12
         self.shot_counter = 0
         self.game = game
 
@@ -208,7 +217,7 @@ MONSTERS = [
     {"u": 48, "v": 72, "spd": 0.12, "think_interval": 90},
     {"u":  0, "v": 80, "spd": 0.14, "think_interval": 120},
     {"u": 16, "v": 80, "spd": 0.16, "think_interval": 150},
-    {"u": 32, "v": 80, "spd": 0.18, "think_interval": 180}
+    {"u": 32, "v": 80, "spd": 0.25, "think_interval": 180}
 ]
 
 # Game
@@ -232,7 +241,7 @@ class Game:
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
         pyxel.load("vampire.pyxres")
-        pyxel.run(self.update, self.draw)
+        pyxel.run(self.update, self.draw) # Pyxel実行
 
     def update(self):
         """ 更新処理 """
@@ -252,9 +261,10 @@ class Game:
             monster.update()
             self.overlap_area(monster)
             # x プレイヤー
-            if monster.intersects(self.player):
+            if self.player.contains_center(monster):
                 self.player.stop() # Stop
                 self.game_mode = MODE_GAME_OVER
+                pyxel.play(0, 16, loop=False) # サウンド
 
         # 弾丸
         for bullet in self.bullets[::-1]:
@@ -401,6 +411,7 @@ class Game:
         else:
             x = random.randint(0, W)
             spr.set_center(x, 0) # Vertical
+        pyxel.play(1, 1, loop=False) # サウンド
 
     def get_nearest_monster(self):
         """ 最も近いモンスターの座標 """
@@ -423,6 +434,7 @@ class Game:
         direction = self.player.get_direction(monster)
         bullet.move(direction)
         self.bullets.append(bullet)
+        #pyxel.play(1, 0, loop=False) # サウンド
 
     def append_particle(self, spr):
         """ パーティクル発生 """
