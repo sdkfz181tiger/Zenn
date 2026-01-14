@@ -36,8 +36,11 @@ Pythonを気軽に試したい程度であれば、"Google Colab"で十分です
 "Google Coloab"上で、Pythonを学びたい方は、
 このまま、"第3章: 計算してみよう"へ進んでください。
 
-本格的な開発環境の構築にチャレンジしたい人は、
-巻末の、"付録: 実行してみよう(インストール編)"に進んでから、3章に進んでください。
+本格的な開発環境の構築にチャレンジしたい方は、
+以下の記事を確認した上で3章へ進んでください。
+
+[第13章(付録1): 実行してみよう(IDLE編)](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap13)
+[第14章(付録2): 実行してみよう(VS-Code編)](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap14)
 
 # 次回は...
 
