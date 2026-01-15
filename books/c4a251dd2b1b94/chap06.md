@@ -33,9 +33,11 @@ Traceback (most recent call last):
 
 以上の情報を元にして、1行目に注目し"記述ミス"を探します。
 
-```python:main.py
+```python:main.py(エラーのあるコード)
 print("Hello, Python!!)
+```
 
+```command:エラーログ
 Traceback (most recent call last):
     File "/Users/xxx/main.py", line 1, in <module>
     print("Hello, Python!!)
@@ -58,9 +60,11 @@ Pythonに定義されていない名前を使おうとすると出るエラー�
 次の例では、1行目の"prent"が怪しいと直ぐに気づく事ができます。
 最後の行では、「"prent"じゃなくて、"print"では...?」と教えてくれています。
 
-```python:main.py
+```python:main.py(エラーのあるコード)
 prent("Hello, Python!!") # prentという定義は無い...(自分で定義していれば別!!)
+```
 
+```command:エラーログ
 Traceback (most recent call last):
     File "/Users/xxx/main.py", line 1, in <module>
     prent("Hello, Python!!")
@@ -75,9 +79,11 @@ NameError: name 'prent' is not defined. Did you mean: 'print'?
 次の例では、"Hello, "という文字列と、100という数値を繋げようとしてエラーが起きています。
 最後の行では、「文字列は数値と連結できません...」と教えてくれています。
 
-```python:main.py
+```python:main.py(エラーのあるコード)
 print("Hello, " + 100) # "Hello, " と、 100を連結させ...!?
+```
 
+```command:エラーログ
 Traceback (most recent call last):
     File "/Users/xxx/main.py", line 1, in <module>
     print("Hello, " + 100)
@@ -99,9 +105,11 @@ print("Hello, " + str(100)) # 文字列にキャストしてから連結する
 
 次の例では、実際に100を0で割り算し、エラーを起こしています。
 
-```python:main.py
+```python:main.py(エラーのあるコード)
 print(100 / 0) # 100を0で割り算...!?
+```
 
+```command:エラーログ
 Traceback (most recent call last):
     File "/Users/xxx/main.py", line 1, in <module>
     print(100 / 0)
