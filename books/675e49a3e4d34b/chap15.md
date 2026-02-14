@@ -20,6 +20,12 @@ title: "第15章(番外編): トンネル避けゲーム2(サンプル)"
 
 :::details 完成コード
 ```python: sprite.py
+# coding: utf-8
+
+"""
+かじるプログラミング_pyxel
+"""
+
 import pyxel
 import math
 import random
