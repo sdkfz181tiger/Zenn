@@ -79,7 +79,7 @@ def on_mouse_clicked(e):
 
 ここまでの処理を実装すると、スプライトをクリックで止めることができるようになります。
 
-![](/images/0fc9f54eefe9fd/07_01.gif)
+![](/images/books/0fc9f54eefe9fd/07_01.gif)
 
 # 完成コード
 

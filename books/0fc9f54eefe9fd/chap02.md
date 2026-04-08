@@ -16,7 +16,7 @@ title: "第2章: ゲーム画面を作ってみよう"
 
 背景画像として、以下の画像をお使いください。(どこかで見た様な地獄の雰囲気!!)
 
-![](/images/0fc9f54eefe9fd/bg_jigoku.png)
+![](/images/books/0fc9f54eefe9fd/bg_jigoku.png)
 
 フォルダ構成は次の通りです。
 
@@ -71,7 +71,7 @@ root.mainloop() # tkinterを起動する
 
 今後は、このキャンバスに対して背景画像やキャラクターの画像を描画していきます。
 
-![](/images/0fc9f54eefe9fd/02_01.png)
+![](/images/books/0fc9f54eefe9fd/02_01.png)
 
 ## 4, 初期化関数を用意する
 
@@ -220,7 +220,7 @@ root.mainloop()
 ```
 :::
 
-![](/images/0fc9f54eefe9fd/02_02.png)
+![](/images/books/0fc9f54eefe9fd/02_02.png)
 
 # 次回は...
 

@@ -68,7 +68,7 @@ else:
                     fill="white", font=FONT, tag="hud")
 ```
 
-![](/images/0fc9f54eefe9fd/10_01.gif)
+![](/images/books/0fc9f54eefe9fd/10_01.gif)
 
 # 完成コード
 

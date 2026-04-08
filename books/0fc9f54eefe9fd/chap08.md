@@ -12,9 +12,9 @@ title: "第8章: スプライトに鬼画像を付けよう"
 
 | タイプ | 生き | ファイル名 | 死に | ファイル名 |
 | ---- | ---- | ---- | ---- | ---- |
-| 青鬼さん | ![](/images/0fc9f54eefe9fd/dmn_alive_b.png) | dmn_alive_b.png | ![](/images/0fc9f54eefe9fd/dmn_dead_b.png) | dmn_dead_b.png |
-| 緑鬼さん | ![](/images/0fc9f54eefe9fd/dmn_alive_g.png) | dmn_alive_g.png | ![](/images/0fc9f54eefe9fd/dmn_dead_g.png) | dmn_dead_g.png |
-| 赤鬼さん | ![](/images/0fc9f54eefe9fd/dmn_alive_r.png) | dmn_alive_r.png | ![](/images/0fc9f54eefe9fd/dmn_dead_r.png) | dmn_dead_r.png |
+| 青鬼さん | ![](/images/books/0fc9f54eefe9fd/dmn_alive_b.png) | dmn_alive_b.png | ![](/images/books/0fc9f54eefe9fd/dmn_dead_b.png) | dmn_dead_b.png |
+| 緑鬼さん | ![](/images/books/0fc9f54eefe9fd/dmn_alive_g.png) | dmn_alive_g.png | ![](/images/books/0fc9f54eefe9fd/dmn_dead_g.png) | dmn_dead_g.png |
+| 赤鬼さん | ![](/images/books/0fc9f54eefe9fd/dmn_alive_r.png) | dmn_alive_r.png | ![](/images/books/0fc9f54eefe9fd/dmn_dead_r.png) | dmn_dead_r.png |
 
 
 画像ファイルは、"images"フォルダにまとめて配置します。
@@ -86,7 +86,7 @@ def die(self, cvs):
 
 ここまでの処理を実装すると、スプライトをクリックで止めることができるようになります。
 
-![](/images/0fc9f54eefe9fd/08_01.gif)
+![](/images/books/0fc9f54eefe9fd/08_01.gif)
 
 # 完成コード
 

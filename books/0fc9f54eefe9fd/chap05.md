@@ -79,7 +79,7 @@ for i in range(TOTAL_DEMONS):
 しかし、しばらく見ていると、全てのスプライトが画面外に出ていってしまいます...
 (ここの対応については次回!!)
 
-![](/images/0fc9f54eefe9fd/05_01.gif)
+![](/images/books/0fc9f54eefe9fd/05_01.gif)
 
 # 完成コード
 

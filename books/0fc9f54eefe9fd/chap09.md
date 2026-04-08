@@ -62,7 +62,7 @@ def update():
     root.after(F_INTERVAL, update)
 ```
 
-![](/images/0fc9f54eefe9fd/09_01.gif)
+![](/images/books/0fc9f54eefe9fd/09_01.gif)
 
 # 完成コード
 

@@ -120,7 +120,7 @@ for demon in demons:
 
 この時点で実行すると、ゲーム画面に10個のスプライト(白い円)が描画されます。
 
-![](/images/0fc9f54eefe9fd/04_01.png)
+![](/images/books/0fc9f54eefe9fd/04_01.png)
 
 # 完成コード
 

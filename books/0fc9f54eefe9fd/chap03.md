@@ -30,7 +30,7 @@ def on_mouse_clicked(e):
 
 クリックをする都度、その座標がShellに表示されていきます。
 
-![](/images/0fc9f54eefe9fd/03_01.png)
+![](/images/books/0fc9f54eefe9fd/03_01.png)
 
 ### 2, Motionイベント
 
@@ -70,7 +70,7 @@ def update():
 
 この時点で実行すると、ゲーム画面上のマウス位置に座標が描画されます。
 
-![](/images/0fc9f54eefe9fd/03_02.gif)
+![](/images/books/0fc9f54eefe9fd/03_02.gif)
 
 # 完成コード
 
