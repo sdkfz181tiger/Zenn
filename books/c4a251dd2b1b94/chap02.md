@@ -16,7 +16,7 @@ title: "第2章: 実行してみよう(Google Coloab編)"
 左上メニューから次の順番でクリックし、"新しいノートブック"を立ち上げます。
 ファイル -> ドライブの新しいノートブック
 
-![](/images/c4a251dd2b1b94/02_colab_01.png)
+![](/images/books/c4a251dd2b1b94/02_colab_01.png)
 
 ## 2, コードを入力して実行する
 
@@ -28,7 +28,7 @@ title: "第2章: 実行してみよう(Google Coloab編)"
 print("Hello, Python!!")
 ```
 
-![](/images/c4a251dd2b1b94/02_colab_02.png)
+![](/images/books/c4a251dd2b1b94/02_colab_02.png)
 
 直ぐ下の行に"Hello, Python!!"と表示されれば成功です。
 Pythonを気軽に試したい程度であれば、"Google Colab"で十分です。

@@ -56,7 +56,7 @@ for block in self.blocks:
 
 | 画像 | ファイル名 |
 | ---- | ---- |
-| ![](/images/28713ff37533c0/block/block_01.png) | block_01.png |
+| ![](/images/books/28713ff37533c0/block/block_01.png) | block_01.png |
 
 ## 4, プレイヤーに速度を与える
 
@@ -244,7 +244,7 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/28713ff37533c0/14_01.gif)
+![](/images/books/28713ff37533c0/14_01.gif)
 
 # 終わりに...
 

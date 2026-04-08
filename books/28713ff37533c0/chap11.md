@@ -174,7 +174,7 @@ class ResultView(arcade.View):
 
 実行結果は次のようになります。
 
-![](/images/28713ff37533c0/11_01.gif)
+![](/images/books/28713ff37533c0/11_01.gif)
 
 # 終わりに...
 

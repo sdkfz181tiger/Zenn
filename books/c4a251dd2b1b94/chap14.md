@@ -12,7 +12,7 @@ title: "第14章(付録2): 実行してみよう(VS-Code編)"
 [公式サイト](https://code.visualstudio.com/)から、"Download for xxx"をクリックし、
 インストーラーをダウンロード&インストールします。
 
-![](/images/c4a251dd2b1b94/03_vscode_01.png)
+![](/images/books/c4a251dd2b1b94/03_vscode_01.png)
 
 ## 2, VS-Codeを立ち上げよう
 
@@ -24,7 +24,7 @@ Finderから、次の手順で"VS-Code"を立ち上げます。
 
 Applications -> Visual Studio Code.app
 
-![](/images/c4a251dd2b1b94/03_vscode_02.png)
+![](/images/books/c4a251dd2b1b94/03_vscode_02.png)
 
 ### Winの場合
 
@@ -39,7 +39,7 @@ Applications -> Visual Studio Code.app
 "VS-Code"左側のメニュー、"エクステンション"ボタンをクリックし、
 検索窓で"python"を検索&インストールします。
 
-![](/images/c4a251dd2b1b94/03_vscode_04.png)
+![](/images/books/c4a251dd2b1b94/03_vscode_04.png)
 
 ## 4, フォルダを開く
 
@@ -47,12 +47,12 @@ Applications -> Visual Studio Code.app
 
 File -> Open Folder
 
-![](/images/c4a251dd2b1b94/03_vscode_05.png)
+![](/images/books/c4a251dd2b1b94/03_vscode_05.png)
 
 フォルダを初めて開くと、次の様なダイアログが表示されます。
 チェックボックスにチェックを入れた上で、"Yes, I trust the authors"(このフォルダの作者を信用します)をクリックします。
 
-![](/images/c4a251dd2b1b94/03_vscode_06.png)
+![](/images/books/c4a251dd2b1b94/03_vscode_06.png)
 
 ## 5, 実行する
 
@@ -65,7 +65,7 @@ print("Hello, VS-Code!!")
 
 実行結果が、"TERMINAL"に表示されれば成功です。
 
-![](/images/c4a251dd2b1b94/03_vscode_07.png)
+![](/images/books/c4a251dd2b1b94/03_vscode_07.png)
 
 # 終わりに...
 

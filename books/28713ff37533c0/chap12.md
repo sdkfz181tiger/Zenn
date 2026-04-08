@@ -15,22 +15,22 @@ title: "第12章(番外編): アニメーションを切り替えよう"
 
 | 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/back_01.png) | back_01.png | ![](/images/28713ff37533c0/ninja/back_02.png) | back_02.png | ![](/images/28713ff37533c0/ninja/back_03.png) | back_03.png |
-| ![](/images/28713ff37533c0/ninja/back_04.png) | back_04.png | ![](/images/28713ff37533c0/ninja/back_05.png) | back_05.png |
+| ![](/images/books/28713ff37533c0/ninja/back_01.png) | back_01.png | ![](/images/books/28713ff37533c0/ninja/back_02.png) | back_02.png | ![](/images/books/28713ff37533c0/ninja/back_03.png) | back_03.png |
+| ![](/images/books/28713ff37533c0/ninja/back_04.png) | back_04.png | ![](/images/books/28713ff37533c0/ninja/back_05.png) | back_05.png |
 
 ### 2, 左に走る
 
 | 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/left_01.png) | left_01.png | ![](/images/28713ff37533c0/ninja/left_02.png) | left_02.png | ![](/images/28713ff37533c0/ninja/left_03.png) | left_03.png |
-| ![](/images/28713ff37533c0/ninja/left_04.png) | left_04.png | ![](/images/28713ff37533c0/ninja/left_05.png) | left_05.png |
+| ![](/images/books/28713ff37533c0/ninja/left_01.png) | left_01.png | ![](/images/books/28713ff37533c0/ninja/left_02.png) | left_02.png | ![](/images/books/28713ff37533c0/ninja/left_03.png) | left_03.png |
+| ![](/images/books/28713ff37533c0/ninja/left_04.png) | left_04.png | ![](/images/books/28713ff37533c0/ninja/left_05.png) | left_05.png |
 
 ### 3, 右に走る
 
 | 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/right_01.png) | right_01.png | ![](/images/28713ff37533c0/ninja/right_02.png) | right_02.png | ![](/images/28713ff37533c0/ninja/right_03.png) | right_03.png |
-| ![](/images/28713ff37533c0/ninja/right_04.png) | right_04.png | ![](/images/28713ff37533c0/ninja/right_05.png) | right_05.png |
+| ![](/images/books/28713ff37533c0/ninja/right_01.png) | right_01.png | ![](/images/books/28713ff37533c0/ninja/right_02.png) | right_02.png | ![](/images/books/28713ff37533c0/ninja/right_03.png) | right_03.png |
+| ![](/images/books/28713ff37533c0/ninja/right_04.png) | right_04.png | ![](/images/books/28713ff37533c0/ninja/right_05.png) | right_05.png |
 
 フォルダ構成は次の通りです。
 
@@ -266,7 +266,7 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/28713ff37533c0/12_01.gif)
+![](/images/books/28713ff37533c0/12_01.gif)
 
 # 終わりに...
 

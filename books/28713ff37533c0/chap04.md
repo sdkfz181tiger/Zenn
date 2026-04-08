@@ -57,7 +57,7 @@ class Player(BaseSprite):
 
 | 画像 | ファイル名 |
 | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/front_01.png) | front_01.png |
+| ![](/images/books/28713ff37533c0/ninja/front_01.png) | front_01.png |
 
 フォルダ構成は次の通りです。
 
@@ -189,7 +189,7 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/28713ff37533c0/04_01.png)
+![](/images/books/28713ff37533c0/04_01.png)
 
 # 次回は...
 

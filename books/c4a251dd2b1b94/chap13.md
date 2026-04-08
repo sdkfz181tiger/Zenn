@@ -9,7 +9,7 @@ title: "第13章(付録1): 実行してみよう(IDLE編)"
 ## 1, Pythonのダウンロード&インストール
 [公式サイト](https://www.python.org/downloads/)から"Python"インストーラーをダウンロードし、インストールします。
 
-![](/images/c4a251dd2b1b94/02_install_01.png)
+![](/images/books/c4a251dd2b1b94/02_install_01.png)
 
 ## 2, IDLEを立ち上げよう
 
@@ -22,7 +22,7 @@ Finderから、次の手順で"IDLE"を立ち上げます。
 
 Applications -> Python 3.xx -> IDLE.app
 
-![](/images/c4a251dd2b1b94/02_idle_mac_01.png)
+![](/images/books/c4a251dd2b1b94/02_idle_mac_01.png)
 
 ### Winの場合
 
@@ -30,7 +30,7 @@ Applications -> Python 3.xx -> IDLE.app
 
 スタートメニュー -> 検索窓で"Python" -> IDLE(Python 3.xx)
 
-![](/images/c4a251dd2b1b94/02_idle_win_01.png)
+![](/images/books/c4a251dd2b1b94/02_idle_win_01.png)
 
 ## 3, 文字を表示してみよう
 
@@ -44,7 +44,7 @@ print("Hello, Python!!")
 
 "Hello, Python!!"と表示されれば成功です。
 
-![](/images/c4a251dd2b1b94/02_idle_01.png)
+![](/images/books/c4a251dd2b1b94/02_idle_01.png)
 
 ## 4, プログラムをファイルに保存する
 
@@ -56,7 +56,7 @@ print("Hello, Python!!")
 
 File -> New File
 
-![](/images/c4a251dd2b1b94/02_idle_02.png)
+![](/images/books/c4a251dd2b1b94/02_idle_02.png)
 
 ### 4-2, コードを入力する
 
@@ -67,7 +67,7 @@ File -> New File
 print("Hello, IDLE!!")
 ```
 
-![](/images/c4a251dd2b1b94/02_idle_03.png)
+![](/images/books/c4a251dd2b1b94/02_idle_03.png)
 
 ### 4-3, ファイルを保存する
 
@@ -83,7 +83,7 @@ File -> Save
 　└ main.py <- プログラムを記述するファイル 
 ```
 
-![](/images/c4a251dd2b1b94/02_idle_04.png)
+![](/images/books/c4a251dd2b1b94/02_idle_04.png)
 
 ### 4-4, プログラムを実行する
 
@@ -91,11 +91,11 @@ File -> Save
 
 Run -> Run Module
 
-![](/images/c4a251dd2b1b94/02_idle_05.png)
+![](/images/books/c4a251dd2b1b94/02_idle_05.png)
 
 シェルウィンドウに、"Hello, IDLE!!"の文字が表示されれば成功です。
 
-![](/images/c4a251dd2b1b94/02_idle_06.png)
+![](/images/books/c4a251dd2b1b94/02_idle_06.png)
 
 以上の手順を繰り返し、コーディングを進めていきます。
 
@@ -105,11 +105,11 @@ Run -> Run Module
 
 File -> Open
 
-![](/images/c4a251dd2b1b94/02_idle_07.png)
+![](/images/books/c4a251dd2b1b94/02_idle_07.png)
 
 先ほど保存した"main.py"ファイルを指定すると、コードが表示されます。
 
-![](/images/c4a251dd2b1b94/02_idle_08.png)
+![](/images/books/c4a251dd2b1b94/02_idle_08.png)
 
 # 終わりに...
 

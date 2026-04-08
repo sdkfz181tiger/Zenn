@@ -93,7 +93,7 @@ def draw(self):
 ```
 
 色の番号については次の画像を参考にしてください。
-![](/images/675e49a3e4d34b/02_01.png)
+![](/images/books/675e49a3e4d34b/02_01.png)
 
 # 完成コード
 
@@ -135,7 +135,7 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/675e49a3e4d34b/02_02.png)
+![](/images/books/675e49a3e4d34b/02_02.png)
 
 # 次回は...
 

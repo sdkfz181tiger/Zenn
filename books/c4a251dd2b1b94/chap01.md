@@ -15,7 +15,7 @@ title: "第1章: はじめに"
 イギリスのコメディ番組"[Monty Python's Flying Circus](https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%B3%E3%83%86%E3%82%A3%E3%83%BB%E3%83%91%E3%82%A4%E3%82%BD%E3%83%B3)"から取られています。
 (ちょっとユニークで覚えやすいですね)
 
-![](/images/c4a251dd2b1b94/01_01.png)
+![](/images/books/c4a251dd2b1b94/01_01.png)
 
 ## どんなところで使われてる?
 
@@ -49,21 +49,21 @@ Pythonで使える2Dゲーム開発向けライブラリを少し紹介します
 "[Python Arcade Library](https://api.arcade.academy/en/stable/)"は、本格的な描画機能を持ちながら扱いやすい、人気が伸びているライブラリ。
 教育向けにも広く使われています。(筆者激推し)
 
-![](/images/c4a251dd2b1b94/01_04.png)
+![](/images/books/c4a251dd2b1b94/01_04.png)
 
 ## Pyxel
 
 "[Pyxel](https://github.com/kitao/pyxel)"は、レトロな8bit風ゲーム制作に特化した、かわいいゲームエンジンです。
 "ファミコンっぽい雰囲気"が好きな人におすすめです。(筆者激推し)
 
-![](/images/c4a251dd2b1b94/01_02.png)
+![](/images/books/c4a251dd2b1b94/01_02.png)
 
 ## Tkinter
 
 "[Tkinter](https://tkdocs.com/pyref)"は、デスクトップアプリやWebアプリ開発向けに作られた定番ライブラリの一つです。
 Tkinterに備わっている、"Canvas(キャンバス)"を使うと、キャラクターを表示したり動かしたりできるため、簡単な2Dゲームを作るのに向いています。
 
-![](/images/c4a251dd2b1b94/01_05.png)
+![](/images/books/c4a251dd2b1b94/01_05.png)
 
 # 次回は...
 

@@ -13,7 +13,7 @@ title: "第7章: 小判をゲットしよう"
 
 | 画像 | ファイル名 |
 | ---- | ---- |
-| ![](/images/28713ff37533c0/coin/coin_01.png) | coin_01.png |
+| ![](/images/books/28713ff37533c0/coin/coin_01.png) | coin_01.png |
 
 フォルダ構成は次の通りです。
 
@@ -237,7 +237,7 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/28713ff37533c0/07_01.gif)
+![](/images/books/28713ff37533c0/07_01.gif)
 
 # 次回は...
 

@@ -19,7 +19,7 @@ title: "第3章: リソースファイルを用意しよう"
 $ pyxel edit ファイル名.pyxres
 ```
 
-![](/images/675e49a3e4d34b/03_01.png)
+![](/images/books/675e49a3e4d34b/03_01.png)
 
 ## 2, ドット絵を描いてみよう
 
@@ -36,7 +36,7 @@ $ pyxel edit ファイル名.pyxres
 
 [リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/shooter.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
 
-![](/images/675e49a3e4d34b/03_02.png)
+![](/images/books/675e49a3e4d34b/03_02.png)
 
 ## 3, pyxresファイルを配置する
 
@@ -95,7 +95,7 @@ def draw(self):
 宇宙船1が、座標(20, 20)の位置に、
 ブースター1が、座標(20, 28)の位置に表示されます。
 
-![](/images/675e49a3e4d34b/03_03.png)
+![](/images/books/675e49a3e4d34b/03_03.png)
 
 # 完成コード
 
@@ -154,7 +154,7 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/675e49a3e4d34b/03_04.png)
+![](/images/books/675e49a3e4d34b/03_04.png)
 
 # 次回は...
 

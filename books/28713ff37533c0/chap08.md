@@ -12,8 +12,8 @@ title: "第8章: アニメーションさせよう"
 
 | 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/ninja/front_01.png) | front_01.png | ![](/images/28713ff37533c0/ninja/front_02.png) | front_02.png | ![](/images/28713ff37533c0/ninja/front_03.png) | front_03.png |
-| ![](/images/28713ff37533c0/ninja/front_04.png) | front_04.png | ![](/images/28713ff37533c0/ninja/front_05.png) | front_05.png |
+| ![](/images/books/28713ff37533c0/ninja/front_01.png) | front_01.png | ![](/images/books/28713ff37533c0/ninja/front_02.png) | front_02.png | ![](/images/books/28713ff37533c0/ninja/front_03.png) | front_03.png |
+| ![](/images/books/28713ff37533c0/ninja/front_04.png) | front_04.png | ![](/images/books/28713ff37533c0/ninja/front_05.png) | front_05.png |
 
 フォルダ構成は次の通りです。
 
@@ -37,8 +37,8 @@ title: "第8章: アニメーションさせよう"
 
 | 画像 | ファイル名 | 画像 | ファイル名 | 画像 | ファイル名 |
 | ---- | ---- | ---- | ---- | ---- | ---- |
-| ![](/images/28713ff37533c0/coin/coin_01.png) | coin_01.png | ![](/images/28713ff37533c0/coin/coin_02.png) | coin_02.png | ![](/images/28713ff37533c0/coin/coin_03.png) | coin_03.png |
-| ![](/images/28713ff37533c0/coin/coin_04.png) | coin_04.png | ![](/images/28713ff37533c0/coin/coin_05.png) | coin_05.png |
+| ![](/images/books/28713ff37533c0/coin/coin_01.png) | coin_01.png | ![](/images/books/28713ff37533c0/coin/coin_02.png) | coin_02.png | ![](/images/books/28713ff37533c0/coin/coin_03.png) | coin_03.png |
+| ![](/images/books/28713ff37533c0/coin/coin_04.png) | coin_04.png | ![](/images/books/28713ff37533c0/coin/coin_05.png) | coin_05.png |
 
 フォルダ構成は次の通りです。
 
@@ -302,7 +302,7 @@ if __name__ == "__main__":
 
 実行結果は次のようになります。
 
-![](/images/28713ff37533c0/08_01.gif)
+![](/images/books/28713ff37533c0/08_01.gif)
 
 # 次回は...
 
