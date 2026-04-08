@@ -17,11 +17,11 @@ Animate.cssを利用することで、いとも簡単にAnimationを実装する
 
 [Animate.css](https://animate.style/)
 
-![](/images/articles/d21afeeec2b7a4/9674c067ad97-20221214.png)
+![](https://storage.googleapis.com/zenn-user-upload/9674c067ad97-20221214.png)
 
 今回はこのライブラリを使ってアニメーションを試してみます。
 
-![](/images/articles/d21afeeec2b7a4/0e86886441d0-20221214.gif)
+![](https://storage.googleapis.com/zenn-user-upload/0e86886441d0-20221214.gif)
 
 # プロジェクトを用意する
 次の様にプロジェクトを作ります。
@@ -162,7 +162,7 @@ CDNを利用し、HTMLファイルに次の様に記述しましょう。
 様々なアニメーション用のクラスとその動き確認することができます。
 使いたいアニメーションのクラス名"animate__xxx"をコピーして使ってみましょう。
 
-![](/images/articles/d21afeeec2b7a4/a4292292522c-20221214.png)
+![](https://storage.googleapis.com/zenn-user-upload/a4292292522c-20221214.png)
 
 ## 1, jQueryを使ってクラスを追加/削除する
 jQueryを使って先程のクラスを動的に追加/削除します。
@@ -188,7 +188,7 @@ function doAnimation(id, type){
 
 簡単にアニメーションを実装することができました。(やりました!!)
 
-![](/images/articles/d21afeeec2b7a4/0e86886441d0-20221214.gif)
+![](https://storage.googleapis.com/zenn-user-upload/0e86886441d0-20221214.gif)
 
 # 最後に
 
