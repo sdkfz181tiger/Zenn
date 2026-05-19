@@ -29,6 +29,12 @@ title: "第15章(番外編): 物理エンジンを使おう_ひよこ&ケーキ"
 | ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
 | ![](/images/books/28713ff37533c0/hiyoko/star_01.png) | star_01.png | ![](/images/books/28713ff37533c0/hiyoko/star_02.png) | star_02.png | ![](/images/books/28713ff37533c0/hiyoko/star_03.png) | star_03.png | ![](/images/books/28713ff37533c0/hiyoko/star_04.png) | star_04.png |
 
+### 1-4, ケーキ
+
+|  | ファイル名 |  | ファイル名 |  | ファイル名 |
+| ---- | ---- | ---- | ---- | ---- | ---- |
+| ![](/images/books/28713ff37533c0/hiyoko/cake_01.png) | cake_01.png | ![](/images/books/28713ff37533c0/hiyoko/cake_02.png) | cake_02.png | ![](/images/books/28713ff37533c0/hiyoko/cake_03.png) | cake_03.png |
+
 ## x, xxx
 
 調整中です...
