@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/sdkfz181tiger/Zenn#readme",
   "dependencies": {
-    "zenn-cli": "^0.3.0"
+    "zenn-cli": "^0.5.2"
   }
 }
