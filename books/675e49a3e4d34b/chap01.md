@@ -16,25 +16,25 @@ title: "第1章: はじめに"
 
 ![](/images/books/675e49a3e4d34b/13_01.gif)
 
-[実働サンプル](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter)
 
 ## トンネル避けゲーム(サンプル)
 
 ![](/images/books/675e49a3e4d34b/15_02.gif)
 
-[実働サンプル](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/flappy)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/flappy)
 
 ## 吸血鬼射撃ゲーム(サンプル)
 
 ![](/images/books/675e49a3e4d34b/16_02.gif)
 
-[実働サンプル](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/vampire)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/vampire)
 
 ## パクパク追いかけゲーム(サンプル)
 
 ![](/images/books/675e49a3e4d34b/17_02.gif)
 
-[実働サンプル](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/pacman)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/pacman)
 
 # Pythonって何?
 
