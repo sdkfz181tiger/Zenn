@@ -10,7 +10,7 @@ title: "第16章(番外編): 吸血鬼射撃ゲーム(サンプル)"
 ## 1, 素材を用意する
 
 "Pyxel Editor"で、背景の素材を描きます。
-[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
+[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/res_vampire/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
 
 ![](/images/books/675e49a3e4d34b/16_01.png)
 
