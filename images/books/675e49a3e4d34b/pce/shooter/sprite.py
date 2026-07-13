@@ -74,3 +74,46 @@ class BulletSprite(BaseSprite):
     def draw(self):
         """ 描画処理 """
         pyxel.rect(self.x, self.y, 2, 2, 12)
+
+class Star():
+
+    def __init__(self, x, y, w, h):
+        """ コンストラクタ """
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.c = random.randint(0, 15)
+        self.spd = random.randint(1, 3)
+
+    def update(self):
+        """ 更新処理 """
+        self.y += self.spd
+        if self.h < self.y: self.y = 0
+
+    def draw(self):
+        """ 描画処理 """
+        pyxel.pset(self.x, self.y, self.c)
+
+class Background():
+
+    def __init__(self, w, h):
+        """ コンストラクタ """
+        self.w = w # ゲーム画面の幅
+        self.h = h # ゲーム場面の高さ
+        self.stars = [] # 星を管理するリスト
+        for i in range(30):
+            x = random.randint(0, w)
+            y = random.randint(0, h)
+            star = Star(x, y, self.w, self.h)
+            self.stars.append(star)
+
+    def update(self):
+        """ 更新処理 """
+        for star in self.stars:
+            star.update()
+
+    def draw(self):
+        """ 描画処理 """
+        for star in self.stars:
+            star.draw()

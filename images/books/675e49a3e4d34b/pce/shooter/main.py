@@ -27,6 +27,9 @@ class Game:
         # スコアを初期化
         self.score = 0
 
+        # 背景
+        self.background = sprite.Background(W, H)
+
         # プレイヤーを初期化
         self.ship = sprite.ShipSprite(W/2, H - 40)
         deg = 0 if random.random()<0.5 else 180
@@ -42,6 +45,17 @@ class Game:
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
         pyxel.load("my_resource.pyxres")
+
+        # サウンド(ショット)
+        pyxel.sound(0).set("c4g3", 
+            tones="p", volumes="76",
+            effects="f", speed=20)
+
+        # サウンド(ヒット)
+        pyxel.sound(1).set("e4d4c4", 
+            tones="p", volumes="76",
+            effects="n", speed=20)
+
         pyxel.run(self.update, self.draw)
 
     def update(self):
@@ -50,6 +64,9 @@ class Game:
         # ゲームオーバー
         if self.game_over_flg:
             return
+
+        # 背景
+        self.background.update()
 
         # プレイヤーを更新
         self.ship.update()
@@ -79,11 +96,17 @@ class Game:
                     self.score += 1 # スコア
                     self.bullets.remove(bullet)
                     self.asteroids.remove(asteroid)
+
+                    # サウンド(channel, sound)
+                    pyxel.play(1, 1)
                     return
 
     def draw(self):
         """ 描画処理 """
         pyxel.cls(0)
+
+        # 背景
+        self.background.draw()
 
         # ゲームオーバー
         if self.game_over_flg:
@@ -113,6 +136,9 @@ class Game:
             bullet = sprite.BulletSprite(self.ship.x, self.ship.y)
             bullet.move(BULLET_SPD, 270)
             self.bullets.append(bullet)
+
+            # サウンド(channel, sound)
+            pyxel.play(0, 0)
 
     def overlap_spr(self, spr):
         """ 画面外に出たら反対側へ """
