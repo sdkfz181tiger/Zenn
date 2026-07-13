@@ -34,9 +34,11 @@ $ pyxel edit ファイル名.pyxres
 - 隕石x6
 - ブースターx2
 
+![](/images/books/675e49a3e4d34b/03_02.png)
+
 [リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_shooter/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
 
-![](/images/books/675e49a3e4d34b/03_02.png)
+![](/images/books/675e49a3e4d34b/03_05.png)
 
 ## 3, pyxresファイルを配置する
 
