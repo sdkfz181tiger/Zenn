@@ -10,9 +10,12 @@ title: "第17章(番外編): パクパク追いかけゲーム(サンプル)"
 ## 1, 素材を用意する
 
 "Pyxel Editor"で、背景の素材を描きます。
-[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_pacman/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
 
 ![](/images/books/675e49a3e4d34b/17_01.png)
+
+[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_pacman/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
+
+![](/images/books/675e49a3e4d34b/03_05.png)
 
 # サンプルコード
 

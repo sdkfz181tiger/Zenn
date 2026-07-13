@@ -10,9 +10,12 @@ title: "第14章(番外編): トンネル避けゲーム1(サンプル)"
 ## 1, 素材を用意する
 
 "Pyxel Editor"で、プレイヤーとトンネルの素材を描きます。
-[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_flappy/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
 
 ![](/images/books/675e49a3e4d34b/14_01.png)
+
+[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_flappy/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
+
+![](/images/books/675e49a3e4d34b/03_05.png)
 
 # サンプルコード
 
