@@ -28,6 +28,10 @@ class BaseSprite:
         self.vx = spd * math.cos(rad) # x方向の速度
         self.vy = spd * math.sin(rad) # y方向の速度
 
+    def flip_x(self):
+        """ x方向反転 """
+        self.vx *= -1
+
     def intersects(self, other):
         """ 矩形同士の当たり判定(AABB) """
         if other.x + other.w < self.x: return False
@@ -36,53 +40,37 @@ class BaseSprite:
         if self.y + self.h < other.y: return False
         return True
 
-class PlayerSprite(BaseSprite):
+class ShipSprite(BaseSprite):
 
     def __init__(self, x, y):
         """ コンストラクタ """
         super().__init__(x, y)
-        self.gravity = 0.4 # 重力
-        self.jump_x = 1.0 # ジャンプx
-        self.jump_y = -3.4 # ジャンプy
-
-    def update(self):
-        """ 更新処理 """
-        super().update()
-        self.vy += self.gravity # Gravity
 
     def draw(self):
         """ 描画処理 """
         pyxel.blt(self.x, self.y, 0, 
-            0, 16, self.w, self.h, 0)
-        # Debug
-        #pyxel.rectb(self.x, self.y, self.w, self.h, 3)
+            0, 0, 
+            self.w, self.h, 0) # Ship
 
-    def jump(self):
-        """ ジャンプ """
-        self.vx = self.jump_x # ジャンプx
-        self.vy = self.jump_y # ジャンプy
+class AsteroidSprite(BaseSprite):
 
-class TunnelSprite(BaseSprite):
-
-    def __init__(self, x, y, length, top_flg=False):
+    def __init__(self, x, y):
         """ コンストラクタ """
-        super().__init__(x, y, 16, length*8)
-        self.length = length # トンネルの長さ
-        if(top_flg): self.y -= self.h # トンネル上
+        super().__init__(x, y)
+        self.index = random.randint(2, 7) # 隕石画像
 
     def draw(self):
         """ 描画処理 """
-        # Top
-        pyxel.blt(self.x, self.y, 0, 
-            16, 16, self.w, 8, 0)
-        # Mid
-        for i in range(self.length-2):
-            y = self.y + (i+1)*8
-            pyxel.blt(self.x, y, 0, 
-                16, 24, self.w, 8, 0)
-        # Bottom
-        y = self.y + (self.length-1)*8
-        pyxel.blt(self.x, y, 0, 
-            16, 32, self.w, 8, 0)
-        # Debug
-        #pyxel.rectb(self.x, self.y, self.w, self.h, 3)
+        pyxel.blt(self.x, self.y, 0, self.w*self.index, 0, 
+                self.w, self.h, 0) # Ship
+
+class BulletSprite(BaseSprite):
+
+    def __init__(self, x, y):
+        """ コンストラクタ """
+        super().__init__(x, y)
+        self.x += self.w / 2 - 1 # 中央に調整
+
+    def draw(self):
+        """ 描画処理 """
+        pyxel.rect(self.x, self.y, 2, 2, 12)
