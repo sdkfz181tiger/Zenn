@@ -20,6 +20,8 @@ title: "第1章: はじめに"
 
 ![](/images/books/675e49a3e4d34b/15_02.gif)
 
+[実働サンプル](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/flappy)
+
 ## 吸血鬼射撃ゲーム(サンプル)
 
 ![](/images/books/675e49a3e4d34b/16_02.gif)
