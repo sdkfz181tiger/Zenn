@@ -23,12 +23,6 @@ title: "第17章(番外編): パクパク追いかけゲーム(サンプル)"
 
 :::details 完成コード(sprite.py)
 ```python: sprite.py
-# coding: utf-8
-
-"""
-かじるプログラミング_pyxel
-"""
-
 import pyxel
 import math
 import random
@@ -257,12 +251,6 @@ class DotSprite(BaseSprite):
 
 :::details 完成コード(main.py)
 ```python: main.py
-# coding: utf-8
-
-"""
-かじるプログラミング_pyxel
-"""
-
 import pyxel
 import math
 import random
