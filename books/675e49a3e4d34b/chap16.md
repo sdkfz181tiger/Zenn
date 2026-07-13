@@ -10,7 +10,7 @@ title: "第16章(番外編): 吸血鬼射撃ゲーム(サンプル)"
 ## 1, 素材を用意する
 
 "Pyxel Editor"で、背景の素材を描きます。
-[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/vampire.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
+[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
 
 ![](/images/books/675e49a3e4d34b/16_01.png)
 
@@ -246,7 +246,7 @@ class Game:
 
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
-        pyxel.load("vampire.pyxres")
+        pyxel.load("my_resource.pyxres")
         pyxel.run(self.update, self.draw) # Pyxel実行
 
     def update(self):

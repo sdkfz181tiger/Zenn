@@ -94,7 +94,7 @@ class Game:
 
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
-        pyxel.load("shooter.pyxres")
+        pyxel.load("my_resource.pyxres")
 
         # サウンド(ショット)
         pyxel.sound(0).set("c4g3", 

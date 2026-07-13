@@ -23,7 +23,7 @@ title: "第5章: キャラクターをクラスで作ろう"
 作業用フォルダ/
 　├ main.py
 　├ sprite.py <- spriteモジュール
-　└ shooter.pyxres
+　└ my_resource.pyxres
 ```
 
 ## 2, スプライトの共通クラスを用意する
@@ -173,7 +173,7 @@ class Game:
 
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
-        pyxel.load("shooter.pyxres")
+        pyxel.load("my_resource.pyxres")
         pyxel.run(self.update, self.draw)
 
     def update(self):

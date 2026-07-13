@@ -34,7 +34,7 @@ $ pyxel edit ファイル名.pyxres
 - 隕石x6
 - ブースターx2
 
-[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/shooter.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
+[リソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/675e49a3e4d34b/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
 
 ![](/images/books/675e49a3e4d34b/03_02.png)
 
@@ -46,7 +46,7 @@ $ pyxel edit ファイル名.pyxres
 ```text:フォルダ構成
 作業用フォルダ/
 　├ main.py
-　└ shooter.pyxres <- pyxresファイルを配置する
+　└ my_resource.pyxres <- pyxresファイルを配置する
 ```
 
 ## 4, pyxresファイルを読み込む
@@ -60,7 +60,7 @@ def __init__(self):
 
     # Pyxelの起動
     pyxel.init(W, H, title="Hello, Pyxel!!")
-    pyxel.load("shooter.pyxres") # pyxresファイルを読み込む
+    pyxel.load("my_resource.pyxres") # pyxresファイルを読み込む
     pyxel.run(self.update, self.draw)
 ```
 
@@ -116,7 +116,7 @@ class Game:
 
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
-        pyxel.load("shooter.pyxres")
+        pyxel.load("my_resource.pyxres")
         pyxel.run(self.update, self.draw)
 
     def update(self):
