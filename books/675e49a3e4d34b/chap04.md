@@ -97,22 +97,22 @@ pyxel.line(0, 0, 50, 50, 1)
 # 四角を描画
 # x, y, w, h, color
 pyxel.rect(90, 10, 10, 20, 2)
-pyxel.rectb(120, 30, 30, 20, 3)
+pyxel.rectb(120, 30, 30, 20, 3) # 線のみ
 
 # 円を描画
 # x, y, r, color
 pyxel.circ(60, 80, 10, 4)
-pyxel.circb(90, 50, 10, 5)
+pyxel.circb(90, 50, 10, 5) # 線のみ
 
 # 楕円を描画
 # x, y, w, h, color
 pyxel.elli(10, 60, 30, 10, 6)
-pyxel.ellib(20, 80, 10, 30, 7)
+pyxel.ellib(20, 80, 10, 30, 7) # 線のみ
 
 # 三角形を描画
 # x1, y1, x2, y2, x3, y3, color
 pyxel.tri(90, 70, 70, 100, 110, 90, 8)
-pyxel.trib(120, 70, 100, 100, 140, 90, 9)
+pyxel.trib(120, 70, 100, 100, 140, 90, 9) # 線のみ
 ```
 
 ## 2-2, 完成コード(グラフィックス)
@@ -156,22 +156,22 @@ class Game:
         # 四角を描画
         # x, y, w, h, color
         pyxel.rect(90, 10, 10, 20, 2)
-        pyxel.rectb(120, 30, 30, 20, 3)
+        pyxel.rectb(120, 30, 30, 20, 3) # 線のみ
 
         # 円を描画
         # x, y, r, color
         pyxel.circ(60, 80, 10, 4)
-        pyxel.circb(90, 50, 10, 5)
+        pyxel.circb(90, 50, 10, 5) # 線のみ
 
         # 楕円を描画
         # x, y, w, h, color
         pyxel.elli(10, 60, 30, 10, 6)
-        pyxel.ellib(20, 80, 10, 30, 7)
+        pyxel.ellib(20, 80, 10, 30, 7) # 線のみ
 
         # 三角形を描画
         # x1, y1, x2, y2, x3, y3, color
         pyxel.tri(90, 70, 70, 100, 110, 90, 8)
-        pyxel.trib(120, 70, 100, 100, 140, 90, 9)
+        pyxel.trib(120, 70, 100, 100, 140, 90, 9) # 線のみ
 
 
 def main():
