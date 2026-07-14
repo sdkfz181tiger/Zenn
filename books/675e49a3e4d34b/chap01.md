@@ -63,6 +63,8 @@ Pythonのインストール方法、基礎的な文法については、[Python�
 
 [レトロゲームエンジンPyxelを使わない理由が見つからない](https://qiita.com/kitao/items/eae53dd47c663b497352)では、本エンジンの開発者様の解説を読むことができます。
 
+[Pyxel APIリファレンス](https://kitao.github.io/pyxel/web/api-reference/)では、Pyxelに用意された様々な機能を確認する事ができます。
+
 ![](/images/books/675e49a3e4d34b/01_02.png)
 
 ## Pyxelライブラリのインストールについて
