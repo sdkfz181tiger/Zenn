@@ -1,3 +1,9 @@
+# coding: utf-8
+
+"""
+かじるプログラミング_pyxel
+"""
+
 import pyxel
 import math
 import random
@@ -85,7 +91,7 @@ class PlayerSprite(BaseSprite):
     def __init__(self, x, y, u, v, spd, game):
         """ コンストラクタ """
         super().__init__(x, y, u, v, spd)
-        self.shot_interval = 12
+        self.shot_interval = 24
         self.shot_counter = 0
         self.game = game
 
@@ -100,22 +106,34 @@ class PlayerSprite(BaseSprite):
 
 class Monster(BaseSprite):
 
-    def __init__(self, x, y, u, v, spd, think_interval, target):
+    def __init__(self, x, y, obj, target):
         """ コンストラクタ """
-        super().__init__(x, y, u, v, spd)
-        self.think_interval = think_interval
-        self.think_counter = 0
+        super().__init__(x, y, obj["u"], obj["v"], obj["spd"])
+        self.wait_time = obj["wait_time"]
+        self.move_time = obj["move_time"]
         self.target = target
+
+        self.wait_flg = True
+        self.action_time = 0
 
     def update(self):
         """ 更新処理 """
         super().update()
-        # Think
-        self.think_counter += 1
-        if self.think_interval < self.think_counter:
-            self.think_counter = 0
-            direction = self.get_direction(self.target)
-            self.move(direction)
+        # Time
+        self.action_time += 1
+
+        # 待機 or 移動
+        if self.wait_flg:
+            if self.wait_time < self.action_time:
+                self.action_time = 0
+                direction = self.get_direction(self.target)
+                self.move(direction) # Move!!
+                self.wait_flg = False
+        else:
+            if self.move_time < self.action_time:
+                self.action_time = 0
+                self.stop() # Wait!!
+                self.wait_flg = True
 
 class Bullet(BaseSprite):
 
@@ -133,7 +151,7 @@ class Bullet(BaseSprite):
 
     def draw(self):
         """ 描画処理 """
-        pyxel.rect(self.x, self.y, 2, 2, 7)
+        pyxel.rect(self.x, self.y, 1, 1, 7)
 
     def is_dead(self):
         """ 死亡フラグ """
@@ -164,7 +182,11 @@ class Particle(BaseSprite):
 
     def draw(self):
         """ 描画処理 """
-        pyxel.circ(self.x + self.off_x, self.y + self.off_y, self.circ_r, 7)
+        colors = [2, 4, 8]
+        pyxel.circ(
+            self.x + self.off_x, 
+            self.y + self.off_y, 
+            self.circ_r, random.choice(colors))
 
     def is_dead(self):
         """ 死亡フラグ """

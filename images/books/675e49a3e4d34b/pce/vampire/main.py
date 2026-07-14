@@ -1,3 +1,9 @@
+# coding: utf-8
+
+"""
+かじるプログラミング_pyxel
+"""
+
 import pyxel
 import math
 import random
@@ -15,13 +21,13 @@ MODE_GAME_OVER = "game_over"
 PLAYER_SPD = 1.2
 BULLET_SPD = 2.4
 
-MONSTER_MAX = 10
+MONSTER_MAX = 64
 MONSTERS = [
-    {"u": 32, "v": 72, "spd": 0.1,  "think_interval": 60},
-    {"u": 48, "v": 72, "spd": 0.12, "think_interval": 90},
-    {"u":  0, "v": 80, "spd": 0.14, "think_interval": 120},
-    {"u": 16, "v": 80, "spd": 0.16, "think_interval": 150},
-    {"u": 32, "v": 80, "spd": 0.25, "think_interval": 180}
+    {"u": 32, "v": 72, "spd": 0.10, "wait_time":  20, "move_time": 80},
+    {"u": 48, "v": 72, "spd": 0.12, "wait_time":  40, "move_time": 70},
+    {"u":  0, "v": 80, "spd": 0.16, "wait_time":  80, "move_time": 60},
+    {"u": 16, "v": 80, "spd": 0.32, "wait_time": 200, "move_time": 50},
+    {"u": 32, "v": 80, "spd": 0.64, "wait_time": 300, "move_time": 40}
 ]
 
 # Game
@@ -135,21 +141,14 @@ class Game:
 
         # モンスター
         self.monsters = []
-        for i in range(64):
+        for i in range(MONSTER_MAX):
             x = random.randint(0, W)
             y = random.randint(0, H)
             item = random.choice(MONSTERS)
-            u = item["u"]
-            v = item["v"]
-            spd = item["spd"]
-            think_interval = item["think_interval"]
-            monster = sprite.Monster(x, y, u, v, spd, think_interval, self.player)
+            monster = sprite.Monster(x, y, item, self.player)
             # 距離を計算する
             distance = monster.get_distance(self.player)
             if distance < 24: continue
-            # プレイヤーへの方向を計算する
-            direction = monster.get_direction(self.player)
-            monster.move(direction)
             self.monsters.append(monster)
 
         # 弾丸
@@ -159,6 +158,10 @@ class Game:
 
     def control(self):
         """ コントロール """
+
+        # ゲーム修了
+        if pyxel.btnp(pyxel.KEY_Q):
+            pyxel.quit()
 
         # ゲームループ
         if pyxel.btnp(pyxel.KEY_SPACE):
@@ -215,7 +218,7 @@ class Game:
         else:
             x = random.randint(0, W)
             spr.set_center(x, 0) # Vertical
-        pyxel.play(1, 1, loop=False) # サウンド
+        pyxel.play(1, 3, loop=False) # サウンド
 
     def get_nearest_monster(self):
         """ 最も近いモンスターの座標 """
