@@ -85,9 +85,9 @@ if __name__ == "__main__":
 
 ## 2-1, 様々なグラフィックスを表示する
 
-Pyxelには、線や四角、円等のグラフィックスを描画するメソッドが用意してあります。
+Pyxelには、線や四角、円等のグラフィックスを描画するメソッドが多数用意してあります。
 
-[Pyxel APIリファレンス](https://kitao.github.io/pyxel/web/api-reference/)では、Pyxelに用意された様々な機能を確認する事ができます。
+[Pyxel APIリファレンス](https://kitao.github.io/pyxel/web/api-reference/)では、様々な機能を確認する事ができます。
 
 ```python: main.py(抜粋)
 # 線を描画
