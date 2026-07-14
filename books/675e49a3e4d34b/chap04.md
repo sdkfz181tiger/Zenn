@@ -147,7 +147,7 @@ class Game:
 
         # テキストを描画
         pyxel.text(10, 10, 
-            "HELLO, SHAPES!!", 12)
+            "HELLO, GRAPHICS!!", 12)
         
         # 線を描画
         # x1, y1, x2, y2, color
