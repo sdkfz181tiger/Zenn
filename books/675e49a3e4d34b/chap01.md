@@ -70,7 +70,9 @@ Pythonのインストール方法、基礎的な文法については、[Python�
 "[Pyxel](https://github.com/kitao/pyxel)"は、"キャラクター"の表示や"動き"、"当たり判定"などを簡単に扱えるゲームエンジンです。
 レトロゲーム風のゲームが好きな人には特にオススメなライブラリです。
 
-[レトロゲームエンジンPyxelを使わない理由が見つからない](https://qiita.com/kitao/items/eae53dd47c663b497352)では、本エンジンの開発者様の解説を読むことができます。
+[レトロゲームエンジンPyxelを使わない理由が見つからない](https://qiita.com/kitao/items/eae53dd47c663b497352)では、Pyxel開発者様の解説を読むことができます。
+
+[ユーザー作品集](https://kitao.github.io/pyxel-user-examples/)では、本ライブラリで作られた素晴らしい作品を見つける事ができます。
 
 [Pyxel APIリファレンス](https://kitao.github.io/pyxel/web/api-reference/)では、様々な機能を確認する事ができます。
 
