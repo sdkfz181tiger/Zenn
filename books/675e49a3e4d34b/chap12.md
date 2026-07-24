@@ -224,7 +224,7 @@ if __name__ == "__main__":
 ```
 :::
 
-オンラインエディタ完成コード: [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap12_comp)
+オンラインエディタ版完成コード: [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap12_comp)
 
 # 終わりに...
 
