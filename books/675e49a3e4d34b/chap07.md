@@ -217,6 +217,8 @@ if __name__ == "__main__":
 ```
 :::
 
+オンラインエディタ完成コード: [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap07_comp)
+
 実行結果は次のようになります。
 
 ![](/images/books/675e49a3e4d34b/07_01.gif)
