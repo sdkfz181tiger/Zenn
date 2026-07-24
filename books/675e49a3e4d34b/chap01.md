@@ -58,7 +58,7 @@ Pythonのインストール方法、基礎的な文法については、[Python�
 開発環境については、Pythonのインストール時に付属するエディタである、"IDLE"を利用します。
 利用方法については、[第13章(付録1): 実行してみよう(IDLE編)](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap13)を参考にしてください。
 
-Pyxelをお試しで使ってみたい方は、[PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/begginer)の利用をオススメします。(1章~13章までであれば、本エディタだけでお試しいただけます!!)
+Pyxelをお試しで使ってみたい方は、[PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap01_comp)の利用をオススメします。(1章~13章までであれば、本エディタだけでお試しいただけます!!)
 
 # ライブラリ紹介
 
