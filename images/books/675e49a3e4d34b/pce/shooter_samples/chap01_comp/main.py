@@ -1,7 +1,6 @@
 import pyxel
 import math
 import random
-import sprite
 
 W, H = 160, 120
 
