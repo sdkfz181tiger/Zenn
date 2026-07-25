@@ -16,31 +16,31 @@ title: "第1章: はじめに"
 
 ![](/images/books/675e49a3e4d34b/13_01.gif)
 
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap13_comp)
 
 ## トンネル避けゲーム(サンプル)
 
 ![](/images/books/675e49a3e4d34b/15_02.gif)
 
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/flappy)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap15_comp)
 
 ## 吸血鬼射撃ゲーム(サンプル)
 
 ![](/images/books/675e49a3e4d34b/16_02.gif)
 
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/vampire)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap16_comp)
 
 ## パクパク追いかけゲーム(サンプル)
 
 ![](/images/books/675e49a3e4d34b/17_02.gif)
 
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/pacman)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap17_comp)
 
 ## スーパーランドゲーム(サンプル)
 
 ![](/images/books/675e49a3e4d34b/18_02.gif)
 
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/superland)
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap18_comp)
 
 # Pythonって何?
 
