@@ -47,14 +47,12 @@ pyxel.play(0, 0)
 # 完成コード
 
 ここまでの機能を実装した完成コードは、次の通りです。
-("sprite.py"ファイルは前回と同じものです)
 
 :::details 完成コード
 ```python: main.py
 import pyxel
 import math
 import random
-import sprite
 
 W, H = 160, 120
 SHIP_SPD = 1.4
@@ -67,7 +65,80 @@ ASTEROID_SPD_MAX = 2.0
 ASTEROID_DEG_MIN = 30
 ASTEROID_DEG_MAX = 150
 
-BULLET_SPD = 3
+BULLET_SPD = 3 # 弾丸の速度
+
+class BaseSprite:
+
+    def __init__(self, x, y, w=8, h=8):
+        """ コンストラクタ """
+        self.x = x
+        self.y = y
+        self.w = w
+        self.h = h
+        self.vx = 0
+        self.vy = 0
+
+    def update(self):
+        """ 更新処理 """
+        self.x += self.vx
+        self.y += self.vy
+
+    def draw(self):
+        """ 描画処理(派生クラスで実装) """
+        pass
+
+    def move(self, spd, deg):
+        """ 移動 """
+        rad = deg * math.pi / 180
+        self.vx = spd * math.cos(rad) # x方向の速度
+        self.vy = spd * math.sin(rad) # y方向の速度
+
+    def flip_x(self):
+        """ x方向反転 """
+        self.vx *= -1
+
+    def intersects(self, other):
+        """ 矩形同士の当たり判定(AABB) """
+        if other.x + other.w < self.x: return False
+        if self.x + self.w < other.x: return False
+        if other.y + other.h < self.y: return False
+        if self.y + self.h < other.y: return False
+        return True
+
+class ShipSprite(BaseSprite):
+
+    def __init__(self, x, y):
+        """ コンストラクタ """
+        super().__init__(x, y)
+
+    def draw(self):
+        """ 描画処理 """
+        pyxel.blt(self.x, self.y, 0, 
+            0, 0, 
+            self.w, self.h, 0) # Ship
+
+class AsteroidSprite(BaseSprite):
+
+    def __init__(self, x, y):
+        """ コンストラクタ """
+        super().__init__(x, y)
+        self.index = random.randint(2, 7) # 隕石画像
+
+    def draw(self):
+        """ 描画処理 """
+        pyxel.blt(self.x, self.y, 0, self.w*self.index, 0, 
+                self.w, self.h, 0) # Ship
+
+class BulletSprite(BaseSprite):
+
+    def __init__(self, x, y):
+        """ コンストラクタ """
+        super().__init__(x, y)
+        self.x += self.w / 2 - 1 # 中央に調整
+
+    def draw(self):
+        """ 描画処理 """
+        pyxel.rect(self.x, self.y, 2, 2, 12)
 
 # Game
 class Game:
@@ -81,7 +152,7 @@ class Game:
         self.score = 0
 
         # プレイヤーを初期化
-        self.ship = sprite.ShipSprite(W/2, H - 40)
+        self.ship = ShipSprite(W/2, H - 40)
         deg = 0 if random.random()<0.5 else 180
         self.ship.move(SHIP_SPD, deg)
 
@@ -177,7 +248,7 @@ class Game:
         if pyxel.btnp(pyxel.KEY_SPACE):
             self.ship.flip_x()
             # 弾丸発射
-            bullet = sprite.BulletSprite(self.ship.x, self.ship.y)
+            bullet = BulletSprite(self.ship.x, self.ship.y)
             bullet.move(BULLET_SPD, 270)
             self.bullets.append(bullet)
 
@@ -211,7 +282,7 @@ class Game:
         y = 0
         spd = random.uniform(ASTEROID_SPD_MIN, ASTEROID_SPD_MAX)
         deg = random.uniform(ASTEROID_DEG_MIN, ASTEROID_DEG_MAX)
-        asteroid = sprite.AsteroidSprite(x, y)
+        asteroid = AsteroidSprite(x, y)
         asteroid.move(spd, deg)
         self.asteroids.append(asteroid)
 
