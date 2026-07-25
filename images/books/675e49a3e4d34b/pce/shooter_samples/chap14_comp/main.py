@@ -1,28 +1,3 @@
----
-title: "第15章(番外編): トンネル避けゲーム2(サンプル)"
----
-
-# トンネル避けゲーム2(サンプル)
-
-今回は、"タイルマップ"を使って背景を表示するサンプルをご紹介します。
-(ここでは、サンプルコードのみの紹介です)
-
-## 1, 素材を用意する
-
-"Pyxel Editor"で、背景の素材を描きます。
-
-![](/images/books/675e49a3e4d34b/15_01.png)
-
-[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_flappy/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
-
-![](/images/books/675e49a3e4d34b/03_05.png)
-
-# サンプルコード
-
-今回のサンプルコードは、次の通りです。
-
-:::details 完成コード
-```python: main.py
 import pyxel
 import math
 import random
@@ -35,8 +10,6 @@ START_Y = H / 2 - 12
 MODE_TITLE = "title"
 MODE_PLAY = "play"
 MODE_GAME_OVER = "game_over"
-
-TUNNEL_TOTAL = 48
 
 class BaseSprite:
 
@@ -173,10 +146,7 @@ class Game:
 
     def draw(self):
         """ 描画処理 """
-        pyxel.cls(6)
-
-        # タイルマップ
-        pyxel.bltm(0, 0, 0, 0, 0, 192, 128, 0)
+        pyxel.cls(0)
 
         # カメラ(セット)
         pyxel.camera(self.player.x - START_X, 0)
@@ -193,14 +163,14 @@ class Game:
         # メッセージ
         if self.game_mode == MODE_TITLE:
             msg = "SPACE TO PLAY"
-            pyxel.text(W/2-len(msg)*2, H/2, msg, 1)
+            pyxel.text(W/2-len(msg)*2, H/2, msg, 13)
         elif self.game_mode == MODE_GAME_OVER:
             msg = "GAME OVER"
-            pyxel.text(W/2-len(msg)*2, H/2, msg, 1)
+            pyxel.text(W/2-len(msg)*2, H/2, msg, 13)
 
         # スコアを描画
         pyxel.text(10, 10, 
-            "SCORE:{:04}".format(self.score), 1)
+            "SCORE:{:04}".format(self.score), 12)
 
     def reset(self):
         """ ステージを初期化 """
@@ -211,10 +181,10 @@ class Game:
 
         # トンネル
         self.tunnels = []
-        for i in range(TUNNEL_TOTAL):
+        for i in range(24):
             pad_x = 42
             pad_y = random.randint(2, 3) * 8
-            x = START_X + pad_x * i + 32
+            x = START_X + pad_x * i + 24
             y = H / 2 + random.randint(-2, 2) * 8
             t_top = TunnelSprite(x, y-pad_y, 10, True)
             self.tunnels.append(t_top)
@@ -245,17 +215,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
-:::
-
-完成コード(オンラインエディタ版): [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap15_comp)
-
-実行結果は次のようになります。
-
-![](/images/books/675e49a3e4d34b/15_02.gif)
-
-# 終わりに...
-
-ここまで読んでいただきありがとうございました。
-この連載が、ゲーム開発のきっかけになれば幸いです。ޱ(ఠ皿ఠ)ว
-(よろしければ👍頂けると大変励みになります!!)

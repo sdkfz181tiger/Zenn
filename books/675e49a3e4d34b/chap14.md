@@ -22,10 +22,19 @@ title: "第14章(番外編): トンネル避けゲーム1(サンプル)"
 今回のサンプルコードは、次の通りです。
 
 :::details 完成コード
-```python: sprite.py
+```python: main.py
 import pyxel
 import math
 import random
+
+W, H = 160, 120
+
+START_X = W / 2 - 48
+START_Y = H / 2 - 12
+
+MODE_TITLE = "title"
+MODE_PLAY = "play"
+MODE_GAME_OVER = "game_over"
 
 class BaseSprite:
 
@@ -111,22 +120,6 @@ class TunnelSprite(BaseSprite):
             16, 32, self.w, 8, 0)
         # Debug
         #pyxel.rectb(self.x, self.y, self.w, self.h, 3)
-```
-
-```python: main.py
-import pyxel
-import math
-import random
-import sprite
-
-W, H = 160, 120
-
-START_X = W / 2 - 48
-START_Y = H / 2 - 12
-
-MODE_TITLE = "title"
-MODE_PLAY = "play"
-MODE_GAME_OVER = "game_over"
 
 # Game
 class Game:
@@ -140,7 +133,7 @@ class Game:
         self.game_mode = MODE_TITLE
 
         # プレイヤーを初期化
-        self.player = sprite.PlayerSprite(START_X, START_Y)
+        self.player = PlayerSprite(START_X, START_Y)
 
         # ステージを初期化
         self.reset()
@@ -218,9 +211,9 @@ class Game:
             pad_y = random.randint(2, 3) * 8
             x = START_X + pad_x * i + 24
             y = H / 2 + random.randint(-2, 2) * 8
-            t_top = sprite.TunnelSprite(x, y-pad_y, 10, True)
+            t_top = TunnelSprite(x, y-pad_y, 10, True)
             self.tunnels.append(t_top)
-            t_bottom = sprite.TunnelSprite(x, y+pad_y, 10)
+            t_bottom = TunnelSprite(x, y+pad_y, 10)
             self.tunnels.append(t_bottom)
 
     def control(self):
@@ -249,6 +242,8 @@ if __name__ == "__main__":
     main()
 ```
 :::
+
+完成コード(オンラインエディタ版): [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap14_comp)
 
 実行結果は次のようになります。
 
