@@ -27,7 +27,7 @@ title: "第6章: キャラクターを動かしてみよう"
 "math.sin()"で垂直方向(y方向)に変換し"vy"にそれぞれ代入します。
 (この計算の詳細は、今は深く理解しなくても大丈夫です!!)
 
-```python: sprite.py(抜粋)
+```python: main.py(抜粋)
 class BaseSprite:
 
     def __init__(self, x, y, w=8, h=8):
@@ -83,10 +83,13 @@ self.ship.move(SHIP_SPD, 220)
 ここまでの機能を実装した完成コードは、次の通りです。
 
 :::details 完成コード
-```python: sprite.py
+```python: main.py
 import pyxel
 import math
 import random
+
+W, H = 160, 120
+SHIP_SPD = 1.4 # プレイヤーの速度
 
 class BaseSprite:
 
@@ -125,16 +128,6 @@ class ShipSprite(BaseSprite):
         pyxel.blt(self.x, self.y, 0, 
             0, 0, 
             self.w, self.h, 0) # Ship
-```
-
-```python: main.py
-import pyxel
-import math
-import random
-import sprite
-
-W, H = 160, 120
-SHIP_SPD = 1.4 # プレイヤーの速度
 
 # Game
 class Game:
@@ -145,7 +138,7 @@ class Game:
         self.score = 0
 
         # プレイヤーを初期化
-        self.ship = sprite.ShipSprite(W/2, H - 40)
+        self.ship = ShipSprite(W/2, H - 40)
 
         # 移動をテスト(左上へ)
         self.ship.move(SHIP_SPD, 220)
