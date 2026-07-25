@@ -9,13 +9,13 @@ title: "第10章: 衝突判定を実装しよう"
 
 ## 1, 衝突判定を実装する
 
-"sprite.py"の、"BaseSprite"クラスに、新たに"intersects()"メソッドを実装します。
+"main.py"の、"BaseSprite"クラスに、新たに"intersects()"メソッドを実装します。
 
 このメソッドでは、引数で与えられたスプライトと自分自身が重なっているかどうかを判定します。
 衝突していれば "True"、衝突していなければ "False" を返します。  
 (AABBという考え方で実装していますが、ここでは深く考えなくても大丈夫です)
 
-```python: sprite.py(BaseSpriteに追加)
+```python: main.py(BaseSpriteに追加)
 def intersects(self, other):
     """ 矩形同士の当たり判定(AABB) """
     if other.x + other.w < self.x: return False
@@ -59,10 +59,23 @@ for bullet in self.bullets[::-1]:
 ここまでの機能を実装した完成コードは、次の通りです。
 
 :::details 完成コード
-```python: sprite.py
+```python: main.py
 import pyxel
 import math
 import random
+
+W, H = 160, 120
+SHIP_SPD = 1.4
+
+ASTEROID_INTERVAL = 20
+ASTEROID_LIMIT = 30
+
+ASTEROID_SPD_MIN = 1.0
+ASTEROID_SPD_MAX = 2.0
+ASTEROID_DEG_MIN = 30
+ASTEROID_DEG_MAX = 150
+
+BULLET_SPD = 3 # 弾丸の速度
 
 class BaseSprite:
 
@@ -136,26 +149,6 @@ class BulletSprite(BaseSprite):
     def draw(self):
         """ 描画処理 """
         pyxel.rect(self.x, self.y, 2, 2, 12)
-```
-
-```python: main.py
-import pyxel
-import math
-import random
-import sprite
-
-W, H = 160, 120
-SHIP_SPD = 1.4
-
-ASTEROID_INTERVAL = 20
-ASTEROID_LIMIT = 30
-
-ASTEROID_SPD_MIN = 1.0
-ASTEROID_SPD_MAX = 2.0
-ASTEROID_DEG_MIN = 30
-ASTEROID_DEG_MAX = 150
-
-BULLET_SPD = 3
 
 # Game
 class Game:
@@ -166,7 +159,7 @@ class Game:
         self.score = 0
 
         # プレイヤーを初期化
-        self.ship = sprite.ShipSprite(W/2, H - 40)
+        self.ship = ShipSprite(W/2, H - 40)
         deg = 0 if random.random()<0.5 else 180
         self.ship.move(SHIP_SPD, deg)
 
@@ -236,7 +229,7 @@ class Game:
         if pyxel.btnp(pyxel.KEY_SPACE):
             self.ship.flip_x() # 移動反転
             # 弾丸発射
-            bullet = sprite.BulletSprite(self.ship.x, self.ship.y)
+            bullet = BulletSprite(self.ship.x, self.ship.y)
             bullet.move(BULLET_SPD, 270)
             self.bullets.append(bullet)
 
@@ -267,7 +260,7 @@ class Game:
         y = 0
         spd = random.uniform(ASTEROID_SPD_MIN, ASTEROID_SPD_MAX)
         deg = random.uniform(ASTEROID_DEG_MIN, ASTEROID_DEG_MAX)
-        asteroid = sprite.AsteroidSprite(x, y)
+        asteroid = AsteroidSprite(x, y)
         asteroid.move(spd, deg)
         self.asteroids.append(asteroid)
 
