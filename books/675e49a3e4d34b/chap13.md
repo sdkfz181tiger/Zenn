@@ -11,10 +11,10 @@ title: "第13章(番外編): 流れる星を演出しよう"
 
 ## 1, 星を描画するクラス
 
-"sprite.py"に、星を描画する"Star"クラスと、
+"main.py"に、星を描画する"Star"クラスと、
 背景全体の星を更新&描画する、"Background"クラスを用意します。
 
-```python: sprite.py(抜粋)
+```python: main.py(抜粋)
 class Star():
 
     def __init__(self, x, y, w, h):
@@ -66,7 +66,7 @@ class Background():
 
 ```python: main.py(Gameクラスのコンストラクタ内)
 # 背景
-self.background = sprite.Background(W, H)
+self.background = Background(W, H)
 ```
 
 次に、"update()"で、更新処理を実行します。
@@ -91,10 +91,23 @@ self.background.draw()
 ここまでの機能を実装した完成コードは、次の通りです。
 
 :::details 完成コード
-```python: sprite.py
+```python: main.py
 import pyxel
 import math
 import random
+
+W, H = 160, 120
+SHIP_SPD = 1.4
+
+ASTEROID_INTERVAL = 20
+ASTEROID_LIMIT = 30
+
+ASTEROID_SPD_MIN = 1.0
+ASTEROID_SPD_MAX = 2.0
+ASTEROID_DEG_MIN = 30
+ASTEROID_DEG_MAX = 150
+
+BULLET_SPD = 3
 
 class BaseSprite:
 
@@ -211,26 +224,6 @@ class Background():
         """ 描画処理 """
         for star in self.stars:
             star.draw()
-```
-
-```python: main.py
-import pyxel
-import math
-import random
-import sprite
-
-W, H = 160, 120
-SHIP_SPD = 1.4
-
-ASTEROID_INTERVAL = 20
-ASTEROID_LIMIT = 30
-
-ASTEROID_SPD_MIN = 1.0
-ASTEROID_SPD_MAX = 2.0
-ASTEROID_DEG_MIN = 30
-ASTEROID_DEG_MAX = 150
-
-BULLET_SPD = 3
 
 # Game
 class Game:
@@ -244,10 +237,10 @@ class Game:
         self.score = 0
 
         # 背景
-        self.background = sprite.Background(W, H)
+        self.background = Background(W, H)
 
         # プレイヤーを初期化
-        self.ship = sprite.ShipSprite(W/2, H - 40)
+        self.ship = ShipSprite(W/2, H - 40)
         deg = 0 if random.random()<0.5 else 180
         self.ship.move(SHIP_SPD, deg)
 
@@ -349,7 +342,7 @@ class Game:
         if pyxel.btnp(pyxel.KEY_SPACE):
             self.ship.flip_x() # 移動反転
             # 弾丸発射
-            bullet = sprite.BulletSprite(self.ship.x, self.ship.y)
+            bullet = BulletSprite(self.ship.x, self.ship.y)
             bullet.move(BULLET_SPD, 270)
             self.bullets.append(bullet)
 
@@ -383,7 +376,7 @@ class Game:
         y = 0
         spd = random.uniform(ASTEROID_SPD_MIN, ASTEROID_SPD_MAX)
         deg = random.uniform(ASTEROID_DEG_MIN, ASTEROID_DEG_MAX)
-        asteroid = sprite.AsteroidSprite(x, y)
+        asteroid = AsteroidSprite(x, y)
         asteroid.move(spd, deg)
         self.asteroids.append(asteroid)
 
