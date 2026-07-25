@@ -17,11 +17,11 @@ title: "第8章: 隕石を発生させよう"
 
 まずは、隕石用のスプライトクラスを用意します。
 
-"sprite.py"に、新たに"AsteroidSprite"クラスを追加します。
+"main.py"に、新たに"AsteroidSprite"クラスを追加します。
 コンストラクタでは、ランダム値を利用して、
 表示する隕石画像を選択します。
 
-```python: sprite.py(クラスを追加)
+```python: main.py(クラスを追加)
 class AsteroidSprite(BaseSprite):
 
     def __init__(self, x, y):
@@ -58,7 +58,7 @@ ASTEROID_DEG_MAX = 150 # 隕石の最高角度
 続いて、"Game"クラスのコンストラクタに、
 隕石管理用の変数とリストを追加します。
 
-```python: sprite.py(Gameクラスのコンストラクタに追加)
+```python: main.py(Gameクラスのコンストラクタに追加)
 # 隕石
 self.asteroid_time = 0 # 出現間隔のカウンタ
 self.asteroids = [] # 隕石のリスト
@@ -88,7 +88,7 @@ def check_interval(self):
     y = 0
     spd = random.uniform(ASTEROID_SPD_MIN, ASTEROID_SPD_MAX)
     deg = random.uniform(ASTEROID_DEG_MIN, ASTEROID_DEG_MAX)
-    asteroid = sprite.AsteroidSprite(x, y)
+    asteroid = AsteroidSprite(x, y)
     asteroid.move(spd, deg)
     self.asteroids.append(asteroid)
 ```
@@ -125,10 +125,21 @@ for asteroid in self.asteroids:
 ここまでの機能を実装した完成コードは、次の通りです。
 
 :::details 完成コード
-```python: sprite.py
+```python: main.py
 import pyxel
 import math
 import random
+
+W, H = 160, 120
+SHIP_SPD = 1.4
+
+ASTEROID_INTERVAL = 20 # 隕石の発生間隔
+ASTEROID_LIMIT = 30 # 隕石の最大数
+
+ASTEROID_SPD_MIN = 1.0 # 隕石の最低速度
+ASTEROID_SPD_MAX = 2.0 # 隕石の最高速度
+ASTEROID_DEG_MIN = 30 # 隕石の最低角度
+ASTEROID_DEG_MAX = 150 # 隕石の最高角度
 
 class BaseSprite:
 
@@ -183,24 +194,6 @@ class AsteroidSprite(BaseSprite):
         """ 描画処理 """
         pyxel.blt(self.x, self.y, 0, self.w*self.index, 0, 
                 self.w, self.h, 0) # Ship
-```
-
-```python: main.py
-import pyxel
-import math
-import random
-import sprite
-
-W, H = 160, 120
-SHIP_SPD = 1.4
-
-ASTEROID_INTERVAL = 20 # 隕石の発生間隔
-ASTEROID_LIMIT = 30 # 隕石の最大数
-
-ASTEROID_SPD_MIN = 1.0 # 隕石の最低速度
-ASTEROID_SPD_MAX = 2.0 # 隕石の最高速度
-ASTEROID_DEG_MIN = 30 # 隕石の最低角度
-ASTEROID_DEG_MAX = 150 # 隕石の最高角度
 
 # Game
 class Game:
@@ -211,7 +204,7 @@ class Game:
         self.score = 0
 
         # プレイヤーを初期化
-        self.ship = sprite.ShipSprite(W/2, H - 40)
+        self.ship = ShipSprite(W/2, H - 40)
         deg = 0 if random.random()<0.5 else 180
         self.ship.move(SHIP_SPD, deg)
 
@@ -286,7 +279,7 @@ class Game:
         y = 0
         spd = random.uniform(ASTEROID_SPD_MIN, ASTEROID_SPD_MAX)
         deg = random.uniform(ASTEROID_DEG_MIN, ASTEROID_DEG_MAX)
-        asteroid = sprite.AsteroidSprite(x, y)
+        asteroid = AsteroidSprite(x, y)
         asteroid.move(spd, deg)
         self.asteroids.append(asteroid)
 
