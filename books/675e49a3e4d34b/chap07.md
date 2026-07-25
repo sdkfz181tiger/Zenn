@@ -26,7 +26,7 @@ self.ship.move(SHIP_SPD, deg)
 次に、移動方向(左右)を切り替えるための"flip_x()"メソッドを追加します。
 この処理では、x方向の移動速度である"vx"に"-1"を掛け算します。
 
-```python: sprite.py(BaseSpriteクラスに追加)
+```python: main.py(BaseSpriteクラスに追加)
 def flip_x(self):
     """ x方向反転 """
     self.vx *= -1
@@ -90,10 +90,13 @@ def overlap_spr(self, spr):
 ここまでの機能を実装した完成コードは、次の通りです。
 
 :::details 完成コード
-```python: sprite.py
+```python: main.py
 import pyxel
 import math
 import random
+
+W, H = 160, 120
+SHIP_SPD = 1.4 # プレイヤーの速度
 
 class BaseSprite:
 
@@ -136,16 +139,6 @@ class ShipSprite(BaseSprite):
         pyxel.blt(self.x, self.y, 0, 
             0, 0, 
             self.w, self.h, 0) # Ship
-```
-
-```python: main.py
-import pyxel
-import math
-import random
-import sprite
-
-W, H = 160, 120
-SHIP_SPD = 1.4 # プレイヤーの速度
 
 # Game
 class Game:
@@ -156,7 +149,7 @@ class Game:
         self.score = 0
 
         # プレイヤーを初期化
-        self.ship = sprite.ShipSprite(W/2, H - 40)
+        self.ship = ShipSprite(W/2, H - 40)
 
         # 左右いずれかをランダムで選ぶ
         deg = 0 if random.random()<0.5 else 180
