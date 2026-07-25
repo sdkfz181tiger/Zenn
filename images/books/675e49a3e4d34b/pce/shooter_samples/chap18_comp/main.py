@@ -1,28 +1,3 @@
----
-title: "第18章(番外編): スーパーランドゲーム(サンプル)"
----
-
-# スーパーランドゲーム(サンプル)
-
-今回は、どこかで見た様なアクションゲームに挑戦します。
-(ここでは、サンプルコードのみの紹介です)
-
-## 1, 素材を用意する
-
-"Pyxel Editor"で、背景の素材を描きます。
-
-![](/images/books/675e49a3e4d34b/18_01.png)
-
-[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_superland/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
-
-![](/images/books/675e49a3e4d34b/03_05.png)
-
-# サンプルコード
-
-今回のサンプルコードは、次の通りです。
-
-:::details 完成コード(main.py)
-```python: main.py
 import pyxel
 import math
 import random
@@ -366,17 +341,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
-:::
-
-完成コード(オンラインエディタ版): [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap18_comp)
-
-実行結果は次のようになります。
-
-![](/images/books/675e49a3e4d34b/18_02.gif)
-
-# 終わりに...
-
-ここまで読んでいただきありがとうございました。
-この連載が、ゲーム開発のきっかけになれば幸いです。ޱ(ఠ皿ఠ)ว
-(よろしければ👍頂けると大変励みになります!!)
