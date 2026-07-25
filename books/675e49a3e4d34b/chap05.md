@@ -14,24 +14,22 @@ title: "第5章: キャラクターをクラスで作ろう"
 
 ※完成コードは最後に記述してあります。
 
-## 1, スプライトモジュールを用意する
+## 1, 現在の構成を確認
 
-新たに、"sprite.py"というファイルを用意し、作業用フォルダに配置します。
-フォルダ構成は次のようになります。
+現状、作業用フォルダには2つのファイルがある状態です。
 
 ```text:フォルダ構成
 作業用フォルダ/
 　├ main.py
-　├ sprite.py <- spriteモジュール
 　└ my_resource.pyxres
 ```
 
-## 2, スプライトの共通クラスを用意する
+## 2, スプライトの共通クラスを追加する
 
-用意した、"sprite.py"ファイルに、"BaseSprite"クラスを記述します。
+用意した、"main.py"ファイルに、"BaseSprite"クラスを追加します。
 このクラスが、全てのスプライトの共通クラスになります。
 
-```python: sprite.py(抜粋)
+```python: main.py(抜粋)
 import pyxel
 import math
 import random
@@ -56,11 +54,11 @@ class BaseSprite:
 
 ## 3, プレイヤークラスを用意する
 
-"sprite.py"ファイルに続けて、"ShipSprite"クラスを用意します。
+"main.py"ファイルに続けて、"ShipSprite"クラスを用意します。
 このクラスは"BaseSprite"クラスを継承させておきます。
 プレイヤーは、このクラスから生成します。
 
-```python: sprite.py(抜粋)
+```python: main.py(抜粋)
 # 省略
 
 class ShipSprite(BaseSprite):
@@ -114,10 +112,12 @@ self.ship.draw()
 ここまでの機能を実装した完成コードは、次の通りです。
 
 :::details 完成コード
-```python: sprite.py
+```python: main.py
 import pyxel
 import math
 import random
+
+W, H = 160, 120
 
 class BaseSprite:
 
@@ -150,15 +150,6 @@ class ShipSprite(BaseSprite):
         pyxel.blt(self.x, self.y, 0, 
             0, 0, 
             self.w, self.h, 0) # Ship
-```
-
-```python: main.py
-import pyxel
-import math
-import random
-import sprite # spriteモジュールをインポート
-
-W, H = 160, 120
 
 # Game
 class Game:
@@ -169,7 +160,7 @@ class Game:
         self.score = 0
 
         # プレイヤーを初期化
-        self.ship = sprite.ShipSprite(W/2, H - 40)
+        self.ship = ShipSprite(W/2, H - 40)
 
         # Pyxelの起動
         pyxel.init(W, H, title="Hello, Pyxel!!")
