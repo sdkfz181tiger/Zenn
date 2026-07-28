@@ -85,7 +85,7 @@ class ShipSprite(BaseSprite):
 
 ```python: main.py(抜粋)
 # プレイヤーを初期化(画面中央下に配置)
-self.ship = sprite.ShipSprite(W/2, H - 40)
+self.ship = ShipSprite(W/2, H - 40)
 ```
 
 ### 4-2, プレイヤーを更新
