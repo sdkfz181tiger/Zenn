@@ -36,10 +36,6 @@ $ pyxel edit ファイル名.pyxres
 
 ![](/images/books/675e49a3e4d34b/03_02.png)
 
-[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_shooter/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
-
-![](/images/books/675e49a3e4d34b/03_05.png)
-
 ## 3, pyxresファイルを配置する
 
 作成された、".pyxres"ファイルを、作業用フォルダに配置します。
@@ -155,6 +151,10 @@ if __name__ == "__main__":
 :::
 
 完成コード(オンラインエディタ版): [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap03_comp)
+
+[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap03_comp) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
+
+![](/images/books/675e49a3e4d34b/03_05.png)
 
 実行結果は次のようになります。
 
