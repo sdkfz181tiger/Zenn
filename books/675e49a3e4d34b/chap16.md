@@ -13,10 +13,6 @@ title: "第16章(番外編): 吸血鬼射撃ゲーム(サンプル)"
 
 ![](/images/books/675e49a3e4d34b/16_01.png)
 
-[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/res_vampire/my_resource.pyxres) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
-
-![](/images/books/675e49a3e4d34b/03_05.png)
-
 # サンプルコード
 
 今回のサンプルコードは、次の通りです。
@@ -461,6 +457,10 @@ if __name__ == "__main__":
 :::
 
 完成コード(オンラインエディタ版): [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap16_comp)
+
+[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap16_comp.zip) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
+
+![](/images/books/675e49a3e4d34b/03_05.png)
 
 実行結果は次のようになります。
 
