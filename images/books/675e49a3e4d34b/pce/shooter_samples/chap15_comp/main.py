@@ -198,7 +198,7 @@ class Game:
 
     def control(self):
         """ コントロール """
-        if not pyxel.btnp(pyxel.KEY_SPACE): return
+        if not pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT): return
 
         # Title -> Play
         if self.game_mode == MODE_TITLE:

@@ -341,7 +341,7 @@ class Game:
             pyxel.quit()
 
         # ゲームループ
-        if pyxel.btnp(pyxel.KEY_SPACE):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
 
             # Title -> Play
             if self.game_mode == MODE_TITLE:

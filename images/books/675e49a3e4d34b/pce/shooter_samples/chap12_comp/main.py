@@ -193,7 +193,7 @@ class Game:
 
     def control_ship(self):
         """ アクション """
-        if pyxel.btnp(pyxel.KEY_SPACE):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             self.ship.flip_x()
             # 弾丸発射
             bullet = BulletSprite(self.ship.x, self.ship.y)

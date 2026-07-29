@@ -183,7 +183,7 @@ class Game:
 
         # メッセージ
         if self.game_mode == MODE_TITLE:
-            msg = "SPACE TO PLAY"
+            msg = "CLICK TO PLAY"
             pyxel.text(W/2-len(msg)*2, H/2, msg, 13)
         elif self.game_mode == MODE_GAME_OVER:
             msg = "GAME OVER"
@@ -214,7 +214,7 @@ class Game:
 
     def control(self):
         """ コントロール """
-        if not pyxel.btnp(pyxel.KEY_SPACE): return
+        if not pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT): return
 
         # Title -> Play
         if self.game_mode == MODE_TITLE:

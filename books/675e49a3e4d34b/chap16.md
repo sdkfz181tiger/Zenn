@@ -318,7 +318,7 @@ class Game:
 
         # メッセージ
         if self.game_mode == MODE_TITLE:
-            msg = "SPACE TO PLAY"
+            msg = "CLICK TO PLAY"
             pyxel.text(W/2-len(msg)*2, H/2, msg, 7)
             msg = "CONTROL: WASD"
             pyxel.text(W/2-len(msg)*2, H/2+10, msg, 7)
@@ -362,7 +362,7 @@ class Game:
             pyxel.quit()
 
         # ゲームループ
-        if pyxel.btnp(pyxel.KEY_SPACE):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
 
             # Title -> Play
             if self.game_mode == MODE_TITLE:

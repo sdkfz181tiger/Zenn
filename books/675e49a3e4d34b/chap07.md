@@ -4,7 +4,7 @@ title: "第7章: キャラクターをコントロールしよう"
 
 # キャラクターをコントロールしよう
 
-今回は、スペースキーの押されたタイミングを判定し、
+今回は、マウスの左ボタンの押されたタイミングを判定し、
 プレイヤーの移動方向を左右反転する処理を実装します。
 
 これにより、プレイヤーを自分で操作している感覚が出てきます。
@@ -43,17 +43,17 @@ x方向の速度の符号を反転することで、
 ここでは、"pyxel.btnp()"を利用し、
 キーボードが押された瞬間を判定します。
 
-引数に、"pyxel.KEY_SPACE"を指定することで、
-"スペースキー"を判定しています。
+引数に、"pyxel.MOUSE_BUTTON_LEFT"を指定することで、
+"マウスの左ボタン"を判定しています。
 
 ```python: main.py(Gameクラスに追加)
 def control_ship(self):
     """ アクション """
-    if pyxel.btnp(pyxel.KEY_SPACE):
+    if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
         self.ship.flip_x() # 移動反転
 ```
 
-スペースキーを押すたびに、
+マウスの左ボタンを押すたびに、
 プレイヤーの移動方向が左右に切り替わるようになります。
 
 ## 3, ゲーム画面のオーバーラップ処理
@@ -183,7 +183,7 @@ class Game:
 
     def control_ship(self):
         """ アクション """
-        if pyxel.btnp(pyxel.KEY_SPACE):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             self.ship.flip_x() # 移動反転
 
     def overlap_spr(self, spr):

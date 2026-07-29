@@ -51,7 +51,7 @@ BULLET_SPD = 3 # 弾丸の速度
 次に、弾丸を発射する処理を追加します。
 
 このサンプルでは、
-プレイヤーが左右に切り返す"スペースキーを押す"タイミングで、
+プレイヤーが左右に切り返す"マウスの左ボタンを押す"タイミングで、
 弾丸を発射するようにしています。
 
 弾丸は、真上方向(270度)に移動させます。
@@ -59,7 +59,7 @@ BULLET_SPD = 3 # 弾丸の速度
 ```python: main.py(Gameクラスの"control_ship()"メソッドに追加)
 def control_ship(self):
     """ アクション """
-    if pyxel.btnp(pyxel.KEY_SPACE):
+    if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
         self.ship.flip_x() # 移動反転
         # 弾丸発射
         bullet = BulletSprite(self.ship.x, self.ship.y)
@@ -255,7 +255,7 @@ class Game:
 
     def control_ship(self):
         """ アクション """
-        if pyxel.btnp(pyxel.KEY_SPACE):
+        if pyxel.btnp(pyxel.MOUSE_BUTTON_LEFT):
             self.ship.flip_x() # 移動反転
             # 弾丸発射
             bullet = BulletSprite(self.ship.x, self.ship.y)
