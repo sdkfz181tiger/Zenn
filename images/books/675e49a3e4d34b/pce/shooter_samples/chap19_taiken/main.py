@@ -1,24 +1,9 @@
----
-title: "第19章(番外編): スライドするゲーム(サンプル)"
----
+# coding: utf-8
 
-# スライドするゲーム(サンプル)
+"""
+かじるプログラミング_pyxel
+"""
 
-今回は、どこかで見た様なスライドするゲームに挑戦します。
-(ここでは、サンプルコードのみの紹介です)
-
-## 1, 素材を用意する
-
-"Pyxel Editor"で、背景の素材を描きます。
-
-![](/images/books/675e49a3e4d34b/19_01.png)
-
-# サンプルコード
-
-今回のサンプルコードは、次の通りです。
-
-:::details 完成コード(main.py)
-```python: main.py
 import pyxel
 import math
 import random
@@ -210,13 +195,14 @@ class Game:
         # Camera(off)
         self.camera_off()
 
+        # ポイント2: スコア、残りコイン表示
         # Score
-        pyxel.text(1, 1, 
-            "SCORE:{:03}".format(self.score), 7)
+        #pyxel.text(1, 1, 
+        #   "SCORE:{:03}".format(self.score), 7)
 
         # Rest
-        pyxel.text(80, 1, 
-            "REST:{:03}/{:03}".format(self.coin_rest, self.coin_total), 7)
+        #pyxel.text(80, 1, 
+        #   "REST:{:03}/{:03}".format(self.coin_rest, self.coin_total), 7)
 
         # CLEAR
         if self.coin_rest <= 0:
@@ -226,7 +212,6 @@ class Game:
         # Player
         from_u, from_v = self.get_uv(self.player.x, self.player.y)
 
-        # WASD
         if pyxel.btnp(pyxel.KEY_W):
             to_u, to_v = self.search_block(from_u, from_v, 0, -1)
             if self.player.go(4, to_u, to_v):
@@ -243,21 +228,22 @@ class Game:
                 pyxel.play(0, 8, loop=False) # Sound
             return
 
-        if pyxel.btnp(pyxel.KEY_S):
-            to_u, to_v = self.search_block(from_u, from_v, 0, 1)
-            if self.player.go(4, to_u, to_v):
-                pyxel.play(0, 0, loop=False) # Sound
-            else:
-                pyxel.play(0, 8, loop=False) # Sound
-            return
+        # ポイント1: コントロール & サウンド
+        # if pyxel.btnp(pyxel.KEY_S):
+        #     to_u, to_v = self.search_block(from_u, from_v, 0, 1)
+        #     if self.player.go(4, to_u, to_v):
+        #         pyxel.play(0, 0, loop=False) # Sound
+        #     else:
+        #         pyxel.play(0, 8, loop=False) # Sound
+        #     return
 
-        if pyxel.btnr(pyxel.KEY_D):
-            to_u, to_v = self.search_block(from_u, from_v, 1, 0)
-            if self.player.go(4, to_u, to_v):
-                pyxel.play(0, 0, loop=False) # Sound
-            else:
-                pyxel.play(0, 8, loop=False) # Sound
-            return
+        # if pyxel.btnr(pyxel.KEY_D):
+        #     to_u, to_v = self.search_block(from_u, from_v, 1, 0)
+        #     if self.player.go(4, to_u, to_v):
+        #         pyxel.play(0, 0, loop=False) # Sound
+        #     else:
+        #         pyxel.play(0, 8, loop=False) # Sound
+        #     return
 
     def camera_on(self):
         line_r = W - self.camera_x - CAMERA_PAD_X
@@ -290,10 +276,12 @@ class Game:
         if to_u < 0: return from_u, from_v
         if to_v < 0: return from_u, from_v
         if 15 < to_u: return from_u, from_v
-        if 15 < to_v: return from_u, from_v 
-        tile = self.get_tile(to_u, to_v)
-        if tile in TILE_BLOCKS:
-            return from_u, from_v
+        if 15 < to_v: return from_u, from_v
+        # ポイント3: 衝突判定
+        # tile = self.get_tile(to_u, to_v)
+        # if tile in TILE_BLOCKS:
+        #     return from_u, from_v
+
         return self.search_block(to_u, to_v, off_u, off_v)
 
     def count_coins(self):
@@ -314,23 +302,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
-:::
-
-完成コード(オンラインエディタ版): [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap19_comp)
-
-体験コード(オンラインエディタ版): [PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap19_taiken)
-
-[完成したリソースファイルをダウンロード](https://github.com/sdkfz181tiger/Zenn/blob/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap19_comp.zip) (右上の"ダウンロード"ボタンを押してダウンロードしてください)
-
-![](/images/books/675e49a3e4d34b/03_05.png)
-
-実行結果は次のようになります。
-
-![](/images/books/675e49a3e4d34b/19_02.gif)
-
-# 終わりに...
-
-ここまで読んでいただきありがとうございました。
-この連載が、ゲーム開発のきっかけになれば幸いです。ޱ(ఠ皿ఠ)ว
-(よろしければ👍頂けると大変励みになります!!)
