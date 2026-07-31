@@ -50,11 +50,11 @@ title: "第1章: はじめに"
 
 # Pythonって何?
 
-次に、Pythonについては、[別の記事](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap01)で簡単に紹介しています。よろしければご参照ください。
+Pythonについては、[別の記事](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap01)で簡単に紹介しています。よろしければご参照ください。
 
 ## Pythonの基礎について
 
-Pythonのインストール方法、基礎的な文法については、[Pythonをかじる本(甘噛み編)](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94)を参考にしてください。
+Pythonのインストール方法や基礎的な文法については、[Pythonをかじる本(甘噛み編)](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94)を参考にしてください。
 
 クラスの知識がなくても読み進められますが、なんとなく知っていると理解が早くなります。
 必要であれば、[12章:クラスを使ってみよう](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap12)を確認しておくとスムーズです。
