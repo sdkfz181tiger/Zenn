@@ -42,6 +42,12 @@ title: "第1章: はじめに"
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap18_comp)
 
+## スライドするゲーム(サンプル)
+
+![](/images/books/675e49a3e4d34b/19_02.gif)
+
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap19_comp)
+
 # Pythonって何?
 
 次に、Pythonについては、[別の記事](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap01)で簡単に紹介しています。よろしければご参照ください。
