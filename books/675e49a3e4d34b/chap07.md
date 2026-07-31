@@ -46,6 +46,8 @@ x方向の速度の符号を反転することで、
 引数に、"pyxel.MOUSE_BUTTON_LEFT"を指定することで、
 "マウスの左ボタン"を判定しています。
 
+それ以外のボタンは、[Pyxel APIリファレンス](https://kitao.github.io/pyxel/web/api-reference/)の、"キー定数"、"マウス定数"で確認することができます。
+
 ```python: main.py(Gameクラスに追加)
 def control_ship(self):
     """ アクション """
