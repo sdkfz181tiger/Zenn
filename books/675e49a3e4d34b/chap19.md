@@ -57,16 +57,16 @@ class BaseSprite:
 
     def __init__(self, x, y, u, v, w=8, h=8):
         """ Constructor """
-        self.x = x
-        self.y = y
-        self.u = u
-        self.v = v
-        self.w = w
-        self.h = h
+        self.x    = x
+        self.y    = y
+        self.u    = u
+        self.v    = v
+        self.w    = w
+        self.h    = h
         self.to_x = x
         self.to_y = y
-        self.vx = 0
-        self.vy = 0
+        self.vx   = 0
+        self.vy   = 0
 
     def update(self):
         dx = self.to_x - self.x
@@ -90,14 +90,16 @@ class BaseSprite:
             self.w, self.h, 0)
 
     def go(self, spd, to_u, to_v):
-        if self.is_moving(): return
+        if self.is_moving(): return False
         self.to_x = to_u * 8
         self.to_y = to_v * 8
         dx = self.to_x - self.x
         dy = self.to_y - self.y
+        if dx == 0 and dy == 0: return False
         rad = math.atan2(dy, dx)
         self.vx = math.cos(rad) * spd
         self.vy = math.sin(rad) * spd
+        return True
 
     def is_moving(self):
         if self.x != self.to_x: return True
@@ -158,7 +160,8 @@ class Game:
         # Score
         self.score = 0
         # Counter
-        self.counter = self.count_coins()
+        self.coin_total = self.count_coins()
+        self.coin_rest = self.coin_total
 
         # Camera
         self.camera_x = 0
@@ -183,14 +186,16 @@ class Game:
         tile = self.get_tile(u, v)
         if tile in TILE_COINS:
             self.score += 1 # Score
-            self.counter -= 1 # Counter
+            self.coin_rest -= 1 # Counter
             self.set_tile(u, v, (0, 0)) # Delete
-            if 0 < self.counter:
+            if 0 < self.coin_rest:
                 pyxel.play(1, 4, loop=False) # Sound
             else:
                 pyxel.play(1, 6, loop=False) # Sound
 
     def draw(self):
+
+        # Clear
         pyxel.cls(0)
 
         # Camera(on)
@@ -207,37 +212,51 @@ class Game:
 
         # Score
         pyxel.text(1, 1, 
-            "SCORE:{:04}".format(self.score), 7)
-        pyxel.text(92, 1, 
-            "REST:{:04}".format(self.counter), 7)
+            "SCORE:{:03}".format(self.score), 7)
+
+        # Rest
+        pyxel.text(80, 1, 
+            "REST:{:03}/{:03}".format(self.coin_rest, self.coin_total), 7)
 
         # CLEAR
-        if self.counter <= 0:
+        if self.coin_rest <= 0:
             pyxel.text(42, H-8, "GAME CLEAR!!", 7)
 
     def controll(self):
-
         # Player
         from_u, from_v = self.get_uv(self.player.x, self.player.y)
+
+        # WASD
         if pyxel.btnp(pyxel.KEY_W):
             to_u, to_v = self.search_block(from_u, from_v, 0, -1)
-            self.player.go(4, to_u, to_v)
-            pyxel.play(0, 0, loop=False) # Sound
+            if self.player.go(4, to_u, to_v):
+                pyxel.play(0, 0, loop=False) # Sound
+            else:
+                pyxel.play(0, 8, loop=False) # Sound
             return
+
         if pyxel.btnp(pyxel.KEY_A):
             to_u, to_v = self.search_block(from_u, from_v, -1, 0)
-            self.player.go(4, to_u, to_v)
-            pyxel.play(0, 0, loop=False) # Sound
+            if self.player.go(4, to_u, to_v):
+                pyxel.play(0, 0, loop=False) # Sound
+            else:
+                pyxel.play(0, 8, loop=False) # Sound
             return
+
         if pyxel.btnp(pyxel.KEY_S):
             to_u, to_v = self.search_block(from_u, from_v, 0, 1)
-            self.player.go(4, to_u, to_v)
-            pyxel.play(0, 0, loop=False) # Sound
+            if self.player.go(4, to_u, to_v):
+                pyxel.play(0, 0, loop=False) # Sound
+            else:
+                pyxel.play(0, 8, loop=False) # Sound
             return
+
         if pyxel.btnr(pyxel.KEY_D):
             to_u, to_v = self.search_block(from_u, from_v, 1, 0)
-            self.player.go(4, to_u, to_v)
-            pyxel.play(0, 0, loop=False) # Sound
+            if self.player.go(4, to_u, to_v):
+                pyxel.play(0, 0, loop=False) # Sound
+            else:
+                pyxel.play(0, 8, loop=False) # Sound
             return
 
     def camera_on(self):
