@@ -170,8 +170,9 @@ class Game:
         u, v = self.get_uv(self.player.x, self.player.y)
         tile = self.get_tile(u, v)
         if tile in TILE_COINS:
-            self.score += 1 # Score
-            self.coin_rest -= 1 # Counter
+            # ポイント3: スコア、残りコイン数
+            #self.score += 1 # Score
+            #self.coin_rest -= 1 # Counter
             self.set_tile(u, v, (0, 0)) # Delete
             if 0 < self.coin_rest:
                 pyxel.play(1, 4, loop=False) # Sound
@@ -277,7 +278,7 @@ class Game:
         if to_v < 0: return from_u, from_v
         if 15 < to_u: return from_u, from_v
         if 15 < to_v: return from_u, from_v
-        # ポイント3: 衝突判定
+        # ポイント4: 衝突判定
         # tile = self.get_tile(to_u, to_v)
         # if tile in TILE_BLOCKS:
         #     return from_u, from_v
