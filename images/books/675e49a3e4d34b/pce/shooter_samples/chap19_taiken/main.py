@@ -220,25 +220,25 @@ class Game:
                 pyxel.play(0, 8, loop=False) # Sound
             return
 
-        if pyxel.btnp(pyxel.KEY_A):
-            to_u, to_v = self.search_block(from_u, from_v, -1, 0)
-            if self.player.go(4, to_u, to_v):
-                pyxel.play(0, 0, loop=False) # Sound
-            else:
-                pyxel.play(0, 8, loop=False) # Sound
-            return
-
         # ポイント1: コントロール & サウンド
-        # if pyxel.btnp(pyxel.KEY_S):
-        #     to_u, to_v = self.search_block(from_u, from_v, 0, 1)
+        # if pyxel.btnp(pyxel.xxx):
+        #     to_u, to_v = self.search_block(from_u, from_v, 0, 0)
         #     if self.player.go(4, to_u, to_v):
         #         pyxel.play(0, 0, loop=False) # Sound
         #     else:
         #         pyxel.play(0, 8, loop=False) # Sound
         #     return
 
-        # if pyxel.btnr(pyxel.KEY_D):
-        #     to_u, to_v = self.search_block(from_u, from_v, 1, 0)
+        # if pyxel.btnp(pyxel.xxx):
+        #     to_u, to_v = self.search_block(from_u, from_v, 0, 0)
+        #     if self.player.go(4, to_u, to_v):
+        #         pyxel.play(0, 0, loop=False) # Sound
+        #     else:
+        #         pyxel.play(0, 8, loop=False) # Sound
+        #     return
+
+        # if pyxel.btnr(pyxel.xxx):
+        #     to_u, to_v = self.search_block(from_u, from_v, 0, 0)
         #     if self.player.go(4, to_u, to_v):
         #         pyxel.play(0, 0, loop=False) # Sound
         #     else:
