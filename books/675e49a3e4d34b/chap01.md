@@ -18,36 +18,6 @@ title: "第1章: はじめに"
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap13_comp)
 
-## トンネル避けゲーム(サンプル)
-
-![](/images/books/675e49a3e4d34b/15_02.gif)
-
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap15_comp)
-
-## 吸血鬼射撃ゲーム(サンプル)
-
-![](/images/books/675e49a3e4d34b/16_02.gif)
-
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap16_comp)
-
-## パクパク追いかけゲーム(サンプル)
-
-![](/images/books/675e49a3e4d34b/17_02.gif)
-
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap17_comp)
-
-## スーパーランドゲーム(サンプル)
-
-![](/images/books/675e49a3e4d34b/18_02.gif)
-
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap18_comp)
-
-## スライドするゲーム(サンプル)
-
-![](/images/books/675e49a3e4d34b/19_02.gif)
-
-[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap19_comp)
-
 # Pythonって何?
 
 Pythonについては、[別の記事](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap01)で簡単に紹介しています。よろしければご参照ください。
@@ -92,6 +62,41 @@ Pyxelをお試しで使ってみたい方は、[PyxelCodeMaker](https://kitao.gi
 ```command: インストール
 $ pip install pyxel
 ```
+
+# 様々なサンプル&コード
+
+他にも、下記の様なサンプルプログラムも用意してあります。
+オンラインでその動きを試しながら確認することが可能です。
+
+## トンネル避けゲーム(サンプル)
+
+![](/images/books/675e49a3e4d34b/15_02.gif)
+
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap15_comp)
+
+## 吸血鬼射撃ゲーム(サンプル)
+
+![](/images/books/675e49a3e4d34b/16_02.gif)
+
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap16_comp)
+
+## パクパク追いかけゲーム(サンプル)
+
+![](/images/books/675e49a3e4d34b/17_02.gif)
+
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap17_comp)
+
+## スーパーランドゲーム(サンプル)
+
+![](/images/books/675e49a3e4d34b/18_02.gif)
+
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap18_comp)
+
+## スライドするゲーム(サンプル)
+
+![](/images/books/675e49a3e4d34b/19_02.gif)
+
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap19_comp)
 
 # 次回は...
 
