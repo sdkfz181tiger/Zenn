@@ -75,6 +75,7 @@ class BaseSprite:
             self.w, self.h, 0)
 
     def go(self, spd, to_u, to_v):
+        if to_u < 0 or to_v < 0: return False
         if self.is_moving(): return False
         self.to_x = to_u * 8
         self.to_y = to_v * 8
@@ -196,14 +197,14 @@ class Game:
         # Camera(off)
         self.camera_off()
 
-        # ポイント2: スコア、残りコイン表示
+        # ポイント2: スコア、残りコイン数
         # Score
         #pyxel.text(1, 1, 
-        #   "SCORE:{:03}".format(self.score), 7)
+        #    "SCORE:{:03}".format(self.score), 7)
 
         # Rest
         #pyxel.text(80, 1, 
-        #   "REST:{:03}/{:03}".format(self.coin_rest, self.coin_total), 7)
+        #    "REST:{:03}/{:03}".format(self.coin_rest, self.coin_total), 7)
 
         # CLEAR
         if self.coin_rest <= 0:
@@ -221,30 +222,30 @@ class Game:
                 pyxel.play(0, 8, loop=False) # Sound
             return
 
-        # ポイント1: コントロール & サウンド
-        # if pyxel.btnp(pyxel.xxx):
-        #     to_u, to_v = self.search_block(from_u, from_v, 0, 0)
-        #     if self.player.go(4, to_u, to_v):
-        #         pyxel.play(0, 0, loop=False) # Sound
-        #     else:
-        #         pyxel.play(0, 8, loop=False) # Sound
-        #     return
+        # ポイント1: WASDでコントロール(インデントスペース数に注意)
+        #if pyxel.btnp(pyxel.xxx):
+        #    to_u, to_v = self.search_block(from_u, from_v, 0, 0)
+        #    if self.player.go(4, to_u, to_v):
+        #        pyxel.play(0, 0, loop=False) # Sound
+        #    else:
+        #        pyxel.play(0, 8, loop=False) # Sound
+        #    return
 
-        # if pyxel.btnp(pyxel.xxx):
-        #     to_u, to_v = self.search_block(from_u, from_v, 0, 0)
-        #     if self.player.go(4, to_u, to_v):
-        #         pyxel.play(0, 0, loop=False) # Sound
-        #     else:
-        #         pyxel.play(0, 8, loop=False) # Sound
-        #     return
+        #if pyxel.btnp(pyxel.xxx):
+        #    to_u, to_v = self.search_block(from_u, from_v, 0, 0)
+        #    if self.player.go(4, to_u, to_v):
+        #        pyxel.play(0, 0, loop=False) # Sound
+        #    else:
+        #        pyxel.play(0, 8, loop=False) # Sound
+        #    return
 
-        # if pyxel.btnr(pyxel.xxx):
-        #     to_u, to_v = self.search_block(from_u, from_v, 0, 0)
-        #     if self.player.go(4, to_u, to_v):
-        #         pyxel.play(0, 0, loop=False) # Sound
-        #     else:
-        #         pyxel.play(0, 8, loop=False) # Sound
-        #     return
+        #if pyxel.btnr(pyxel.xxx):
+        #    to_u, to_v = self.search_block(from_u, from_v, 0, 0)
+        #    if self.player.go(4, to_u, to_v):
+        #        pyxel.play(0, 0, loop=False) # Sound
+        #    else:
+        #        pyxel.play(0, 8, loop=False) # Sound
+        #    return
 
     def camera_on(self):
         line_r = W - self.camera_x - CAMERA_PAD_X
@@ -274,15 +275,14 @@ class Game:
     def search_block(self, from_u, from_v, off_u, off_v):
         to_u = from_u + off_u
         to_v = from_v + off_v
-        if to_u < 0: return from_u, from_v
-        if to_v < 0: return from_u, from_v
-        if 15 < to_u: return from_u, from_v
-        if 15 < to_v: return from_u, from_v
+        if to_u < 0: return -1, -1
+        if to_v < 0: return -1, -1
+        if 15 < to_u: return -1, -1
+        if 15 < to_v: return -1, -1
+        tile = self.get_tile(to_u, to_v)
         # ポイント4: 衝突判定
-        # tile = self.get_tile(to_u, to_v)
-        # if tile in TILE_BLOCKS:
-        #     return from_u, from_v
-
+        #if tile in TILE_BLOCKS:
+        #    return from_u, from_v
         return self.search_block(to_u, to_v, off_u, off_v)
 
     def count_coins(self):
