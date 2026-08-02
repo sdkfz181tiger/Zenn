@@ -75,7 +75,6 @@ class BaseSprite:
             self.w, self.h, 0)
 
     def go(self, spd, to_u, to_v):
-        if to_u < 0 or to_v < 0: return False
         if self.is_moving(): return False
         self.to_x = to_u * 8
         self.to_y = to_v * 8
@@ -273,10 +272,10 @@ class Game:
     def search_block(self, from_u, from_v, off_u, off_v):
         to_u = from_u + off_u
         to_v = from_v + off_v
-        if to_u < 0: return -1, -1
-        if to_v < 0: return -1, -1
-        if 15 < to_u: return -1, -1
-        if 15 < to_v: return -1, -1
+        if to_u < 0: return from_u, from_v
+        if to_v < 0: return from_u, from_v
+        if 15 < to_u: return from_u, from_v
+        if 15 < to_v: return from_u, from_v
         tile = self.get_tile(to_u, to_v)
         if tile in TILE_BLOCKS:
             return from_u, from_v
