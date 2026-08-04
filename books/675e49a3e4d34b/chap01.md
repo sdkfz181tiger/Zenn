@@ -98,6 +98,12 @@ $ pip install pyxel
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap19_comp)
 
+## 飛んでコイン取るゲーム(サンプル)
+
+![](/images/books/675e49a3e4d34b/20_02.gif)
+
+[実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap20_comp)
+
 # 次回は...
 
 ここまで読んでいただきありがとうございました。
