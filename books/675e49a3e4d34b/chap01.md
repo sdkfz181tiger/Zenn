@@ -68,37 +68,37 @@ $ pip install pyxel
 他にも、下記の様なサンプルプログラムも用意してあります。
 オンラインでその動きを試しながら確認することが可能です。
 
-## トンネル避けゲーム(サンプル)
+## 土管の間をジャンプするやつ(サンプル)
 
 ![](/images/books/675e49a3e4d34b/15_02.gif)
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap15_comp)
 
-## 吸血鬼射撃ゲーム(サンプル)
+## 吸血鬼が射撃するやつ(サンプル)
 
 ![](/images/books/675e49a3e4d34b/16_02.gif)
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap16_comp)
 
-## パクパク追いかけゲーム(サンプル)
+## ドットを食べて追いかけっこするやつ(サンプル)
 
 ![](/images/books/675e49a3e4d34b/17_02.gif)
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap17_comp)
 
-## スーパーランドゲーム(サンプル)
+## お馴染みアクションみたいなやつ(サンプル)
 
 ![](/images/books/675e49a3e4d34b/18_02.gif)
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap18_comp)
 
-## スライドするゲーム(サンプル)
+## 壁までダッシュするやつ(サンプル)
 
 ![](/images/books/675e49a3e4d34b/19_02.gif)
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap19_comp)
 
-## 飛んでコイン取るゲーム(サンプル)
+## 空を飛んでコインとるやつ(サンプル)
 
 ![](/images/books/675e49a3e4d34b/20_02.gif)
 
