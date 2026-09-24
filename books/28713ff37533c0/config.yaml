@@ -1,6 +1,5 @@
 title: "PythonでArcadeをかじる本(導入編)"
-summary: "
-Pythonのゲーム専用ライブラリ「Python Arcade Library」を導入する手順書です。
+summary: "Pythonのゲーム専用ライブラリ「Python Arcade Library」を導入する手順書です。
 スプライト管理やキーボード入力、サウンド再生といった基本要素を、
 Pythonの基礎的なコードだけで少しずつ作っていきます。
 尚、この連載では、'とりあえず動く'ことを優先させるため、
