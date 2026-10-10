@@ -35,22 +35,22 @@ Pyxelの開発には、以下の通り3種類の開発スタイルが存在し�
 
 ### 1, IDLEを使った開発環境
 
-Python3のインストール時に付属するエディタである、"IDLE"を利用します。
+Python3のインストール時に付属するエディタ、"IDLE"を利用します。
 Python3本体と、Pyxelライブラリのインストールを行う正攻法スタイルです。
 (本書ではこちらをベースに解説を行っております)
 利用方法については、[第13章(付録1): 実行してみよう(IDLE編)](https://zenn.dev/sdkfz181tiger/books/c4a251dd2b1b94/viewer/chap13)を参考にしてください。
 
 ### 2, ブラウザを使った開発環境
 
-[PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap01_comp)を利用する事で、ブラウザ上でPyxelを実行することができます。
+ブラウザ上でPyxelを実行することができる、[PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap01_comp)を使った開発スタイルです。
 (本書の1章~13章までであれば、本エディタだけでお試しいただけます!!)
 
-### 3, VS-Codeを使った開発環境
+### 3, VS-Codeを使った開発環境 <- New!!
 
-[VS-Code](https://zenn.dev/sdkfz181tiger/articles/e95252e9e98615)をインストールし、Pyxelプラグインを利用して実行する開発スタイルです。
+[VS-Code](https://zenn.dev/sdkfz181tiger/articles/e95252e9e98615)をインストールし、[Pyxelプラグイン](https://marketplace.visualstudio.com/items?itemName=kitao.pyxel-vscode)を利用して実行する開発スタイルです。
 前述の2スタイルと比べ、このスタイルが最もシンプルな手法となっております。
 [VS-Codeでレトロゲーム開発が完結](https://qiita.com/kitao/items/04b6ab72d957de10f9a7)で、詳しい使い方を知る事ができます。
-(こちらもオススメです!!)
+(こちらが簡単でオススメです!!)
 
 # ライブラリ紹介
 
