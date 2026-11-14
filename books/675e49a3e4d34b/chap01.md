@@ -120,6 +120,11 @@ $ pip install pyxel
 
 [実働サンプル_PyxelCodeMaker](https://kitao.github.io/pyxel/web/code-maker/?github=sdkfz181tiger/Zenn/main/images/books/675e49a3e4d34b/pce/shooter_samples/chap20_comp)
 
+## 同じ色のアレをクリックで消していくやつ(サンプル)
+
+![](/images/books/675e49a3e4d34b/21_02.gif)
+
+
 # 次回は...
 
 ここまで読んでいただきありがとうございました。
