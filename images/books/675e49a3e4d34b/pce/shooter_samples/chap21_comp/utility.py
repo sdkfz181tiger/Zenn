@@ -60,7 +60,7 @@ class BaseSprite:
 
 
     def get_right(self):
-        return (self.x + self.w, self.y + self.hh)
+        return (self.x + self.w - 1, self.y + self.hh)
 
 
     def get_top(self):
@@ -68,7 +68,7 @@ class BaseSprite:
 
 
     def get_bottom(self):
-        return (self.x + self.hw, self.y + self.h)
+        return (self.x + self.hw, self.y + self.h - 1)
 
 
     #==========
@@ -175,22 +175,6 @@ class BaseSprite:
 
     def is_tweening(self):
         return 0 <= self.t_frame
-
-
-    def get_left(self):
-        return (self.x, self.y + self.hh)
-
-
-    def get_right(self):
-        return (self.x + self.w, self.y + self.hh)
-
-
-    def get_top(self):
-        return (self.x + self.hw, self.y)
-
-
-    def get_bottom(self):
-        return (self.x + self.hw, self.y + self.h)
 
 
 #==========
